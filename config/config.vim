@@ -86,7 +86,7 @@ map <leader>9 9gt
 map <leader>0 0gt
 
 " undo everything
-set undodir=~/.vim/temp/undodir
+set undodir=~/.config/nvim/temp/undodir
 set undofile
 
 " tabs
