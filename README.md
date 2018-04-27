@@ -15,7 +15,6 @@ Then start using nvim. The first time you use nvim the plugins will be installed
 Need to `flow init` in the current project directory so that javascript autocompletion works.
 
 ## Plugins
-he
 - [ack.vim](https://github.com/mileszs/ack.vim)
 - [autocomplete-flow](https://github.com/wokalski/autocomplete-flow)
 - [bufexplorer](https://github.com/jlanzarotta/bufexplorer)
