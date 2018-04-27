@@ -115,5 +115,12 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+highlight Pmenu ctermbg=239 guibg=#504945
+" highlight PmenuSel ctermbg= guifg=
+" highlight PmenuSbar ctermbg= guibg=
+
+" neosnippet
+let g:neosnippet#enable_completed_snippet = 1
+
 " vim-markdown
 let g:vim_markdown_new_list_item_indent = 0

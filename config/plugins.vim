@@ -33,8 +33,6 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
-Plug 'shougo/deoplete.nvim'
-
 " must be in this order
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
@@ -45,6 +43,9 @@ Plug 'mxw/vim-jsx'
 Plug 'joshddunn/vim-rails'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'fishbullet/deoplete-ruby'
+Plug 'wokalski/autocomplete-flow'
 
 call plug#end()
