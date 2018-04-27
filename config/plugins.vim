@@ -45,5 +45,6 @@ Plug 'mxw/vim-jsx'
 Plug 'joshddunn/vim-rails'
 
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'fishbullet/deoplete-ruby'
 
 call plug#end()
