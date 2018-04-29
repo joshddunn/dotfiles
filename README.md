@@ -6,7 +6,7 @@ This configuration is a constant work in progress and is built for mac.
 
 Installing this configuration is relatively easy. First, clone this repository.
 
-    git clone https://github.com/joshddunn/nvim ~/.config/local/
+    git clone https://github.com/joshddunn/nvim ~/.config/nvim
 
 Then start using nvim. The first time you use nvim the plugins will be installed.
 
@@ -33,6 +33,7 @@ Need to `flow init` in the current project directory so that javascript autocomp
 - [vim-css-color](https://github.com/ap/vim-css-color)
 - [vim-endwise](https://github.com/tpope/vim-endwise)
 - [vim-fish](https://github.com/dag/vim-fish)
+- [vim-fold-cycle](https://github.com/arecarn/vim-fold-cycle)
 - [vim-fugitive](https://github.com/tpope/vim-fugitive)
 - [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides)
 - [vim-javascript-syntax](https://github.com/jelera/vim-javascript-syntax)

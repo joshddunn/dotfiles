@@ -48,4 +48,6 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'wokalski/autocomplete-flow'
 
+Plug 'arecarn/vim-fold-cycle'
+
 call plug#end()
