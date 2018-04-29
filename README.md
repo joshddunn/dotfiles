@@ -58,6 +58,18 @@ This configuration allows you to undo changes, even after closing the file.
 
 ## Notes
 
+### rsync
+
+Use these commands to edit files on a server locally.
+
+rsync pull
+
+    rsync -a root@xx.xx.xx.xx:remote_directory local_directory
+
+rsync push
+
+    rsync -a local_directory root@xx.xx.xx.xx:remote_directory
+
 ### vim-coffee-script
 
 Need to globally install coffee script using npm for syntastic support
