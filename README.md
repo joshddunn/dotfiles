@@ -64,11 +64,11 @@ Use these commands to edit files on a server locally.
 
 rsync pull
 
-    rsync -a root@xx.xx.xx.xx:remote_directory local_directory
+    rsync -avr remote_host:remote_directory local_directory
 
 rsync push
 
-    rsync -a local_directory root@xx.xx.xx.xx:remote_directory
+    rsync -avr local_directory remote_host:remote_directory
 
 ### vim-coffee-script
 
