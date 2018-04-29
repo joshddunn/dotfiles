@@ -3,15 +3,15 @@ vmap Si S(i_<esc>f)
 
 " lightline
 let g:lightline = {
-     \ 'colorscheme': 'gruvbox',
-     \ 'active': {
-     \   'left': [ [ 'mode', 'paste' ],
-     \             [ 'readonly', 'statusline', 'filename', 'modified' ] ]
-     \ },
-     \ 'component': {
-     \   'statusline': '%{fugitive#statusline()}'
-     \ },
-     \ }
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'statusline', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'statusline': '%{fugitive#statusline()}'
+  \ },
+\ }
 
 " yankstack
 nmap <c-p> <Plug>yankstack_substitute_older_paste
@@ -47,7 +47,7 @@ map <leader>nf :NERDTreeFind<cr>
 
 " ack
 if executable('rg')
-    let g:ackprg = 'rg --vimgrep --smart-case --glob "!node_modules/**" --glob "!package-lock.json"'
+  let g:ackprg = 'rg --vimgrep --smart-case --glob "!node_modules/**" --glob "!package-lock.json"'
 endif
 
 map <leader>g :Ack -F ""<Left>
@@ -73,13 +73,13 @@ autocmd FileType ruby let b:surround_61 = "<%= \r %>"
 
 " vim-rails
 let g:rails_custom_singularize = {
-      \   'moves': 'move', 
-      \   'metas': 'metum',
-      \   'data': 'datum', 
-      \ }
+  \   'moves': 'move', 
+  \   'metas': 'metum',
+  \   'data': 'datum', 
+\ }
 
 let g:rails_custom_pluralize = {
-      \ }
+\ }
 
 " markdown preview
 let vim_markdown_preview_github=1
@@ -116,8 +116,6 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 highlight Pmenu ctermbg=239 guibg=#504945
-" highlight PmenuSel ctermbg= guifg=
-" highlight PmenuSbar ctermbg= guibg=
 
 " neosnippet
 let g:neosnippet#enable_completed_snippet = 1

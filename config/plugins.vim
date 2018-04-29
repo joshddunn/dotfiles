@@ -32,6 +32,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'arecarn/vim-fold-cycle'
 
 " must be in this order
 Plug 'flazz/vim-colorschemes'
@@ -42,12 +43,11 @@ Plug 'mxw/vim-jsx'
 " a fork of 'tpope/vim-rails'
 Plug 'joshddunn/vim-rails'
 
+" autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'wokalski/autocomplete-flow'
-
-Plug 'arecarn/vim-fold-cycle'
 
 call plug#end()

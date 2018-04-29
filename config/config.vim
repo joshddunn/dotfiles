@@ -6,7 +6,6 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l,[,]
 
 " map leader key
-let mapleader = ","
 let g:mapleader = ","
 
 " autoread
