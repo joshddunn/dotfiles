@@ -8,7 +8,12 @@ Installing this configuration is relatively easy. First, clone this repository.
 
     git clone https://github.com/joshddunn/nvim ~/.config/nvim
 
-Then start using nvim. The first time you use nvim the plugins will be installed.
+Then run
+
+    cd ~/.config/nvim
+    brew bundle
+
+Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
 ### Deoplete flow
 
