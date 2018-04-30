@@ -2,3 +2,5 @@
 autoload
 plugged
 temp
+
+config/rsync.vim
