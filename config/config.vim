@@ -139,7 +139,11 @@ function! RsyncPush(args)
   let project = g:vim_rsync_data["remote"]
   if has_key(project, a:args)
     let project = project[a:args]
-    exe "!rsync -r --delete " . project["local_directory"] . " " . project["user"] . "@" . project["ip_address"] . ":" . project["remote_directory"]
+    let exclude = ""
+    for item in project["ignore"]
+      let exclude = exclude . " --exclude='" . item . "' "
+    endfor
+    exe "!rsync -r --delete " . exclude . project["local_directory"] . " " . project["user"] . "@" . project["ip_address"] . ":" . project["remote_directory"]
   else
     echo "The project is not defined in vim_rsync_data"
   endif
@@ -150,7 +154,11 @@ function! RsyncPull(args)
   let project = g:vim_rsync_data["remote"]
   if has_key(project, a:args)
     let project = project[a:args]
-    exe "!rsync -r --delete " . project["user"] . "@" . project["ip_address"] . ":" . project["remote_directory"] . " " . project["local_directory"]
+    let exclude = ""
+    for item in project["ignore"]
+      let exclude = exclude . " --exclude='" . item . "' "
+    endfor
+    exe "!rsync -r --delete " . exclude . project["user"] . "@" . project["ip_address"] . ":" . project["remote_directory"] . " " . project["local_directory"]
   else
     echo "The project is not defined in vim_rsync_data"
   endif
