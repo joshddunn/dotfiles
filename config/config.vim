@@ -122,7 +122,7 @@ vnoremap <leader>P "+P
 " list chars
 set list listchars=trail:·
 
-let g:vim_rsync_data = {
+let g:vim_rsync = {
 \ "remote": {
 \   "mtgql": {
 \     "user": "root",
