@@ -121,16 +121,3 @@ vnoremap <leader>P "+P
 
 " list chars
 set list listchars=trail:·
-
-let g:vim_rsync = {
-\ "remote": {
-\   "mtgql": {
-\     "user": "root",
-\     "ip_address": "",
-\     "local_directory": "",
-\     "remote_directory": "",
-\     "exclude": [
-\     ]
-\   },
-\ }
-\}
