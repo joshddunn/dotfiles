@@ -43,6 +43,8 @@ Plug 'mxw/vim-jsx'
 " a fork of 'tpope/vim-rails'
 Plug 'joshddunn/vim-rails'
 
+Plug 'joshddunn/vim-rsync'
+
 " autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
