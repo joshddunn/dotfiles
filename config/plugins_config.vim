@@ -43,6 +43,16 @@ map <c-f> :Files<cr>
 let g:fzf_tags_command = 'ctags -R'
 let g:fzf_buffers_jump = 1
 
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
+
+command! -bang -nargs=? -complete=dir Files
+  \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 " nerdtree
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
