@@ -55,4 +55,6 @@ Plug 'wokalski/autocomplete-flow'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
+Plug 'airblade/vim-gitgutter'
+
 call plug#end()

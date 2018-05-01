@@ -128,3 +128,6 @@ let g:neosnippet#enable_completed_snippet = 1
 
 " vim-markdown
 let g:vim_markdown_new_list_item_indent = 0
+
+" git gutter
+let g:gitgutter_enabled = 0
