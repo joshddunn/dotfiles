@@ -5,8 +5,9 @@ set foldmethod=marker
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l,[,]
 
-" map leader key
+" map leader and localleader keys
 let g:mapleader = ","
+let g:maplocalleader = "\\"
 
 " autoread
 set autoread
