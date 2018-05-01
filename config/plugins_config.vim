@@ -23,19 +23,25 @@ let g:multi_cursor_next_key = '<C-s>'
 let g:multi_cursor_quit_key = '<Esc>'
 
 " ctrlp
-let g:ctrlp_working_path_mode = 0
+" let g:ctrlp_working_path_mode = 0
 
-let g:ctrlp_map = '<c-f>'
-map <leader>j :CtrlP<cr>
-map <c-b> :CtrlPBuffer<cr>
+" let g:ctrlp_map = '<c-f>'
+" map <leader>j :CtrlP<cr>
+" map <c-b> :CtrlPBuffer<cr>
 
-let g:ctrlp_max_height = 20
+" let g:ctrlp_max_height = 20
 
-if executable('rg')
-  set grepprg=rg\ --color=never
-  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-  let g:ctrlp_use_caching = 0
-endif
+" if executable('rg')
+"   set grepprg=rg\ --color=never
+"   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+"   let g:ctrlp_use_caching = 0
+" endif
+
+" fzf
+map <leader>j :Files<cr>
+map <c-f> :Files<cr>
+let g:fzf_tags_command = 'ctags -R'
+let g:fzf_buffers_jump = 1
 
 " nerdtree
 let g:NERDTreeWinPos = "right"

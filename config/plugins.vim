@@ -15,7 +15,7 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'joom/vim-commentary'
 Plug 'justinj/vim-pico8-syntax'
 Plug 'kchmck/vim-coffee-script'
-Plug 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'moll/vim-node'
@@ -51,5 +51,8 @@ Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'fishbullet/deoplete-ruby'
 Plug 'wokalski/autocomplete-flow'
+
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
