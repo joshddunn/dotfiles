@@ -39,6 +39,10 @@ set guioptions-=R
 set guioptions-=l
 set guioptions-=L
 
+" open below
+set splitbelow
+set splitright
+
 " Relative line numbering
 set relativenumber
 set number 
@@ -122,3 +126,7 @@ vnoremap <leader>P "+P
 
 " list chars
 set list listchars=trail:·
+
+" use escape to get out of terminal mode
+tnoremap <Esc> <C-\><C-n>:q<cr>
+command! Fish :sp term://fish | :resize 20 | call feedkeys("a")
