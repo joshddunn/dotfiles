@@ -128,5 +128,17 @@ vnoremap <leader>P "+P
 set list listchars=trail:·
 
 " use escape to get out of terminal mode
-tnoremap <Esc> <C-\><C-n>:q<cr>
-command! Fish :sp term://fish | :resize 20 | call feedkeys("a")
+tnoremap <leader><Esc> <C-\><C-n>:q<cr>
+tnoremap <localleader><Esc> <C-\><C-n>
+
+if !exists("g:vim_terminal_height")
+  let g:vim_terminal_height = 20
+endif
+
+function! VimTerminalOpen(which)
+  exe ":sp term://" . a:which . " | :resize " . g:vim_terminal_height . " | call feedkeys('a')"
+endfunction
+
+command! Fish call VimTerminalOpen("fish")
+command! Bash call VimTerminalOpen("bash")
+command! Zsh call VimTerminalOpen("zsh")
