@@ -126,20 +126,3 @@ vnoremap <leader>P "+P
 
 " list chars
 set list listchars=trail:·
-
-" use escape to get out of terminal mode
-tnoremap <leader><Esc> <C-\><C-n>:q<cr>
-tnoremap <localleader><Esc> <C-\><C-n>
-
-if !exists("g:vim_terminal_height")
-  let g:vim_terminal_height = 20
-endif
-
-function! VimTerminalOpen(which, command)
-  let command = a:command . (len(a:command) ? "\n" : "")
-  exe ":sp term://" . a:which . " | :resize " . g:vim_terminal_height . " | :startinsert | sleep 50m | call feedkeys('" . command . "')"
-endfunction
-
-command! -nargs=* Fish call VimTerminalOpen("fish", <q-args>)
-command! -nargs=* Bash call VimTerminalOpen("bash", <q-args>)
-command! -nargs=* Zsh call VimTerminalOpen("zsh", <q-args>)

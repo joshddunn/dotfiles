@@ -44,6 +44,7 @@ Plug 'mxw/vim-jsx'
 Plug 'joshddunn/vim-rails'
 
 Plug 'joshddunn/vim-rsync'
+Plug 'joshddunn/vim-quick-command'
 
 " autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

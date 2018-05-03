@@ -141,3 +141,7 @@ let g:vim_markdown_new_list_item_indent = 0
 
 " git gutter
 let g:gitgutter_enabled = 0
+
+" vim-quick-command
+let g:vim_quick_command_default_terminal = "Fish"
+let g:vim_quick_command_alias = { "rails": "docker-compose run web rails" }
