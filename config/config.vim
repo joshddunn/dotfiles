@@ -130,7 +130,6 @@ set list listchars=trail:·
 " use escape to get out of terminal mode
 tnoremap <leader><Esc> <C-\><C-n>:q<cr>
 tnoremap <localleader><Esc> <C-\><C-n>
-tnoremap <C-\><C-n> <cr>
 
 if !exists("g:vim_terminal_height")
   let g:vim_terminal_height = 20
