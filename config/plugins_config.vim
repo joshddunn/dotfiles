@@ -72,16 +72,6 @@ autocmd FileType ruby let b:surround_45 = "<% \r -%>"
 " = 61
 autocmd FileType ruby let b:surround_61 = "<%= \r %>"
 
-" vim-rails
-let g:rails_custom_singularize = {
-  \   'moves': 'move', 
-  \   'metas': 'metum',
-  \   'data': 'datum', 
-\ }
-
-let g:rails_custom_pluralize = {
-\ }
-
 " markdown preview
 let vim_markdown_preview_github=1
 let vim_markdown_preview_toggle=1
@@ -130,3 +120,48 @@ let g:gitgutter_enabled = 0
 " vim-quick-command
 let g:vim_quick_command_default_terminal = "Fish"
 let g:vim_quick_command_aliases = { "rails": "docker-compose run web rails" }
+
+" vim-rails
+let g:rails_projections = {
+  \  "app/graphql/types/*_type.rb": {
+  \    "affinity": "type",
+  \    "template": ["Types::{camelcase|capitalize|colons}Type = GraphQL::ObjectType.define do",
+  \                 "  name \"{camelcase|capitalize|colons}\"",
+  \                 "  description \"\"",
+  \                 "end"],
+  \    "type": "type"
+  \  },
+  \  "app/graphql/resolvers/*.rb": {
+  \    "affinity": "resolver",
+  \    "template": ["class Resolvers::{camelcase|capitalize|colons} < GraphQL::Function",
+  \                 "  type types.String",
+  \                 "",
+  \                 "  def call(_obj, args, ctx)",
+  \                 "  end",
+  \                 "end"],
+  \    "type": "resolver"
+  \  },
+  \  "app/graphql/mutations/*_mutation.rb": {
+  \    "affinity": "mutation",
+  \    "template": ["Mutations::{camelcase|capitalize|colons}Mutation = GraphQL::Relay::Mutation.define do",
+  \                 "  name \"{camelcase|capitalize|colons}\"",
+  \                 "",
+  \                 "  # return_field :return_field, return_type",
+  \                 "  # input_field :input_field, !input_type",
+  \                 "",
+  \                 "  resolve ->(obj, input, ctx) {",
+  \                 "  }",
+  \                 "end"],
+  \    "type": "mutation"
+  \  },
+  \ }
+
+" vim-rails-singularize
+let g:rails_singularize = {
+  \   'moves': 'move',
+  \   'metas': 'metum',
+  \   'data': 'datum',
+\ }
+
+let g:rails_pluralize = {
+\ }
