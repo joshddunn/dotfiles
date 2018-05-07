@@ -128,3 +128,6 @@ set list listchars=trail:·
 
 " ctags command
 command! Ctags exe "!ctags -R ."
+
+" reload vim
+command! ReloadVim exe ":source $MYVIMRC"
