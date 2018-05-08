@@ -119,7 +119,7 @@ let g:gitgutter_enabled = 0
 
 " vim-quick-command
 let g:vim_quick_command_default_terminal = "Fish"
-let g:vim_quick_command_aliases = { "rails": "docker-compose run web rails" }
+let g:vim_quick_command_aliases = { "rails": "docker-compose run web rails", "rake": "docker-compose run cmd rake" }
 
 " vim-rails
 let g:rails_projections = {

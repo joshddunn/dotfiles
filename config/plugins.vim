@@ -40,8 +40,7 @@ Plug 'jelera/vim-javascript-syntax'
 Plug 'mxw/vim-jsx'
 
 " must install in this order 
-Plug 'tpope/vim-rails'
-Plug 'joshddunn/vim-rails-singularize'
+Plug 'tpope/vim-rails' | Plug 'joshddunn/vim-rails-singularize'
 
 Plug 'joshddunn/vim-rsync'
 Plug 'joshddunn/vim-quick-command'
