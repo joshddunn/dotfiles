@@ -6,8 +6,8 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l,[,]
 
 " map leader and localleader keys
-let g:mapleader = ","
-let g:maplocalleader = "\\"
+let mapleader = ","
+let maplocalleader = "\\"
 
 " autoread
 set autoread
