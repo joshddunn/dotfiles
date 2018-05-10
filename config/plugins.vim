@@ -58,4 +58,6 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'rhysd/devdocs.vim'
+
 call plug#end()

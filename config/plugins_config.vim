@@ -165,3 +165,8 @@ let g:rails_singularize = {
 
 let g:rails_pluralize = {
 \ }
+
+" devdocs
+let g:devdocs_filetype_map = {
+    \   'ruby': 'ruby'
+    \ }
