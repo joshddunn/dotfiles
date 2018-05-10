@@ -50,6 +50,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'fishbullet/deoplete-ruby'
+Plug 'uplus/deoplete-solargraph'
 Plug 'wokalski/autocomplete-flow'
 
 Plug '/usr/local/opt/fzf'
