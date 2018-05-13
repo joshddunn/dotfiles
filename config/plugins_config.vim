@@ -1,6 +1,3 @@
-" surround
-vmap Si S(i_<esc>f)
-
 " lightline
 let g:lightline = {
   \ 'colorscheme': 'gruvbox',
@@ -154,7 +151,7 @@ let g:rails_projections = {
   \                 "end"],
   \    "type": "mutation"
   \  },
-  \ }
+\ }
 
 " vim-rails-singularize
 let g:rails_singularize = {
@@ -163,10 +160,7 @@ let g:rails_singularize = {
   \   'data': 'datum',
 \ }
 
-let g:rails_pluralize = {
-\ }
+let g:rails_pluralize = {}
 
 " devdocs
-let g:devdocs_filetype_map = {
-    \   'ruby': 'ruby'
-    \ }
+let g:devdocs_filetype_map = { 'ruby': 'ruby' }
