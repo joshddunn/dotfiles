@@ -1,14 +1,17 @@
 " lightline
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'statusline', 'filename', 'modified' ] ]
-  \ },
-  \ 'component': {
-  \   'statusline': '%{fugitive#statusline()}'
-  \ },
-\ }
+" let g:lightline = {
+"   \ 'colorscheme': 'gruvbox',
+"   \ 'active': {
+"   \   'left': [ [ 'mode', 'paste' ],
+"   \             [ 'readonly', 'statusline', 'filename', 'modified' ] ]
+"   \ },
+"   \ 'component': {
+"   \   'statusline': '%{fugitive#statusline()}'
+"   \ }
+" \ }
+
+" airline
+let g:airline#extensions#tabline#enabled = 1
 
 " yankstack
 nmap <c-p> <Plug>yankstack_substitute_older_paste

@@ -9,7 +9,8 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
 Plug 'dag/vim-fish'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-airline'
 Plug 'jamshedvesuna/vim-markdown-preview'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'joom/vim-commentary'
