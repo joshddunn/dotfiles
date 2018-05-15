@@ -131,3 +131,7 @@ command! Ctags exe "!ctags -R ."
 
 " reload vim
 command! ReloadVim exe ":source $MYVIMRC"
+
+" move between buffers
+map <Tab> :bn<cr>
+map <S-Tab> :bp<cr>
