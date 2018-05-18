@@ -105,10 +105,6 @@ set wrap " wrap lines
 " always show last status
 set laststatus=2
 
-" show tabs by default
-" set switchbuf=useopen,usetab,newtab
-" set stal=2
-
 " shellpipe
 set shellpipe=>
 
