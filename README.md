@@ -15,14 +15,15 @@ Then run
 
 Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
+## Notes
+
 ### Deoplete flow
 
 Need to `flow init` in the current project directory so that javascript autocompletion works.
-
-## Notes
 
 ### vim-coffee-script
 
 Need to globally install coffee script using npm for syntastic support
 
     npm install -g coffee-script
+
