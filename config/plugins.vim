@@ -25,7 +25,6 @@ Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'pangloss/vim-javascript'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -39,7 +38,9 @@ Plug 'junegunn/fzf.vim'
 " must be in this order
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-Plug 'jelera/vim-javascript-syntax'
+" Plug 'pangloss/vim-javascript'
+" Plug 'jelera/vim-javascript-syntax'
+Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
 
 " personal plugins
