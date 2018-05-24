@@ -38,8 +38,6 @@ Plug 'junegunn/fzf.vim'
 " must be in this order
 Plug 'flazz/vim-colorschemes'
 Plug 'morhetz/gruvbox'
-" Plug 'pangloss/vim-javascript'
-" Plug 'jelera/vim-javascript-syntax'
 Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
 
