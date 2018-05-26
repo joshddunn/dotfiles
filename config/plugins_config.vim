@@ -63,13 +63,6 @@ autocmd FileType ruby let b:surround_45 = "<% \r -%>"
 " = 61
 autocmd FileType ruby let b:surround_61 = "<%= \r %>"
 
-" markdown preview
-let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=1
-let vim_markdown_preview_temp_file=1
-let vim_markdown_preview_browser='Google Chrome'
-let vim_markdown_preview_hotkey='<C-m>'
-
 " trigger abolish
 inoremap _ <C-]>_
 inoremap - <C-]>-
@@ -155,6 +148,3 @@ let g:rails_singularize = {
 \ }
 
 let g:rails_pluralize = {}
-
-" devdocs
-let g:devdocs_filetype_map = { 'ruby': 'ruby' }
