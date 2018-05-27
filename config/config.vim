@@ -45,7 +45,7 @@ set splitright
 
 " Relative line numbering
 set relativenumber
-set number 
+set number
 
 " Color column can be set for different filetypes
 highlight ColorColumn ctermbg=0
@@ -131,3 +131,6 @@ command! ReloadVim exe ":source $MYVIMRC"
 " move between buffers
 nmap <Tab> :bn<cr>
 nmap <S-Tab> :bp<cr>
+
+" remove whitespace
+command! RemoveWhitespace exe ":%s/\s\+$//e"
