@@ -120,7 +120,7 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " list chars
-set list listchars=trail:·
+" set list listchars=trail:·
 
 " ctags command
 command! Ctags exe "!ctags -R ."
@@ -132,5 +132,5 @@ command! ReloadVim exe ":source $MYVIMRC"
 nmap <Tab> :bn<cr>
 nmap <S-Tab> :bp<cr>
 
-" remove whitespace
-command! RemoveWhitespace exe ":%s/\s\+$//e"
+" remove trailing whitespace
+autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
