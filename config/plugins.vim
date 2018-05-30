@@ -29,6 +29,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'airblade/vim-gitgutter'
+Plug 'w0rp/ale'
 
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
