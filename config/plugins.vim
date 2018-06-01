@@ -8,7 +8,6 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'ap/vim-css-color'
-Plug 'bling/vim-airline'
 Plug 'jamshedvesuna/vim-markdown-preview'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'joom/vim-commentary'
@@ -29,6 +28,7 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'godlygeek/tabular'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
 
 Plug '/usr/local/opt/fzf'
