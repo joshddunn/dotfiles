@@ -119,9 +119,6 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" list chars
-" set list listchars=trail:·
-
 " ctags command
 command! Ctags exe "!ctags -R ."
 
