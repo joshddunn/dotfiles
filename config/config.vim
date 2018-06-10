@@ -47,10 +47,6 @@ set splitright
 set relativenumber
 set number
 
-" Color column can be set for different filetypes
-highlight ColorColumn ctermbg=0
-autocmd FileType python setlocal colorcolumn=79
-
 " set default font
 set encoding=utf8
 set guifont=Menlo:h12
