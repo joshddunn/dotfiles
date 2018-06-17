@@ -1,4 +1,4 @@
-# My vim configuration.
+# My nvim Configuration
 
 This configuration is a constant work in progress and is built for mac.
 
