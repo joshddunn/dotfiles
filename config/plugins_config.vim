@@ -74,12 +74,6 @@ set foldlevel=99
 " jsx
 let g:jsx_ext_required = 0
 
-" node
-set runtimepath^=~/.vim/bundle/node
-
-" javascript
-let g:javascript_plugin_flow = 1
-
 " indent guides
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
