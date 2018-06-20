@@ -15,7 +15,7 @@ Then run
 
 Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
-## Notes
+## Install Notes
 
 ### vim-coffee-script
 
