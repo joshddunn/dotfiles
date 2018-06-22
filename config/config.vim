@@ -117,9 +117,6 @@ vnoremap <leader>P "+P
 " ctags command
 command! Ctags exe "!ctags -R ."
 
-" reload vim
-command! ReloadVim exe ":source $MYVIMRC"
-
 " move between buffers
 nmap <Tab> :bn<cr>
 nmap <S-Tab> :bp<cr>
