@@ -7,6 +7,7 @@ set whichwrap+=<,>,h,l,[,]
 
 " map leader and localleader keys
 let mapleader = ","
+let maplocalleader = "\\"
 
 " autoread
 set autoread
