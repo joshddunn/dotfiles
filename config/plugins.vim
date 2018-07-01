@@ -30,7 +30,9 @@ Plug 'arecarn/vim-fold-cycle'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'w0rp/ale'
-
+Plug 'joukevandermaas/vim-ember-hbs'
+Plug 'dsawardekar/portkey' | Plug 'dsawardekar/ember.vim'
+Plug 'kien/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 
