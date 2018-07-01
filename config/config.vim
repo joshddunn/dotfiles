@@ -1,6 +1,3 @@
-" folding
-set foldmethod=marker
-
 " backspace config
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l,[,]
