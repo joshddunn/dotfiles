@@ -1,0 +1,7 @@
+{
+  "portkeys": ["ember:classic-coffee"],
+  "app/styles/**.sass": {
+    "type": "stylesheet",
+    "mapping": "s"
+  }
+}
