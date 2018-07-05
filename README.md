@@ -22,3 +22,19 @@ Then start using nvim (after `:CheckHealth` passes). The first time you use nvim
 Need to globally install coffee script using npm for syntastic support
 
     npm install -g coffee-script
+
+## Ember.js Mappings
+
+| mapping | resource |
+| - | - |
+| <LocalLeader>cm |	component |
+| <LocalLeader>cn |	controller |
+| <LocalLeader>ap |	app |
+| <LocalLeader>r | route |
+| <LocalLeader>s | stylesheet |
+| <LocalLeader>ts |	test |
+| <LocalLeader>tm |	template |
+| <LocalLeader>v |	view |
+| <LocalLeader>g |	grunt |
+| <LocalLeader>h |	helper |
+| <LocalLeader>m |	model |
