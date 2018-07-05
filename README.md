@@ -27,14 +27,14 @@ Need to globally install coffee script using npm for syntastic support
 
 | mapping | resource |
 | - | - |
-| <LocalLeader>cm |	component |
-| <LocalLeader>cn |	controller |
-| <LocalLeader>ap |	app |
-| <LocalLeader>r | route |
-| <LocalLeader>s | stylesheet |
-| <LocalLeader>ts |	test |
-| <LocalLeader>tm |	template |
-| <LocalLeader>v |	view |
-| <LocalLeader>g |	grunt |
-| <LocalLeader>h |	helper |
-| <LocalLeader>m |	model |
+| \<LocalLeader\>cm |	component |
+| \<LocalLeader\>cn |	controller |
+| \<LocalLeader\>ap |	app |
+| \<LocalLeader\>r | route |
+| \<LocalLeader\>s | stylesheet |
+| \<LocalLeader\>ts |	test |
+| \<LocalLeader\>tm |	template |
+| \<LocalLeader\>v |	view |
+| \<LocalLeader\>g |	grunt |
+| \<LocalLeader\>h |	helper |
+| \<LocalLeader\>m |	model |
