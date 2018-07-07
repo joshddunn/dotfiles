@@ -4,4 +4,5 @@ plugged
 temp
 tags
 config/rsync.vim
+config/work.vim
 .netrwhist
