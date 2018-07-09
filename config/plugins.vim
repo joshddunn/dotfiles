@@ -35,6 +35,7 @@ Plug 'dsawardekar/portkey' | Plug 'dsawardekar/ember.vim'
 Plug 'kien/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'jparise/vim-graphql'
 
 " must be in this order
 Plug 'flazz/vim-colorschemes'
