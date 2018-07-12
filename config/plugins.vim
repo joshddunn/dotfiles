@@ -53,5 +53,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'uplus/deoplete-solargraph'
+Plug 'wokalski/autocomplete-flow'
 
 call plug#end()
