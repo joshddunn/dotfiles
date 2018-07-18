@@ -36,6 +36,7 @@ Plug 'kien/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jparise/vim-graphql'
+Plug 'elixir-lang/vim-elixir'
 
 " must be in this order
 Plug 'flazz/vim-colorschemes'
