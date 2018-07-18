@@ -39,7 +39,7 @@ map <leader>nf :NERDTreeFind<cr>
 
 " ack
 if executable('rg')
-  let g:ackprg = 'rg --vimgrep --smart-case --glob "!node_modules/**" --glob "!package-lock.json" --glob "!__*/**"'
+  let g:ackprg = 'rg --vimgrep --smart-case --glob "!node_modules/**" --glob "!package-lock.json" --glob "!__*/**" --glob "!tags"'
 endif
 
 map <leader>g :Ack -F ""<Left>

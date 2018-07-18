@@ -15,6 +15,8 @@ Then run
 
 Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
+You will also have to create `rsync.vim` and `work.vim` files in the `config/` directory.
+
 ## Install Notes
 
 ### vim-coffee-script
