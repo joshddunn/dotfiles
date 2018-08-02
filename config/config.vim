@@ -121,3 +121,6 @@ nmap <S-Tab> :bp<cr>
 
 " remove trailing whitespace
 autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" makes files hidden instead of closed when switching buffers
+set hidden
