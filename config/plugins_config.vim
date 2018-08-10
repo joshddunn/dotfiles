@@ -26,6 +26,7 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --glob "!node_modules/**"'
 let g:fzf_command_prefix = 'Fzf'
 map <leader>b :FzfBuffers<cr>
 
