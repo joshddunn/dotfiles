@@ -1,3 +1,18 @@
+" vim-glob
+let g:glob_ignore = {
+  \ "shared": [
+  \   "node_modules/**",
+  \   ".git/**",
+  \   "__*/**",
+  \ ],
+  \ "files": [
+  \ ],
+  \ "global": [
+  \   "package-lock.json",
+  \   "tags",
+  \ ]
+\ }
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 
@@ -26,7 +41,7 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow --glob "!node_modules/**"'
+let $FZF_DEFAULT_COMMAND = "rg --files --no-ignore --hidden --follow " . glob#ignore('files')
 let g:fzf_command_prefix = 'Fzf'
 map <leader>b :FzfBuffers<cr>
 
@@ -40,7 +55,7 @@ map <leader>nf :NERDTreeFind<cr>
 
 " ack
 if executable('rg')
-  let g:ackprg = 'rg --vimgrep --smart-case --glob "!node_modules/**" --glob "!package-lock.json" --glob "!__*/**" --glob "!tags"'
+  let g:ackprg = "rg --vimgrep --smart-case " . glob#ignore('global')
 endif
 
 map <leader>g :Ack -F ""<Left>

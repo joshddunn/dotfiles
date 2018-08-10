@@ -48,6 +48,7 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-rails' | Plug 'joshddunn/vim-rails-singularize'
 Plug 'joshddunn/vim-rsync'
 Plug 'joshddunn/vim-quick-command'
+Plug 'joshddunn/vim-glob'
 
 " autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
