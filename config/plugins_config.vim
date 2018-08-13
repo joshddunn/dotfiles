@@ -152,9 +152,9 @@ let g:rails_projections = {
 
 " vim-rails-singularize
 let g:rails_singularize = {
-  \   'moves': 'move',
-  \   'metas': 'metum',
-  \   'data': 'datum',
+  \  'moves': 'move',
+  \  'metas': 'metum',
+  \  'data': 'datum',
 \ }
 
 let g:rails_pluralize = {}
