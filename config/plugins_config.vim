@@ -9,6 +9,7 @@ let g:glob_ignore = {
   \ ],
   \ "global": [
   \   "package-lock.json",
+  \   "Gemfile.lock",
   \   "tags",
   \ ]
 \ }
