@@ -24,19 +24,3 @@ You will also have to create `rsync.vim` and `work.vim` files in the `config/` d
 Need to globally install coffee script using npm for syntastic support
 
     npm install -g coffee-script
-
-## Ember.js Mappings
-
-| mapping | resource |
-| - | - |
-| \<LocalLeader\>cm |	component |
-| \<LocalLeader\>cn |	controller |
-| \<LocalLeader\>ap |	app |
-| \<LocalLeader\>r | route |
-| \<LocalLeader\>s | stylesheet |
-| \<LocalLeader\>ts |	test |
-| \<LocalLeader\>tm |	template |
-| \<LocalLeader\>v |	view |
-| \<LocalLeader\>g |	grunt |
-| \<LocalLeader\>h |	helper |
-| \<LocalLeader\>m |	model |
