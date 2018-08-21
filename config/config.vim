@@ -113,7 +113,7 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
 " ctags command
-command! Ctags exe "!ctags -R ."
+command! Ctags exe '!ctags -R .'
 
 " move between buffers
 nmap <Tab> :bn<cr>
