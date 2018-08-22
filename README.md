@@ -1,6 +1,6 @@
 # My nvim Configuration
 
-This configuration is a constant work in progress and is built for mac.
+This configuration is made to be used on mac.
 
 ## Installation
 
