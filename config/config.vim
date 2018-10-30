@@ -116,11 +116,14 @@ vnoremap <leader>P "+P
 command! Ctags exe "!ctags -R ."
 
 " move between buffers
-nmap <Tab> :bn<cr>
-nmap <S-Tab> :bp<cr>
+nmap <Tab> :NERDTreeClose<cr>:bn<cr>
+nmap <S-Tab> :NERDTreeClose<cr>:bp<cr>
 
 " remove trailing whitespace
 autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " makes files hidden instead of closed when switching buffers
 set hidden
+
+" set filetypes
+autocmd BufNewFile,BufRead *.html.inky   set syntax=html.erb

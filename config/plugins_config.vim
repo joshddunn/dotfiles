@@ -48,7 +48,7 @@ map <leader>b :FzfBuffers<cr>
 " nerdtree
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
-let g:NERDTreeWinSize=35
+let g:NERDTreeWinSize=50
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
@@ -163,3 +163,9 @@ let g:rails_pluralize = {}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '!'
 let g:ale_sign_warning = '?'
+
+" syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "active",
+  \ "passive_filetypes": ["ex", "exs"]
+\ }
