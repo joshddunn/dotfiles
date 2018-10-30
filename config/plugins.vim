@@ -46,8 +46,6 @@ Plug 'mxw/vim-jsx'
 
 " personal plugins
 Plug 'tpope/vim-rails' | Plug 'joshddunn/vim-rails-singularize'
-Plug 'joshddunn/vim-rsync'
-Plug 'joshddunn/vim-quick-command'
 Plug 'joshddunn/vim-glob'
 
 " autocompletion
