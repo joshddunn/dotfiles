@@ -35,7 +35,7 @@ Plug 'kien/ctrlp.vim'
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'jparise/vim-graphql'
-Plug 'elixir-lang/vim-elixir'
+Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
 
 " must be in this order
