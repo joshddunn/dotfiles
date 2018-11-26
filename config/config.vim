@@ -1,3 +1,7 @@
+" python
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " backspace config
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l,[,]
@@ -59,6 +63,9 @@ set so=7
 
 " search / and backward search ?
 map <space> /
+vmap <space> y/<C-r>0<cr><S-n>
+map <c-s> yiw/<C-r>0<cr><S-n>cgn
+vmap <c-s> y/<C-r>0<cr><S-n>cgn
 map <c-space> ?
 
 " remove search highlight
@@ -115,6 +122,9 @@ vnoremap <leader>P "+P
 " ctags command
 command! Ctags exe '!ctags -R .'
 
+" fix tabs
+command! Tab exe 'set tabstop=2 shiftwidth=2 | retab'
+
 " move between buffers
 nmap <Tab> :NERDTreeClose<cr>:bn<cr>
 nmap <S-Tab> :NERDTreeClose<cr>:bp<cr>
@@ -127,3 +137,14 @@ set hidden
 
 " set filetypes
 autocmd BufNewFile,BufRead *.html.inky   set syntax=html.erb
+
+" bufonly
+function! BufOnly()
+  " can use v:val.name to get names of files
+  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr != ' . bufnr('%')), 'v:val.bufnr')
+  if len(buffers) > 0
+    exe join(buffers, ',') . 'bd'
+  endif
+endfunction
+
+command! BufOnly call BufOnly()
