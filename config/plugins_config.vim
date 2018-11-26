@@ -66,6 +66,7 @@ map <leader>g :Ack -F ""<Left>
 set background=dark
 try
   colorscheme gruvbox
+  " colorscheme onedark
 catch
 endtry
 
@@ -85,7 +86,7 @@ inoremap _ <C-]>_
 inoremap - <C-]>-
 
 " anyfold
-let anyfold_activate=1
+autocmd Filetype * AnyFoldActivate
 set foldlevel=99
 
 " jsx
@@ -97,7 +98,8 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " deoplete (neovim)
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
+autocmd InsertEnter * call deoplete#enable()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -167,3 +169,12 @@ let g:syntastic_mode_map = {
   \ "mode": "active",
   \ "passive_filetypes": ["ex", "exs"]
 \ }
+
+" search highlighting
+highlight Search ctermfg=NONE ctermbg=NONE cterm=underline
+
+" easy align
+xmap ga <Plug>(EasyAlign)
+xmap gax <Plug>(EasyAlign)<c-x>
+nmap ga <Plug>(EasyAlign)
+nmap gax <Plug>(EasyAlign)ip<c-x>
