@@ -19,6 +19,10 @@ You will also have to create `rsync.vim` and `work.vim` files in the `config/` d
 
 ## Install Notes
 
+Base16 iTerm2 colors
+
+    https://github.com/chriskempson/base16-iterm2
+
 ### vim-coffee-script
 
 Need to globally install coffee script using npm for syntastic support

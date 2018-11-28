@@ -16,15 +16,16 @@ let g:glob_ignore = {
 
 " airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = 'base16_tomorrow'
 
 " yankstack
 nmap <c-p> <Plug>yankstack_substitute_older_paste
 nmap <c-P> <Plug>yankstack_substitute_newer_paste
 
 " vim-multiple-cursors
-let g:multi_cursor_start_word_key = '<C-s>'
-let g:multi_cursor_next_key = '<C-s>'
-let g:multi_cursor_quit_key = '<Esc>'
+" let g:multi_cursor_start_word_key = '<C-s>'
+" let g:multi_cursor_next_key = '<C-s>'
+" let g:multi_cursor_quit_key = '<Esc>'
 
 " fzf
 map <leader>j :Files<cr>
@@ -65,7 +66,9 @@ map <leader>g :Ack -F ""<Left>
 " line 558 change color from Normal to GruvboxBlue
 set background=dark
 try
-  colorscheme gruvbox
+  colorscheme base16-tomorrow-night
+  " colorscheme gruvbox
+  " colorscheme onedark
 catch
 endtry
 
@@ -85,7 +88,7 @@ inoremap _ <C-]>_
 inoremap - <C-]>-
 
 " anyfold
-let anyfold_activate=1
+autocmd Filetype * AnyFoldActivate
 set foldlevel=99
 
 " jsx
@@ -97,7 +100,8 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " deoplete (neovim)
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
+autocmd InsertEnter * call deoplete#enable()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
@@ -167,3 +171,21 @@ let g:syntastic_mode_map = {
   \ "mode": "active",
   \ "passive_filetypes": ["ex", "exs"]
 \ }
+
+" easy align
+xmap ga <Plug>(EasyAlign)
+xmap gax <Plug>(EasyAlign)<c-x>
+nmap ga <Plug>(EasyAlign)
+nmap gax <Plug>(EasyAlign)ip<c-x>
+
+" tmux-airline
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+  \ 'left' : '',
+  \ 'left_alt': '>',
+  \ 'right' : '',
+  \ 'right_alt' : '<',
+  \ 'space' : ' '}
+
+" search highlighting
+highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline

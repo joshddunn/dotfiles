@@ -143,8 +143,14 @@ function! BufOnly()
   " can use v:val.name to get names of files
   let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr != ' . bufnr('%')), 'v:val.bufnr')
   if len(buffers) > 0
-    exe join(buffers, ',') . 'bd'
+    for i in buffers
+      exe i . 'bd'
+    endfor
   endif
 endfunction
 
 command! BufOnly call BufOnly()
+
+" for base 16 colorscheme
+let base16colorspace=256
+set termguicolors
