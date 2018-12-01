@@ -1,4 +1,4 @@
-# My nvim Configuration
+# My dotfiles
 
 This configuration is made to be used on mac.
 
@@ -6,7 +6,7 @@ This configuration is made to be used on mac.
 
 Installing this configuration is relatively easy. First, clone this repository.
 
-    git clone https://github.com/joshddunn/nvim ~/.config/nvim
+    git clone https://github.com/joshddunn/dotfiles ~/.config/nvim
 
 Then run
 
