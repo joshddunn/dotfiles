@@ -3,12 +3,6 @@
 # install brew stuff
 brew bundle
 
-# oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-
 # iterm2 colors
 git clone https://github.com/chriskempson/base16-iterm2 ~/base16-iterm2
 
@@ -23,9 +17,15 @@ git config --global init.templatedir '~/.git-templates'
 chmod +x ~/.config/nvim/.git-templates/hooks/pre-commit
 chmod +x ~/.config/nvim/.git-templates/hooks/pre-push
 
-# change shell
+# touch files
+touch ~/.config/nvim/config/work.vim
+
+change shell
 grep -q -F '/usr/local/bin/zsh' /etc/shells || echo '/usr/local/bin/zsh' >> /etc/shells
 chsh -s /usr/local/bin/zsh
 
-# touch files
-touch ~/.config/nvim/config/work.vim
+# oh-my-zsh
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
