@@ -27,3 +27,6 @@ Delete everything in the `~/.zshrc` file except `source ~/.config/nvim/zshrc`. W
 Need to globally install coffee script using npm for syntastic support
 
     npm install -g coffee-script
+
+### Theme
+![Alt text](image.png)
