@@ -1,4 +1,5 @@
 brew "ctags"
+brew "ffmpeg"
 brew "flow"
 brew "fzf"
 brew "grip"
