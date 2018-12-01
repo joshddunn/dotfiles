@@ -11,11 +11,11 @@ grep -q -F 'source ~/.config/nvim/zshrc' ~/.zshrc || echo 'source ~/.config/nvim
 grep -q -F 'source-file ~/.config/nvim/tmux.conf' ~/.tmux.conf || echo 'source-file ~/.config/nvim/tmux.conf' >> ~/.tmux.conf
 
 # setup git hooks
-git config --global init.templatedir '~/.config/nvim/.git-templates'
+git config --global init.templatedir '~/.config/nvim/git-templates'
 git config --global alias.unadd "reset HEAD"
 
-chmod +x ~/.config/nvim/.git-templates/hooks/pre-commit
-chmod +x ~/.config/nvim/.git-templates/hooks/pre-push
+chmod +x ~/.config/nvim/git-templates/hooks/pre-commit
+chmod +x ~/.config/nvim/git-templates/hooks/pre-push
 
 # touch files
 touch ~/.config/nvim/config/work.vim
