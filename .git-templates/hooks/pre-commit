@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+end
+
+phrases = %w[
+  binding.pry
+  console.log
+]
+
+ignored = /\.(md)$/
+
+messages = {}
+
+files = `git diff --cached --name-only`
+files.split("\n").each do |file|
+  phrases.each do |phrase|
+    next if ignored.match(file)
+    occurrences = `grep -n '#{phrase}' '#{file}'`
+    occurrences.split("\n").each do |occurrence|
+      messages[file] = [] unless messages.key? file
+      messages[file].push "\t\t#{phrase.red} -- #{file}:#{occurrence.split(':')[0]}"
+    end
+  end
+end
+
+unless messages.empty?
+  puts 'Issues with commit:'
+  messages.each do |key, value|
+    puts ''
+    puts "\t#{key}"
+    puts value
+  end
+  puts ''
+  exit(1)
+end

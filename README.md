@@ -10,18 +10,13 @@ Installing this configuration is relatively easy. First, clone this repository.
 
 Then run
 
-    cd ~/.config/nvim
-    brew bundle
+    bash ~/.config/nvim/install.sh
+
+Setup `tomorrownight` theme in iTerm2. They are cloned into `~/base16-iterm2`
 
 Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
 You will also have to create `rsync.vim` and `work.vim` files in the `config/` directory.
-
-## Install Notes
-
-Base16 iTerm2 colors
-
-    https://github.com/chriskempson/base16-iterm2
 
 ### vim-coffee-script
 
