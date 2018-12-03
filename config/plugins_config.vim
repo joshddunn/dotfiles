@@ -182,9 +182,9 @@ nmap gax <Plug>(EasyAlign)ip<c-x>
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
   \ 'left' : '',
-  \ 'left_alt': '>',
+  \ 'left_alt': '❯',
   \ 'right' : '',
-  \ 'right_alt' : '<',
+  \ 'right_alt' : '❮',
   \ 'space' : ' '}
 
 " search highlighting
