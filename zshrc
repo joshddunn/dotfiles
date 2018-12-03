@@ -135,7 +135,7 @@ ZSH_THEME_GIT_PROMPT_UNMERGED=" %{$fg[cyan]%}um"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[blue]%}ut"
 
 PROMPT=$'%{$fg_bold[red]%}%n@%m %{$fg[blue]%}%D{[%X]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%}$(git_prompt_info) \
-%{$fg[blue]%}->%(?.%{$fg[blue]%}.%{$fg[red]%}) %#%{$reset_color%} '
+%{$fg[blue]%}->%(?.%{$fg[white]%}.%{$fg[red]%}) %#%{$reset_color%} '
 
 git_prompt_info () {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
