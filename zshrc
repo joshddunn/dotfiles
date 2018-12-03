@@ -64,7 +64,10 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=11"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+
 BUNDLED_COMMANDS=(rails)
+ZSH_AUTOSUGGEST_USE_ASYNC="true"
+
 plugins=(
   git
   zsh-completions
@@ -73,7 +76,6 @@ plugins=(
   bundler
 )
 
-ZSH_AUTOSUGGEST_USE_ASYNC="true"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -133,7 +135,7 @@ ZSH_THEME_GIT_PROMPT_UNMERGED=" %{$fg[cyan]%}um"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[blue]%}ut"
 
 PROMPT=$'%{$fg_bold[red]%}%n@%m %{$fg[blue]%}%D{[%X]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%}$(git_prompt_info) \
-%{$fg[blue]%}->%{$fg_bold[blue]%} %#%{$reset_color%} '
+%{$fg[blue]%}->%(?.%{$fg[blue]%}.%{$fg[red]%}) %#%{$reset_color%} '
 
 git_prompt_info () {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return

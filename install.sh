@@ -13,6 +13,7 @@ grep -q -F 'source-file ~/.config/nvim/tmux.conf' ~/.tmux.conf || echo 'source-f
 # setup git hooks
 git config --global init.templatedir '~/.config/nvim/git-templates'
 git config --global alias.unadd "reset HEAD"
+git config --global pager.diff false
 
 chmod +x ~/.config/nvim/git-templates/hooks/pre-commit
 chmod +x ~/.config/nvim/git-templates/hooks/pre-push
