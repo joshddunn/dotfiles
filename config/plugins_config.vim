@@ -181,11 +181,17 @@ nmap gax <Plug>(EasyAlign)ip<c-x>
 " tmux-airline
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
-  \ 'left' : '',
-  \ 'left_alt': '❯',
-  \ 'right' : '',
-  \ 'right_alt' : '❮',
-  \ 'space' : ' '}
+  \ 'left':      '',
+  \ 'left_alt':  '❯',
+  \ 'right':     '',
+  \ 'right_alt': '❮',
+  \ 'space':     ' '}
+
+let g:tmuxline_preset = {
+  \ 'a':    '#S',
+  \ 'b':    ['#I', '#W'],
+  \ 'y':    ['%Y-%m-%d', '%r'],
+  \ 'z':    '#h'}
 
 " search highlighting
 highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
