@@ -74,6 +74,7 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   bundler
+  tmuxinator
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -91,6 +92,7 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -106,6 +108,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias mux="tmuxinator"
 
 function gif() {
   cd ~/Desktop
@@ -134,8 +137,8 @@ ZSH_THEME_GIT_PROMPT_RENAMED=" %{$fg[blue]%}r"
 ZSH_THEME_GIT_PROMPT_UNMERGED=" %{$fg[cyan]%}um"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[blue]%}ut"
 
-PROMPT=$'%{$fg_bold[red]%}%n@%m %{$fg[blue]%}%D{[%X]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%}$(git_prompt_info) \
-%(?.%{$fg[white]%}.%{$fg[red]%})\u276f%{$reset_color%} '
+PROMPT=$'%{$fg_bold[red]%}%n@%m %{$fg[blue]%}%D{[%r]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%}$(git_prompt_info) \
+%(?.%{$fg[blue]%}.%{$fg[red]%})\u276f%{$reset_color%} '
 
 git_prompt_info () {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
@@ -198,4 +201,8 @@ ct() {
 
 c() {
   clear
+}
+
+v() {
+  nvim $argv
 }
