@@ -190,7 +190,7 @@ let g:tmuxline_separators = {
 let g:tmuxline_preset = {
   \ 'a':    '#S',
   \ 'b':    ['#I', '#W'],
-  \ 'y':    ['%Y-%m-%d', '%r'],
+  \ 'y':    ['%Y-%m-%d', '%X'],
   \ 'z':    '#h'}
 
 " search highlighting

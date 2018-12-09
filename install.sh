@@ -21,6 +21,10 @@ chmod +x ~/.config/nvim/git-templates/hooks/pre-push
 # touch files
 touch ~/.config/nvim/config/work.vim
 
+# symlink files
+ln -s ~/.config/nvim/sshrc.d ~/.sshrc.d
+ln -s ~/.config/nvim/sshrc ~/.sshrc
+
 # change shell
 grep -q -F '/usr/local/bin/zsh' /etc/shells || echo '/usr/local/bin/zsh' >> /etc/shells
 chsh -s /usr/local/bin/zsh
