@@ -138,10 +138,10 @@ set hidden
 " set filetypes
 autocmd BufNewFile,BufRead *.html.inky   set syntax=html.erb
 
-" bufonly
-function! BufOnly()
+" bufdelete
+function! BufDelete(operator)
   " can use v:val.name to get names of files
-  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr != ' . bufnr('%')), 'v:val.bufnr')
+  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr ' . a:operator . ' ' . bufnr('%')), 'v:val.bufnr')
   if len(buffers) > 0
     for i in buffers
       exe i . 'bd'
@@ -149,7 +149,9 @@ function! BufOnly()
   endif
 endfunction
 
-command! BufOnly call BufOnly()
+command! BufOnly call BufDelete('!=')
+command! BufAfter call BufDelete('>')
+command! BufBefore call BufDelete('<')
 
 " for base 16 colorscheme
 let base16colorspace=256
