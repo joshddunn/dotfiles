@@ -187,11 +187,12 @@ let g:tmuxline_separators = {
   \ 'right_alt': '❮',
   \ 'space':     ' '}
 
-let g:tmuxline_preset = {
-  \ 'a':    '#S',
-  \ 'b':    ['#I', '#W'],
-  \ 'y':    ['%Y-%m-%d', '%X'],
-  \ 'z':    '#h'}
+" let g:tmuxline_preset = {
+"   \ 'a':    '#S',
+"   \ 'win':  ['#I', '#W'],
+"   \ 'cwin': ['#I', '#W'],
+"   \ 'y':    ['%Y-%m-%d', '%X'],
+"   \ 'z':    '#h'}
 
 " search highlighting
 highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
