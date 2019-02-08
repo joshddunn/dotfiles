@@ -13,6 +13,7 @@ end
 phrases = %w[
   binding.pry
   console.log
+  debugger
 ]
 
 ignored = /\.(md)$/
