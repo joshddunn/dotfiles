@@ -75,6 +75,7 @@ plugins=(
   zsh-syntax-highlighting
   bundler
   tmuxinator
+  z.lua
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -206,3 +207,5 @@ c() {
 v() {
   nvim $argv
 }
+
+alias love="/Applications/love.app/Contents/MacOS/love"

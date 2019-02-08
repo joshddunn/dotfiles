@@ -156,3 +156,7 @@ command! BufBefore call BufDelete('<')
 " for base 16 colorscheme
 let base16colorspace=256
 set termguicolors
+
+" run love2d game
+command! Love exe 'silent !/Applications/love.app/Contents/MacOS/love .'
+noremap ,l :Love<cr>
