@@ -6,3 +6,6 @@ tags
 config/rsync.vim
 config/work.vim
 .netrwhist
+tmuxinator
+
+!.keep

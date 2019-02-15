@@ -110,6 +110,11 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mux="tmuxinator"
+alias love="/Applications/love.app/Contents/MacOS/love"
+alias zc='z -c'      # restrict matches to subdirs of $PWD
+alias zz='z -i'      # cd with interactive selection
+alias zf='z -I'      # use fzf to select in multiple matches
+alias zb='z -b'      # quickly cd to the parent directory
 
 function gif() {
   cd ~/Desktop
@@ -207,9 +212,3 @@ c() {
 v() {
   nvim $argv
 }
-
-alias love="/Applications/love.app/Contents/MacOS/love"
-alias zc='z -c'      # restrict matches to subdirs of $PWD
-alias zz='z -i'      # cd with interactive selection
-alias zf='z -I'      # use fzf to select in multiple matches
-alias zb='z -b'      # quickly cd to the parent directory
