@@ -196,3 +196,9 @@ let g:tmuxline_separators = {
 
 " search highlighting
 highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
+
+" github link use GH and GB
+let g:gh_line_map_default = 0
+let g:gh_line_blame_map_default = 0
+let g:gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
+let g:gh_use_canonical = 0
