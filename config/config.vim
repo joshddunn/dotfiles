@@ -160,3 +160,12 @@ set termguicolors
 " run love2d game
 command! Love exe 'silent !/Applications/love.app/Contents/MacOS/love .'
 noremap ,l :Love<cr>
+
+" search word under cursor
+function! SearchSelection(args)
+  exe 'Ack -F "' . a:args . '"'
+endfunction
+command! -bang -nargs=1 SearchSelection call SearchSelection(<q-args>)
+
+map <leader>G yiw:SearchSelection <C-r>0<cr>
+vmap <leader>G y:SearchSelection <C-r>0<cr>

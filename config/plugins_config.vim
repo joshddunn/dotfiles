@@ -86,6 +86,7 @@ autocmd FileType ruby let b:surround_61 = "<%= \r %>"
 " trigger abolish
 inoremap _ <C-]>_
 inoremap - <C-]>-
+let g:abolish_save_file = expand('~/.config/nvim/after/plugin/abolish.vim')
 
 " anyfold
 autocmd Filetype * AnyFoldActivate

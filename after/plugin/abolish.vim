@@ -1,0 +1,1 @@
+Abolish assurred assured
