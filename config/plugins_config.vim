@@ -4,6 +4,7 @@ let g:glob_ignore = {
   \   "node_modules/**",
   \   ".git/**",
   \   "__*/**",
+  \   "tmp/**",
   \ ],
   \ "files": [
   \ ],
@@ -60,7 +61,7 @@ if executable('rg')
   let g:ackprg = 'rg --vimgrep --smart-case ' . glob#ignore('global')
 endif
 
-map <leader>g :Ack -F ""<Left>
+map <leader>g :Ack -F -- ""<Left>
 
 " colorscheme
 " line 558 change color from Normal to GruvboxBlue
