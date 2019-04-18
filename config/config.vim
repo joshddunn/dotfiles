@@ -163,7 +163,7 @@ noremap ,l :Love<cr>
 
 " search word under cursor
 function! SearchSelection(args)
-  exe 'Ack -F "' . a:args . '"'
+  exe 'Ack -F -- "' . a:args . '"'
 endfunction
 command! -bang -nargs=1 SearchSelection call SearchSelection(<q-args>)
 
