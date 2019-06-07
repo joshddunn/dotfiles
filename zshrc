@@ -193,7 +193,7 @@ tm() {
 
 sha() {
   local commit="$(git rev-parse HEAD)"
-  echo $commit | pbcopy
+  echo $commit | tr -d '\n' | pbcopy
   echo $commit
 }
 
