@@ -169,3 +169,7 @@ command! -bang -nargs=1 SearchSelection call SearchSelection(<q-args>)
 
 map <leader>G yiw:SearchSelection <C-r>0<cr>
 vmap <leader>G y:SearchSelection <C-r>0<cr>
+
+" no modelines
+set modelines=0
+set nomodeline
