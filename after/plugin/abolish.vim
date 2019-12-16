@@ -1,1 +1,3 @@
 Abolish assurred assured
+Abolish safety_assurred safety_assured
+Abolish retreive retrieve

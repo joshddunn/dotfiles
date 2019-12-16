@@ -102,6 +102,9 @@ set ai " auto indent
 set si " smart indent
 set wrap " wrap lines
 
+"
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4
+
 " always show last status
 set laststatus=2
 
@@ -173,3 +176,12 @@ vmap <leader>G y:SearchSelection <C-r>0<cr>
 " no modelines
 set modelines=0
 set nomodeline
+
+" global find replace
+" use each_percent(.*)
+function! GlobalReplace(search, old, new)
+  exe "silent exec \"!rg -l ". a:search . " . | xargs sed -i -r 's/" . a:old . "/" . a:new . "/g'\""
+  exe "silent exec \"!git clean -fd **/*-r\""
+  echo "All done."
+endfunction
+command! -bang -nargs=* GlobalReplace call GlobalReplace(<f-args>)

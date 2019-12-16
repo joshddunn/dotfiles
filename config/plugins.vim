@@ -35,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'jparise/vim-graphql'
 Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
+Plug 'leafgarland/typescript-vim'
 
 " must be in this order
 Plug 'chriskempson/base16-vim'
@@ -43,7 +44,7 @@ Plug 'mxw/vim-jsx'
 Plug 'ruanyl/vim-gh-line'
 
 " personal plugins
-Plug 'tpope/vim-rails' | Plug 'joshddunn/vim-rails-singularize'
+Plug 'tpope/vim-rails'
 Plug 'joshddunn/vim-glob'
 
 " autocompletion

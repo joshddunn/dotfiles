@@ -3,8 +3,10 @@ let g:glob_ignore = {
   \ "shared": [
   \   "node_modules/**",
   \   ".git/**",
+  \   ".bundle/**",
   \   "__*/**",
   \   "tmp/**",
+  \   "**/*.class",
   \ ],
   \ "files": [
   \ ],
