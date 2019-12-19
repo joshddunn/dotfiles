@@ -179,9 +179,8 @@ set nomodeline
 
 " global find replace
 " use each_percent(.*)
-function! GlobalReplace(search, old, new)
-  exe "silent exec \"!rg -l ". a:search . " . | xargs sed -i -r 's/" . a:old . "/" . a:new . "/g'\""
-  exe "silent exec \"!git clean -fd **/*-r\""
+function! GlobalReplace(old, new)
+  exe "!rg -l '". a:old . "' . | xargs perl -pi -e 's/" . a:old . "/" . a:new . "/g'"
   echo "All done."
 endfunction
 command! -bang -nargs=* GlobalReplace call GlobalReplace(<f-args>)
