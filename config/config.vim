@@ -178,7 +178,6 @@ set modelines=0
 set nomodeline
 
 " global find replace
-" use each_percent(.*)
 function! GlobalReplace(old, new)
   exe "!rg -l '". a:old . "' . | xargs perl -pi -e 's/" . a:old . "/" . a:new . "/g'"
   echo "All done."
