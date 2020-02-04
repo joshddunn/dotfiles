@@ -119,13 +119,19 @@ alias zb='z -b'      # quickly cd to the parent directory
 function gif() {
   cd ~/Desktop
 
-  local gif_path=${1:s/.mov/.gif}
+  if [[ $1 == "last" ]]
+  then
+    local file=$(ls ~/Desktop | grep "screen_recording" | tail -1)
+  else
+    local file=$1
+  fi
+  local gif_path=${file:s/.mov/.gif}
 
   local palette='/tmp/palette.png'
   local filters='fps=25,scale=1080:-1:flags=lanczos'
 
-  ffmpeg -v warning -i $1 -vf "$filters,palettegen" -y $palette
-  ffmpeg -v warning -i $1 -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $gif_path
+  ffmpeg -v warning -i $file -vf "$filters,palettegen" -y $palette
+  ffmpeg -v warning -i $file -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $gif_path
 
   cd -
 }
