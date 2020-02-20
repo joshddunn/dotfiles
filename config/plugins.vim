@@ -36,6 +36,7 @@ Plug 'jparise/vim-graphql'
 Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
+Plug 'udalov/kotlin-vim'
 
 " must be in this order
 Plug 'chriskempson/base16-vim'
