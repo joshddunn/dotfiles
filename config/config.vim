@@ -1,6 +1,6 @@
 " python
 let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python3_host_prog = '/usr/local/Cellar/python/3.7.7/bin/python3'
 
 " backspace config
 set backspace=eol,start,indent
