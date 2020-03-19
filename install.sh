@@ -32,7 +32,18 @@ chsh -s /usr/local/bin/zsh
 gem install -u tmuxinator
 ln -s ~/.config/nvim/tmuxinator ~/.config/tmuxinator
 
+# asdf
 ln -s ~/.config/nvim/asdfrc ~/.asdfrc
+ln -s ~/.config/nvim/tool-versions ~/.tool-versions
+
+asdf plugin add ruby
+asdf plugin add nodejs
+bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+
+asdf install
+
+# ruby gems
+gem install tmuxinator
 
 # oh-my-zsh
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions

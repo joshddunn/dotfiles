@@ -14,6 +14,7 @@ brew "asdf"
 
 cask "rectangle"
 
+# asdf plugin dependencies
 brew "coreutils"
 brew "automake"
 brew "autoconf"
