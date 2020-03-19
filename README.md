@@ -12,7 +12,7 @@ Then run
 
     bash ~/.config/nvim/install.sh
 
-Setup `tomorrownight` theme in iTerm2. They are cloned into `~/base16-iterm2`.
+Import `~/.config/nvim/iterm2/default.json` as an iTerm2 profile.
 
 Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
