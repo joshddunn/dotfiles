@@ -3,11 +3,16 @@
 # install brew stuff
 brew bundle
 
+# touch files
+touch ~/.config/nvim/config/work.vim
+touch ~/.config/nvim/config/zshrc.work
+
 # iterm2 colors
 git clone https://github.com/chriskempson/base16-iterm2 ~/base16-iterm2
 
 # dotfiles
 grep -q -F 'source ~/.config/nvim/zshrc' ~/.zshrc || echo 'source ~/.config/nvim/zshrc' >> ~/.zshrc
+grep -q -F 'source ~/.config/nvim/zshrc.work' ~/.zshrc || echo 'source ~/.config/nvim/zshrc.work' >> ~/.zshrc
 grep -q -F 'source-file ~/.config/nvim/tmux.conf' ~/.tmux.conf || echo 'source-file ~/.config/nvim/tmux.conf' >> ~/.tmux.conf
 
 # setup git hooks
@@ -17,9 +22,6 @@ git config --global pager.diff false
 
 chmod +x ~/.config/nvim/git-templates/hooks/pre-commit
 chmod +x ~/.config/nvim/git-templates/hooks/pre-push
-
-# touch files
-touch ~/.config/nvim/config/work.vim
 
 # symlink files
 ln -s ~/.config/nvim/sshrc.d ~/.sshrc.d

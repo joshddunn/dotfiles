@@ -3,9 +3,10 @@ autoload
 plugged
 temp
 tags
-config/rsync.vim
-config/work.vim
 .netrwhist
 tmuxinator
+
+config/work.vim
+zshrc.work
 
 !.keep

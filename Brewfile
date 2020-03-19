@@ -13,6 +13,7 @@ brew "python3"
 brew "asdf"
 
 cask "rectangle"
+cask "ngrok"
 
 # asdf plugin dependencies
 brew "coreutils"
