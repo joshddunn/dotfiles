@@ -72,7 +72,7 @@
     "Blue Component" : 0.77647058823529413,
     "Green Component" : 0.78431372549019607
   },
-  "Working Directory" : "\/Users\/josh.dunn",
+  "Working Directory" : "~",
   "Blinking Cursor" : false,
   "Disable Window Resizing" : true,
   "Sync Title" : false,
@@ -347,7 +347,7 @@
     "Blue Component" : 0.45490196078431372,
     "Green Component" : 0.77647058823529413
   },
-  "Custom Directory" : "No",
+  "Custom Directory" : "Yes",
   "Ansi 5 Color" : {
     "Red Component" : 0.69803921568627447,
     "Color Space" : "sRGB",
