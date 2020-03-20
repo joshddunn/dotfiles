@@ -136,6 +136,22 @@ function gif() {
   cd -
 }
 
+# vi mode
+bindkey -v
+KEYTIMEOUT=1
+
+function zle-line-init zle-keymap-select {
+    case ${KEYMAP} in
+        (vicmd)      PROMPT_CHAR="%{$fg[green]%}N" ;;
+        (main|viins) PROMPT_CHAR="I" ;;
+        (*)          PROMPT_CHAR="I" ;;
+    esac
+    zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}["
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$fg[green]%}]"
 
@@ -148,21 +164,6 @@ ZSH_THEME_GIT_PROMPT_DELETED=" %{$fg[red]%}d"
 ZSH_THEME_GIT_PROMPT_RENAMED=" %{$fg[blue]%}r"
 ZSH_THEME_GIT_PROMPT_UNMERGED=" %{$fg[cyan]%}um"
 ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$fg[blue]%}ut"
-
-bindkey -v
-KEYTIMEOUT=1
-
-function zle-line-init zle-keymap-select {
-    case ${KEYMAP} in
-        (vicmd)      PROMPT_CHAR="N" ;;
-        (main|viins) PROMPT_CHAR="I" ;;
-        (*)          PROMPT_CHAR="I" ;;
-    esac
-    zle reset-prompt
-}
-
-zle -N zle-line-init
-zle -N zle-keymap-select
 
 PROMPT=$'%{$fg_bold[red]%}%n@%m %{$fg[blue]%}%D{[%X]} %{$reset_color%}%{$fg[white]%}[%~]%{$reset_color%}$(git_prompt_info) \
 %(?.%{$fg[blue]%}.%{$fg[red]%})%{$PROMPT_CHAR%} \u276f%{$reset_color%} '
