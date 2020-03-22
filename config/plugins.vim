@@ -38,8 +38,13 @@ Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
 Plug 'udalov/kotlin-vim'
 
+" colorscheme
+function FixupBase16(info)
+    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
+endfunction
+Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
+
 " must be in this order
-Plug 'chriskempson/base16-vim'
 Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
 Plug 'ruanyl/vim-gh-line'
