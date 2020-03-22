@@ -28,3 +28,7 @@ brew "unixodbc"
 brew "unzip"
 brew "curl"
 brew "gpg"
+
+# sc-im
+tap "nickolasburr/pfa"
+brew "sc-im"
