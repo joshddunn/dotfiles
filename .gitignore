@@ -5,6 +5,7 @@ temp
 tags
 .netrwhist
 tmuxinator
+Brewfile.lock.json
 
 config/work.vim
 zshrc.work
