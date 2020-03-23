@@ -8,6 +8,7 @@ touch ~/dotfiles/config/zshrc.work
 # dotfiles
 grep -q -F 'source ~/dotfiles/zshrc' ~/.zshrc || echo 'source ~/dotfiles/zshrc' >> ~/.zshrc
 grep -q -F 'source ~/dotfiles/zshrc.work' ~/.zshrc || echo 'source ~/dotfiles/zshrc.work' >> ~/.zshrc
+grep -q -F 'source ~/dotfiles/init.vim' ~/.config/nvim/init.vim || echo 'source ~/dotfiles/init.vim' >> ~/.config/nvim/init.vim
 grep -q -F 'source-file ~/dotfiles/tmux.conf' ~/.tmux.conf || echo 'source-file ~/dotfiles/tmux.conf' >> ~/.tmux.conf
 
 # setup git hooks
@@ -25,7 +26,6 @@ ln -s ~/dotfiles/asdfrc ~/.asdfrc
 ln -s ~/dotfiles/tool-versions ~/.tool-versions
 ln -s ~/dotfiles/tmuxinator ~/.config/tmuxinator
 ln -s ~/dotfiles/scimrc ~/.scimrc
-ln -s ~/dotfiles/init.vim ~/.config/nvim/init.vim
 
 # asdf
 asdf plugin add ruby
