@@ -39,10 +39,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'udalov/kotlin-vim'
 
 " colorscheme
-function FixupBase16(info)
-    !sed -i '/Base16hi/\! s/a:\(attr\|guisp\)/l:\1/g' ~/.vim/plugged/base16-vim/colors/*.vim
-endfunction
-Plug 'chriskempson/base16-vim', { 'do': function('FixupBase16') }
+Plug 'chriskempson/base16-vim'
 
 " must be in this order
 Plug 'othree/yajs.vim'
