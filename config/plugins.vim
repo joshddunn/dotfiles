@@ -55,6 +55,5 @@ Plug 'joshddunn/vim-glob'
 
 " autocompletion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " slow
-Plug 'wokalski/autocomplete-flow'
 
 call plug#end()

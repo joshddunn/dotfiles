@@ -6,13 +6,13 @@ This configuration is made to be used on mac.
 
 Installing this configuration is relatively easy. First, clone this repository.
 
-    git clone https://github.com/joshddunn/dotfiles ~/.config/nvim
+    git clone https://github.com/joshddunn/dotfiles ~/dotfiles
 
 Then run
 
-    bash ~/.config/nvim/install.sh
+    zsh ~/dotfiles/install.sh
 
-Import `~/.config/nvim/iterm2/default.json` as an iTerm2 profile.
+Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 
 Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
 
