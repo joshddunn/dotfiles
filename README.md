@@ -19,6 +19,3 @@ Then start using nvim (after `:CheckHealth` passes). The first time you use nvim
 ### Notes
 
 For performance, delete everything in your `~/.zshrc` file except the source to `zshrc` and `zshrc.work`.
-
-### Theme
-![Alt text](image.png)
