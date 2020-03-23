@@ -9,7 +9,6 @@ brew "ripgrep"
 brew "sshrc"
 brew "tmux"
 brew "zsh"
-brew "python3"
 brew "asdf"
 
 cask "rectangle"
