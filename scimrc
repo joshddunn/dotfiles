@@ -3,3 +3,7 @@ set numeric
 set numeric_decimal=0
 set overlap
 set xlsx_readformulas
+
+color "type=HEADINGS          bold=0 bg=GREEN fg=BLACK"
+color "type=CELL_SELECTION    bold=0 bg=MAGENTA fg=BLACK"
+color "type=CELL_SELECTION_SC bold=0 bg=MAGENTA fg=BLACK"
