@@ -31,6 +31,7 @@ ln -s ~/dotfiles/scimrc ~/.scimrc
 asdf plugin add ruby
 asdf plugin add python
 asdf plugin add nodejs
+asdf plugin add lua
 bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 
 asdf install
