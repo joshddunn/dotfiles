@@ -34,7 +34,6 @@ Plug 'jparise/vim-graphql'
 Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
-Plug 'udalov/kotlin-vim'
 Plug 'justinmk/vim-sneak'
 
 " colorscheme
