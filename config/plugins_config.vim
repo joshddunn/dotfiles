@@ -25,11 +25,6 @@ let g:airline_theme = 'base16_tomorrow'
 nmap <c-p> <Plug>yankstack_substitute_older_paste
 nmap <c-P> <Plug>yankstack_substitute_newer_paste
 
-" vim-multiple-cursors
-" let g:multi_cursor_start_word_key = '<C-s>'
-" let g:multi_cursor_next_key = '<C-s>'
-" let g:multi_cursor_quit_key = '<Esc>'
-
 " fzf
 map <leader>j :Files<cr>
 map <c-f> :Files<cr>
@@ -70,8 +65,6 @@ map <leader>g :Ack -F -- ""<Left>
 set background=dark
 try
   colorscheme base16-tomorrow-night
-  " colorscheme gruvbox
-  " colorscheme onedark
 catch
 endtry
 
@@ -111,49 +104,8 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 highlight Pmenu ctermbg=239 guibg=#504945
 
-" neosnippet
-let g:neosnippet#enable_completed_snippet = 1
-
-" vim-markdown
-let g:vim_markdown_new_list_item_indent = 0
-
 " git gutter
 let g:gitgutter_enabled = 0
-
-" vim-rails
-let g:rails_projections = {
-  \  "app/graphql/types/*_type.rb": {
-  \    "affinity": "type",
-  \    "template": ["Types::{camelcase|capitalize|colons}Type = GraphQL::ObjectType.define do",
-  \                 "  name \"{camelcase|capitalize|colons}\"",
-  \                 "  description \"\"",
-  \                 "end"],
-  \    "type": "type"
-  \  },
-  \  "app/graphql/resolvers/*.rb": {
-  \    "affinity": "resolver",
-  \    "template": ["class Resolvers::{camelcase|capitalize|colons} < GraphQL::Function",
-  \                 "  type types.String",
-  \                 "",
-  \                 "  def call(_obj, args, ctx)",
-  \                 "  end",
-  \                 "end"],
-  \    "type": "resolver"
-  \  },
-  \  "app/graphql/mutations/*_mutation.rb": {
-  \    "affinity": "mutation",
-  \    "template": ["Mutations::{camelcase|capitalize|colons}Mutation = GraphQL::Relay::Mutation.define do",
-  \                 "  name \"{camelcase|capitalize|colons}\"",
-  \                 "",
-  \                 "  # return_field :return_field, return_type",
-  \                 "  # input_field :input_field, !input_type",
-  \                 "",
-  \                 "  resolve ->(obj, input, ctx) {",
-  \                 "  }",
-  \                 "end"],
-  \    "type": "mutation"
-  \  },
-\ }
 
 " vim-rails-singularize
 let g:rails_singularize = {
@@ -190,13 +142,6 @@ let g:tmuxline_separators = {
   \ 'right':     '',
   \ 'right_alt': '❮',
   \ 'space':     ' '}
-
-" let g:tmuxline_preset = {
-"   \ 'a':    '#S',
-"   \ 'win':  ['#I', '#W'],
-"   \ 'cwin': ['#I', '#W'],
-"   \ 'y':    ['%Y-%m-%d', '%X'],
-"   \ 'z':    '#h'}
 
 " search highlighting
 highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
