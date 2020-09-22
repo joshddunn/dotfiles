@@ -158,6 +158,9 @@ command! BufOnly call BufDelete('!=')
 command! BufAfter call BufDelete('>')
 command! BufBefore call BufDelete('<')
 
+command! NoNewline exe 'set binary noeol'
+command! Newline exe 'set nobinary eol'
+
 " for base 16 colorscheme
 let base16colorspace=256
 set termguicolors
