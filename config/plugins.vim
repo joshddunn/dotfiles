@@ -35,6 +35,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
 Plug 'leafgarland/typescript-vim'
 Plug 'justinmk/vim-sneak'
+Plug 'sudar/vim-arduino-syntax'
 
 " colorscheme
 Plug 'chriskempson/base16-vim'
