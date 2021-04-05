@@ -53,3 +53,49 @@ utils.opt("o", "termguicolors", true)
 utils.opt("o", "modelines", 0)
 utils.opt("o", "modeline", false)
 utils.opt("w", "foldlevel", 99)
+
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4")
+vim.api.nvim_command("command! Ctags exe '!ctags -R .'")
+vim.api.nvim_command("command! Tab exe 'set tabstop=2 shiftwidth=2 | retab'")
+vim.api.nvim_command("autocmd BufNewFile,BufRead *.html.inky   set syntax=html.erb")
+
+-- trailing whitespace
+vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$//e")
+
+-- bufdelete
+vim.api.nvim_command([[
+function! BufDelete(operator)
+  " can use v:val.name to get names of files
+  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr ' . a:operator . ' ' . bufnr('%')), 'v:val.bufnr')
+  if len(buffers) > 0
+    for i in buffers
+      exe i . 'bd'
+    endfor
+  endif
+endfunction
+]])
+
+vim.api.nvim_command("command! BufOnly call BufDelete('!=')")
+vim.api.nvim_command("command! BufAfter call BufDelete('>')")
+vim.api.nvim_command("command! BufBefore call BufDelete('<')")
+
+-- search selection
+vim.api.nvim_command([[
+  function! SearchSelection(args)
+    exe 'Ack -F -- "' . a:args . '"'
+  endfunction
+  command! -bang -nargs=1 SearchSelection call SearchSelection(<q-args>)
+]])
+
+utils.map("", "<leader>G", "yiw:SearchSelection <C-r>0<cr>", nil)
+utils.map("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", nil)
+
+-- global replace
+vim.api.nvim_command([[
+  function! GlobalReplace(old, new)
+    exe "!rg -l '". a:old . "' . | xargs perl -pi -e 's/" . a:old . "/" . a:new . "/g'"
+    echo "All done."
+  endfunction
+]])
+
+vim.api.nvim_command("command! -bang -nargs=* GlobalReplace call GlobalReplace(<f-args>)")
