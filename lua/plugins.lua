@@ -5,7 +5,6 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 vim.cmd 'packadd packer.nvim'
-vim.cmd 'packadd fzf'
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 
 return require("packer").startup(
@@ -43,15 +42,15 @@ return require("packer").startup(
     use 'justinmk/vim-sneak'
     use 'sudar/vim-arduino-syntax'
 
-     -- colorscheme
+    -- colorscheme
     use 'chriskempson/base16-vim'
 
-     -- must be in this order
+    -- must be in this order
     use 'othree/yajs.vim'
     use 'mxw/vim-jsx'
     use 'ruanyl/vim-gh-line'
 
-     -- personal plugins
+    -- personal plugins
     use 'tpope/vim-rails'
     use 'joshddunn/vim-glob'
 
