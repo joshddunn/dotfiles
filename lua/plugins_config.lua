@@ -32,7 +32,6 @@ utils.map("", "<leader>nn", ":NvimTreeToggle<cr>", nil)
 utils.map("", "<leader>nf", ":NvimTreeFindFile<cr>", nil)
 
 -- colorscheme
-utils.opt("o", "background", "dark")
 vim.api.nvim_command([[
   try
     colorscheme base16-tomorrow-night
