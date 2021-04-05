@@ -51,12 +51,39 @@ let g:fzf_command_prefix = 'Fzf'
 map <leader>b :FzfBuffers<cr>
 
 " nerdtree
-let g:NERDTreeWinPos = "right"
-let NERDTreeShowHidden=0
-let g:NERDTreeWinSize=50
-map <leader>nn :NERDTreeToggle<cr>
-map <leader>nb :NERDTreeFromBookmark<Space>
-map <leader>nf :NERDTreeFind<cr>
+" let g:NERDTreeWinPos = "right"
+" let NERDTreeShowHidden=0
+" let g:NERDTreeWinSize=50
+" map <leader>nn :NERDTreeToggle<cr>
+" map <leader>nb :NERDTreeFromBookmark<Space>
+" map <leader>nf :NERDTreeFind<cr>
+
+" nvim-tree
+map <leader>nn :NvimTreeToggle<CR>
+map <leader>nf :NvimTreeFindFile<CR>
+let g:nvim_tree_side = 'right'
+let g:nvim_tree_width = 50
+
+let g:nvim_tree_icons = {
+    \ 'default': '',
+    \ 'symlink': '',
+    \ 'git': {
+    \   'unstaged': "✗",
+    \   'staged': "✓",
+    \   'unmerged': "",
+    \   'renamed': "➜",
+    \   'untracked': "★",
+    \   'deleted': ""
+    \   },
+    \ 'folder': {
+    \   'default': "",
+    \   'open': "",
+    \   'empty': "",
+    \   'empty_open': "",
+    \   'symlink': "",
+    \   'symlink_open': "",
+    \   }
+    \ }
 
 " ack
 if executable('rg')
