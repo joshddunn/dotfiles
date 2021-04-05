@@ -2,8 +2,7 @@
 brew bundle
 
 # touch files
-touch ~/dotfiles/config/work.vim
-touch ~/dotfiles/config/zshrc.work
+touch ~/dotfiles/zshrc.work
 
 # dotfiles
 grep -q -F 'source ~/dotfiles/zshrc' ~/.zshrc || echo 'source ~/dotfiles/zshrc' >> ~/.zshrc
