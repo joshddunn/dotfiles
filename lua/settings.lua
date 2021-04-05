@@ -64,15 +64,15 @@ vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$
 
 -- bufdelete
 vim.api.nvim_command([[
-function! BufDelete(operator)
-  " can use v:val.name to get names of files
-  let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr ' . a:operator . ' ' . bufnr('%')), 'v:val.bufnr')
-  if len(buffers) > 0
-    for i in buffers
-      exe i . 'bd'
-    endfor
-  endif
-endfunction
+  function! BufDelete(operator)
+    " can use v:val.name to get names of files
+    let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr ' . a:operator . ' ' . bufnr('%')), 'v:val.bufnr')
+    if len(buffers) > 0
+      for i in buffers
+        exe i . 'bd'
+      endfor
+    endif
+  endfunction
 ]])
 
 vim.api.nvim_command("command! BufOnly call BufDelete('!=')")
