@@ -81,12 +81,11 @@ vim.api.nvim_command("command! BufAfter call BufDelete('>')")
 vim.api.nvim_command("command! BufBefore call BufDelete('<')")
 
 -- search selection
-vim.api.nvim_command([[
-  function! SearchSelection(args)
-    exe 'Ack -F -- "' . a:args . '"'
-  endfunction
-  command! -bang -nargs=1 SearchSelection call SearchSelection(<q-args>)
-]])
+function SearchSelection(args)
+  vim.api.nvim_command('Ack -F -- "' .. args .. '"')
+end
+
+vim.api.nvim_command("command! -bang -nargs=1 SearchSelection call luaeval('SearchSelection(_A)', expand('<q-args>'))")
 
 utils.map("", "<leader>G", "yiw:SearchSelection <C-r>0<cr>", nil)
 utils.map("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", nil)
