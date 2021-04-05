@@ -1,12 +1,17 @@
 " vim-glob
 let g:glob_ignore = {
   \ "shared": [
-  \   "node_modules/**",
+  \   "**/node_modules/**",
   \   ".git/**",
   \   ".bundle/**",
   \   "__*/**",
   \   "tmp/**",
   \   "**/*.class",
+  \   "_build/**",
+  \   "deps/**",
+  \   "assets/node_modules/**",
+  \   "priv/static/**",
+  \   "modules/**",
   \ ],
   \ "files": [
   \ ],
@@ -97,10 +102,22 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " deoplete (neovim)
-let g:deoplete#enable_at_startup = 0
-autocmd InsertEnter * call deoplete#enable()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" let g:deoplete#enable_at_startup = 0
+" autocmd InsertEnter * call deoplete#enable()
+" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" coc
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+let g:coc_global_extensions = [
+\ ]
+
+let g:OmniSharp_server_use_mono = 1
 
 highlight Pmenu ctermbg=239 guibg=#504945
 
@@ -120,7 +137,10 @@ let g:rails_pluralize = {}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '!'
 let g:ale_sign_warning = '?'
-let g:ale_linters = { 'elixir': [] }
+let g:ale_linters = {
+  \ 'elixir': [],
+  \ 'cs': ['OmniSharp'],
+\ }
 
 " syntastic
 let g:syntastic_mode_map = {

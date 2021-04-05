@@ -50,6 +50,7 @@ Plug 'tpope/vim-rails'
 Plug 'joshddunn/vim-glob'
 
 " autocompletion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " slow
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'OmniSharp/omnisharp-vim'
 
 call plug#end()
