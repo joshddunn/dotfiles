@@ -8,7 +8,6 @@ touch ~/dotfiles/config/zshrc.work
 # dotfiles
 grep -q -F 'source ~/dotfiles/zshrc' ~/.zshrc || echo 'source ~/dotfiles/zshrc' >> ~/.zshrc
 grep -q -F 'source ~/dotfiles/zshrc.work' ~/.zshrc || echo 'source ~/dotfiles/zshrc.work' >> ~/.zshrc
-grep -q -F 'source ~/dotfiles/init.vim' ~/.config/nvim/init.vim || echo 'source ~/dotfiles/init.vim' >> ~/.config/nvim/init.vim
 grep -q -F 'source-file ~/dotfiles/tmux.conf' ~/.tmux.conf || echo 'source-file ~/dotfiles/tmux.conf' >> ~/.tmux.conf
 
 # setup git hooks
@@ -19,6 +18,8 @@ git config --global pager.diff false
 chmod +x ~/dotfiles/git-templates/hooks/pre-commit
 chmod +x ~/dotfiles/git-templates/hooks/pre-push
 
+mkdir ~/.config/nvim/lua
+
 # symlink files
 ln -s ~/dotfiles/sshrc.d ~/.sshrc.d
 ln -s ~/dotfiles/sshrc ~/.sshrc
@@ -26,6 +27,8 @@ ln -s ~/dotfiles/asdfrc ~/.asdfrc
 ln -s ~/dotfiles/tool-versions ~/.tool-versions
 ln -s ~/dotfiles/tmuxinator ~/.config/tmuxinator
 ln -s ~/dotfiles/scimrc ~/.scimrc
+ln -s ~/dotfiles/lua ~/.config/nvim/lua
+ln -s ~/dotfiles/init.lua ~/.config/nvim/init.lua
 
 # asdf
 asdf plugin add ruby
