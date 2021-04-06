@@ -72,13 +72,15 @@ utils.map("n", "c-P", "<Plug>yankstack_substitute_newer_paste", nil)
 -- coc
 vim.g.OmniSharp_server_use_mono = 1
 
-vim.api.nvim_command([[
-  inoremap <silent><expr> <TAB>
-        \ pumvisible() ? "\<C-n>" :
-        \ <SID>check_back_space() ? "\<TAB>" :
-        \ coc#refresh()
-]])
+utils.map("i", "<TAB>", "pumvisible() ? '<C-n>' : CheckBackSpace() ? '<TAB>' : coc#refresh()", { silent = true, expr = true })
 utils.map("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", { silent = true, expr = true })
+
+vim.api.nvim_command([[
+  function! CheckBackSpace() abort
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1] =~ '\s'
+  endfunction
+]])
 
 vim.api.nvim_command("highlight Pmenu ctermbg=239 guibg=#504945")
 
