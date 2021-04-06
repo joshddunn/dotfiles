@@ -41,6 +41,7 @@ return require("packer").startup(
     use 'leafgarland/typescript-vim'
     use 'justinmk/vim-sneak'
     use 'sudar/vim-arduino-syntax'
+    use 'vim-crystal/vim-crystal'
 
     -- colorscheme
     use 'chriskempson/base16-vim'
