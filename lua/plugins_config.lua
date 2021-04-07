@@ -72,8 +72,8 @@ utils.map("n", "c-P", "<Plug>yankstack_substitute_newer_paste", nil)
 -- coc
 vim.g.OmniSharp_server_use_mono = 1
 
-utils.map("i", "<TAB>", "pumvisible() ? '<C-n>' : CheckBackSpace() ? '<TAB>' : coc#refresh()", { silent = true, expr = true })
-utils.map("i", "<S-TAB>", "pumvisible() ? '<C-p>' : '<C-h>'", { silent = true, expr = true })
+utils.map("i", "<TAB>", [[ pumvisible() ? "\<C-n>" : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true })
+utils.map("i", "<S-TAB>", [[ pumvisible() ? "\<C-p>" : "\<C-h>" ]], { silent = true, expr = true })
 
 vim.api.nvim_command([[
   function! CheckBackSpace() abort
