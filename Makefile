@@ -9,14 +9,14 @@ install:
 	git config --global alias.unadd "reset HEAD"
 	git config --global pager.diff false
 
-	ln -sf ~/dotfiles/sshrc.d ~/.sshrc.d
-	ln -sf ~/dotfiles/sshrc ~/.sshrc
-	ln -sf ~/dotfiles/asdfrc ~/.asdfrc
-	ln -sf ~/dotfiles/tool-versions ~/.tool-versions
-	ln -sf ~/dotfiles/tmuxinator ~/.config/tmuxinator
-	ln -sf ~/dotfiles/scimrc ~/.scimrc
-	ln -sf ~/dotfiles/lua ~/.config/nvim/lua
-	ln -sf ~/dotfiles/init.lua ~/.config/nvim/init.lua
+	([ -d "~/.sshrc" ] && ln -s ~/dotfiles/sshrc ~/.sshrc) || echo "link already exists"
+	([ -d "~/.asdfrc" ] && ln -s ~/dotfiles/asdfrc ~/.asdfrc) || echo "link already exists"
+	([ -d "~/.tool-versions" ] && ln -s ~/dotfiles/tool-versions ~/.tool-versions) || echo "link already exists"
+	([ -d "~/.config/tmuxinator" ] && ln -s ~/dotfiles/tmuxinator ~/.config/tmuxinator) || echo "link already exists"
+	([ -d "~/.config/nvim/init.lua" ] && ln -s ~/dotfiles/init.lua ~/.config/nvim/init.lua) || echo "link already exists"
+
+	([ -d "~/.config/nvim/lua" ] && ln -s ~/dotfiles/lua ~/.config/nvim/lua) || echo "link already exists"
+	([ -d "~/.sshrc.d" ] && ln -s ~/dotfiles/sshrc.d ~/.sshrc.d) || echo "link already exists"
 
 	asdf plugin list | grep 'ruby' || asdf plugin add ruby
 	asdf plugin list | grep 'nodejs' || asdf plugin add nodejs
