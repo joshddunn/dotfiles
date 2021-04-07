@@ -7,7 +7,7 @@ tags
 tmuxinator
 Brewfile.lock.json
 
-config/work.vim
+lua/work.lua
 zshrc.work
 
 !.keep
