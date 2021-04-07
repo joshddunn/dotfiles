@@ -56,19 +56,19 @@ system("pip3 install --user pynvim")
 system("gem install -u neovim")
 
 unless dir_exists?("~/.oh-my-zsh/custom/plugins/zsh-autosuggestions")
-	system("git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions")
+  system("git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions")
 end
 
 unless dir_exists?("~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting" )
-	system("git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting")
+  system("git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting")
 end
 
 unless dir_exists?("~/.oh-my-zsh/custom/plugins/zsh-completions")
-	system("git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions")
+  system("git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions")
 end
 
 unless dir_exists?("~/.oh-my-zsh/custom/plugins/z.lua")
-	system("git clone https://github.com/skywind3000/z.lua.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/z.lua")
+  system("git clone https://github.com/skywind3000/z.lua.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/z.lua")
 end
 
 unless dir_exists?("~/.oh-my-zsh")
