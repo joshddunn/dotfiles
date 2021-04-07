@@ -15,8 +15,4 @@ Then run
 
 Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 
-Then start using nvim (after `:CheckHealth` passes). The first time you use nvim the plugins will be installed.
-
-### Notes
-
-For performance, delete everything in your `~/.zshrc` file except the source to `zshrc` and `zshrc.work`.
+Then start using nvim (after `:CheckHealth` passes) and install nvim plugins with `:PackerInstall`.
