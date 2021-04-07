@@ -1,9 +1,6 @@
 # install brew stuff
 brew bundle
 
-# touch files
-touch ~/dotfiles/zshrc.work
-
 # dotfiles
 grep -q -F 'source ~/dotfiles/zshrc' ~/.zshrc || echo 'source ~/dotfiles/zshrc' >> ~/.zshrc
 grep -q -F 'source ~/dotfiles/zshrc.work' ~/.zshrc || echo 'source ~/dotfiles/zshrc.work' >> ~/.zshrc
