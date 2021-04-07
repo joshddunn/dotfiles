@@ -11,7 +11,7 @@ Installing this configuration is relatively easy. First, clone this repository.
 Then run
 
     cd ~/dotfiles
-    make install
+    ruby install.rb
 
 Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 
