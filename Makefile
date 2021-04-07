@@ -1,3 +1,6 @@
+rinstall:
+	ruby install.rb
+
 install:
 	brew bundle
 
