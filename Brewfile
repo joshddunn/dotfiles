@@ -30,4 +30,4 @@ brew "gpg"
 
 # cask fonts
 tap "homebrew/cask-fonts"
-brew "font-meslo-lg-nerd-font"
+cask "font-meslo-lg-nerd-font"

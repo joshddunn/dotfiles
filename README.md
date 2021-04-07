@@ -10,7 +10,8 @@ Installing this configuration is relatively easy. First, clone this repository.
 
 Then run
 
-    zsh ~/dotfiles/install.sh
+    cd ~/dotfiles
+    make install
 
 Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 
