@@ -15,8 +15,7 @@ Plug 'mileszs/ack.vim'
 Plug 'moll/vim-node'
 Plug 'pseewald/vim-anyfold' " slow
 
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'kyazdani42/nvim-tree.lua'
+Plug 'scrooloose/nerdtree'
 
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-endwise'
@@ -31,8 +30,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'edkolev/tmuxline.vim'
 Plug 'w0rp/ale'
 Plug 'kien/ctrlp.vim'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim', {'commit': '4145f53f3d343c389ff974b1f1a68eeb39fba18b'}
 Plug 'jparise/vim-graphql'
 Plug 'elixir-editors/vim-elixir'
 Plug 'junegunn/vim-easy-align'
@@ -53,7 +52,6 @@ Plug 'tpope/vim-rails'
 Plug 'joshddunn/vim-glob'
 
 " autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'OmniSharp/omnisharp-vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()

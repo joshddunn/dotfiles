@@ -50,32 +50,13 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow ' . glob#ig
 let g:fzf_command_prefix = 'Fzf'
 map <leader>b :FzfBuffers<cr>
 
-" nvim-tree
-map <leader>nn :NvimTreeToggle<CR>
-map <leader>nf :NvimTreeFindFile<CR>
-let g:nvim_tree_side = 'right'
-let g:nvim_tree_width = 50
-
-let g:nvim_tree_icons = {
-    \ 'default': '',
-    \ 'symlink': '',
-    \ 'git': {
-    \   'unstaged': "✗",
-    \   'staged': "✓",
-    \   'unmerged': "",
-    \   'renamed': "➜",
-    \   'untracked': "★",
-    \   'deleted': ""
-    \   },
-    \ 'folder': {
-    \   'default': "",
-    \   'open': "",
-    \   'empty': "",
-    \   'empty_open': "",
-    \   'symlink': "",
-    \   'symlink_open': "",
-    \   }
-    \ }
+" nerdtree
+let g:NERDTreeWinPos = "right"
+let NERDTreeShowHidden=0
+let g:NERDTreeWinSize=50
+map <leader>nn :NERDTreeToggle<cr>
+map <leader>nb :NERDTreeFromBookmark<Space>
+map <leader>nf :NERDTreeFind<cr>
 
 " ack
 if executable('rg')
@@ -121,13 +102,10 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " coc
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-let g:OmniSharp_server_use_mono = 1
+let g:deoplete#enable_at_startup = 0
+autocmd InsertEnter * call deoplete#enable()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 highlight Pmenu ctermbg=239 guibg=#504945
 
@@ -149,7 +127,6 @@ let g:ale_sign_error = '!'
 let g:ale_sign_warning = '?'
 let g:ale_linters = {
   \ 'elixir': [],
-  \ 'cs': ['OmniSharp'],
 \ }
 
 " syntastic

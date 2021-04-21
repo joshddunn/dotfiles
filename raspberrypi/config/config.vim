@@ -1,8 +1,8 @@
 let g:home_directory = fnamemodify('~', ':p')
 
 " python
-let g:python_host_prog = g:home_directory . ".asdf/shims/python2"
-let g:python3_host_prog = g:home_directory . ".asdf/shims/python3"
+let g:python_host_prog = "/usr/bin/python"
+let g:python3_host_prog = "/usr/bin/python3"
 
 " backspace config
 set backspace=eol,start,indent
@@ -131,8 +131,8 @@ command! Ctags exe '!ctags -R .'
 command! Tab exe 'set tabstop=2 shiftwidth=2 | retab'
 
 " move between buffers
-nmap <Tab> :NvimTreeClose<cr>:bn<cr>
-nmap <S-Tab> :NvimTreeClose<cr>:bp<cr>
+nmap <Tab> :NERDTreeClose<cr>:bn<cr>
+nmap <S-Tab> :NERDTreeClose<cr>:bp<cr>
 
 " remove trailing whitespace
 autocmd FileType * autocmd BufWritePre <buffer> :%s/\s\+$//e
