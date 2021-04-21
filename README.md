@@ -19,7 +19,7 @@ Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 
 Then start using nvim (after `:CheckHealth` passes) and install nvim plugins with `:PackerInstall`.
 
-## Raspberry Pi
+### Raspberry Pi
 
 If you are using a Raspberry Pi, install with
 
