@@ -1,4 +1,4 @@
-apt -y install neovim fzf ripgrep tmux node
+apt -y install neovim fzf ripgrep tmux node ruby
 
 pip install --user pynvim
 pip3 install --user pynvim
