@@ -7,8 +7,8 @@ tags
 tmuxinator
 Brewfile.lock.json
 
-scripts
 lua/work.lua
 zshrc.work
 
+scripts/pi
 !.keep
