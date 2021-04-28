@@ -115,37 +115,17 @@ alias zz='z -i'      # cd with interactive selection
 alias zf='z -I'      # use fzf to select in multiple matches
 alias zb='z -b'      # quickly cd to the parent directory
 
-function gif() {
-  cd ~/Desktop
-
-  if [[ $1 == "last" ]]
-  then
-    local file=$(ls ~/Desktop | grep "screen_recording" | tail -1)
-  else
-    local file=$1
-  fi
-  local gif_path=${file:s/.mov/.gif}
-
-  local palette='/tmp/palette.png'
-  local filters='fps=25,scale=1080:-1:flags=lanczos'
-
-  ffmpeg -v warning -i $file -vf "$filters,palettegen" -y $palette
-  ffmpeg -v warning -i $file -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $gif_path
-
-  cd -
-}
-
 # vi mode
 bindkey -v
 KEYTIMEOUT=1
 
 function zle-line-init zle-keymap-select {
-    case ${KEYMAP} in
-        (vicmd)      PROMPT_CHAR="%{$fg[green]%}N" ;;
-        (main|viins) PROMPT_CHAR="I" ;;
-        (*)          PROMPT_CHAR="I" ;;
-    esac
-    zle reset-prompt
+  case ${KEYMAP} in
+    (vicmd)      PROMPT_CHAR="%{$fg[green]%}N" ;;
+    (main|viins) PROMPT_CHAR="I" ;;
+    (*)          PROMPT_CHAR="I" ;;
+  esac
+  zle reset-prompt
 }
 
 zle -N zle-line-init
@@ -174,28 +154,6 @@ git_prompt_info () {
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$GIT_STATUS$ZSH_THEME_GIT_PROMPT_SUFFIX%{$reset_color%}"
 }
 
-# find history
-# https://github.com/junegunn/fzf/wiki/examples#command-history<Paste>
-fh() {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
-}
-
-cf() {
-  local file
-
-  file="$(locate -Ai -0 $@ | grep -z -vE '~$' | fzf --read0 -0 -1)"
-
-  if [[ -n $file ]]
-  then
-     if [[ -d $file ]]
-     then
-        cd -- $file
-     else
-        cd -- ${file:h}
-     fi
-  fi
-}
-
 fbr() {
   local branches branch
   branches=$(git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format="%(refname:short)") &&
@@ -204,34 +162,26 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-tm() {
-  [[ -n "$TMUX" ]] && change="switch-client" || change="attach-session"
-  if [ $1 ]; then
-    tmux $change -t "$1" 2>/dev/null || (tmux new-session -d -s $1 && tmux $change -t "$1"); return
+gif() {
+  cd ~/Desktop
+
+  if [[ $1 == "last" ]]
+  then
+    local file=$(ls ~/Desktop | grep "screen_recording" | tail -1)
+  else
+    local file=$1
   fi
-  session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
+  local gif_path=${file:s/.mov/.gif}
+
+  local palette='/tmp/palette.png'
+  local filters='fps=25,scale=1080:-1:flags=lanczos'
+
+  ffmpeg -v warning -i $file -vf "$filters,palettegen" -y $palette
+  ffmpeg -v warning -i $file -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $gif_path
+
+  cd -
 }
 
-sha() {
-  local commit="$(git rev-parse HEAD)"
-  echo $commit | tr -d '\n' | pbcopy
-  echo $commit
-}
-
-fv() {
-  nvim $(fzf --height 40%)
-}
-
-ct() {
-  ctags -R -f ./.git/tags $(pwd)
-}
-
-c() {
-  clear
-}
-
-v() {
-  nvim $argv
-}
+export PATH="$HOME/dotfiles/scripts:$PATH"
 
 . /usr/local/opt/asdf/asdf.sh
