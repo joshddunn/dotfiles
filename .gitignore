@@ -10,5 +10,4 @@ Brewfile.lock.json
 lua/work.lua
 zshrc.work
 
-scripts
 !.keep
