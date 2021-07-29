@@ -28,6 +28,6 @@ brew "unzip"
 brew "curl"
 brew "gpg"
 
-# sc-im
-tap "nickolasburr/pfa"
-brew "sc-im"
+# cask fonts
+tap "homebrew/cask-fonts"
+cask "font-meslo-lg-nerd-font"

@@ -1,12 +1,17 @@
 " vim-glob
 let g:glob_ignore = {
   \ "shared": [
-  \   "node_modules/**",
+  \   "**/node_modules/**",
   \   ".git/**",
   \   ".bundle/**",
   \   "__*/**",
   \   "tmp/**",
   \   "**/*.class",
+  \   "_build/**",
+  \   "deps/**",
+  \   "assets/node_modules/**",
+  \   "priv/static/**",
+  \   "modules/**",
   \ ],
   \ "files": [
   \ ],
@@ -96,7 +101,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
-" deoplete (neovim)
+" coc
 let g:deoplete#enable_at_startup = 0
 autocmd InsertEnter * call deoplete#enable()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -120,7 +125,10 @@ let g:rails_pluralize = {}
 let g:ale_fix_on_save = 1
 let g:ale_sign_error = '!'
 let g:ale_sign_warning = '?'
-let g:ale_linters = { 'elixir': [] }
+let g:ale_linters = {
+  \ 'elixir': [],
+  \ 'python': ['pylint'],
+\ }
 
 " syntastic
 let g:syntastic_mode_map = {

@@ -1,8 +1,8 @@
 let g:home_directory = fnamemodify('~', ':p')
 
 " python
-let g:python_host_prog = g:home_directory . ".asdf/shims/python2"
-let g:python3_host_prog = g:home_directory . ".asdf/shims/python3"
+let g:python_host_prog = "/usr/bin/python"
+let g:python3_host_prog = "/usr/bin/python3"
 
 " backspace config
 set backspace=eol,start,indent
