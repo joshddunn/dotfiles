@@ -29,6 +29,7 @@ unless dir_exists?("~/.oh-my-zsh/custom/plugins/z.lua")
   system("git clone https://github.com/skywind3000/z.lua.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/z.lua")
 end
 
+system("touch ~/dotfiles/lua/work.lua")
 system("touch ~/dotfiles/zshrc.work")
 system("grep -q -F 'source ~/dotfiles/zshrc' ~/.zshrc || echo 'source ~/dotfiles/zshrc' >> ~/.zshrc")
 system("grep -q -F 'source ~/dotfiles/zshrc.work' ~/.zshrc || echo 'source ~/dotfiles/zshrc.work' >> ~/.zshrc")
