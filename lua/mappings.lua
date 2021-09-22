@@ -14,7 +14,6 @@ vim.api.nvim_set_keymap("", "<C-j>", "<C-W>j", { noremap = true })
 vim.api.nvim_set_keymap("", "<C-k>", "<C-W>k", { noremap = true })
 vim.api.nvim_set_keymap("", "<C-h>", "<C-W>h", { noremap = true })
 
-
 -- copy to clipboard
 vim.api.nvim_set_keymap("v", "<leader>y", "\"+y", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>Y", "\"+yg_", { noremap = true })

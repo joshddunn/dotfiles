@@ -23,6 +23,7 @@ return require("packer").startup(
 
     use {
       'tpope/vim-abolish',
+      cond = 'true',
       config = function()
         vim.cmd("Abolish assurred assured")
         vim.cmd("Abolish safety_assurred safety_assured")
