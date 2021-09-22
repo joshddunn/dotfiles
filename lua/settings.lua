@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 vim.g.base16colorspace = 256
@@ -14,46 +12,48 @@ vim.api.nvim_command("set guioptions-=l")
 vim.api.nvim_command("set guioptions-=L")
 vim.api.nvim_command("set t_vb=")
 
-utils.opt("o", "backspace", "eol,start,indent")
-utils.opt("o", "autoread", true)
-utils.opt("o", "cmdheight", 2)
-utils.opt("o", "ruler", true)
-utils.opt("o", "hlsearch", true)
-utils.opt("o", "smartcase", true)
-utils.opt("o", "ignorecase", true)
-utils.opt("o", "showmatch", true)
-utils.opt("o", "matchtime", 2)
-utils.opt("o", "errorbells", false)
-utils.opt("o", "visualbell", false)
-utils.opt("o", "timeoutlen", 500)
-utils.opt("o", "splitbelow", true)
-utils.opt("o", "splitright", true)
-utils.opt("w", "relativenumber", true)
-utils.opt("w", "number", true)
-utils.opt("o", "encoding", "utf8")
-utils.opt("o", "guifont", "Menlo:h12")
-utils.opt("o", "fileformats", "unix,dos,mac")
-utils.opt("o", "backup", false)
-utils.opt("o", "writebackup", false)
-utils.opt("b", "swapfile", false)
-utils.opt("o", "scrolloff", 7)
-utils.opt("o", "undodir", os.getenv("HOME") .. "/.config/nvim/temp/undodir")
-utils.opt("b", "undofile", true)
-utils.opt("b", "expandtab", true)
-utils.opt("o", "smarttab", true)
-utils.opt("b", "shiftwidth", 2)
-utils.opt("b", "tabstop", 2)
-utils.opt("b", "autoindent", true)
-utils.opt("b", "smartindent", true)
-utils.opt("w", "wrap", true)
-utils.opt("o", "laststatus", 2)
-utils.opt("o", "shellpipe", ">")
-utils.opt("o", "hidden", true)
-utils.opt("o", "termguicolors", true)
-utils.opt("o", "modelines", 0)
-utils.opt("b", "modeline", false)
-utils.opt("w", "foldlevel", 99)
-utils.opt("o", "background", "dark")
+vim.o.autoread = true
+vim.o.background = "dark"
+vim.o.backspace = "eol,start,indent"
+vim.o.backup = false
+vim.o.cmdheight = 2
+vim.o.encoding = "utf8"
+vim.o.errorbells = false
+vim.o.fileformats = "unix,dos,mac"
+vim.o.guifont = "Menlo:h12"
+vim.o.hidden = true
+vim.o.hlsearch = true
+vim.o.ignorecase = true
+vim.o.laststatus = 2
+vim.o.matchtime = 2
+vim.o.modelines = 0
+vim.o.ruler = true
+vim.o.scrolloff = 7
+vim.o.shellpipe = ">"
+vim.o.showmatch = true
+vim.o.smartcase = true
+vim.o.smarttab = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.termguicolors = true
+vim.o.timeoutlen = 500
+vim.o.undodir = os.getenv("HOME") .. "/.config/nvim/temp/undodir"
+vim.o.visualbell = false
+vim.o.writebackup = false
+
+vim.bo.autoindent = true
+vim.bo.expandtab = true
+vim.bo.modeline = false
+vim.bo.shiftwidth = 2
+vim.bo.smartindent = true
+vim.bo.swapfile = false
+vim.bo.tabstop = 2
+vim.bo.undofile = true
+
+vim.wo.foldlevel = 99
+vim.wo.number = true
+vim.wo.relativenumber = true
+vim.wo.wrap = true
 
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4")
 vim.api.nvim_command("command! Ctags exe '!ctags -R .'")
@@ -64,38 +64,31 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.html.inky   set syntax=html.e
 vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$//e")
 
 -- bufdelete
-vim.api.nvim_command([[
-  function! BufDelete(operator)
-    " can use v:val.name to get names of files
-    let buffers = map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr ' . a:operator . ' ' . bufnr('%')), 'v:val.bufnr')
-    if len(buffers) > 0
-      for i in buffers
-        exe i . 'bd'
-      endfor
-    endif
-  endfunction
-]])
+function BufDelete(operator)
+  buffers = vim.api.nvim_eval("map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr " .. operator .. " ' . bufnr('%')), 'v:val.bufnr')")
+  for _, buffer in ipairs(buffers) do
+    vim.api.nvim_exec(buffer .. "bd", true)
+  end
+end
 
-vim.api.nvim_command("command! BufOnly call BufDelete('!=')")
-vim.api.nvim_command("command! BufAfter call BufDelete('>')")
-vim.api.nvim_command("command! BufBefore call BufDelete('<')")
+vim.api.nvim_command("command! BufOnly call v:lua.BufDelete('!=')")
+vim.api.nvim_command("command! BufAfter call v:lua.BufDelete('>')")
+vim.api.nvim_command("command! BufBefore call v:lua.BufDelete('<')")
 
 -- search selection
 function SearchSelection(args)
   vim.api.nvim_command('Ack -F -- "' .. args .. '"')
 end
 
-vim.api.nvim_command("command! -bang -nargs=1 SearchSelection call luaeval('SearchSelection(_A)', expand('<q-args>'))")
+vim.api.nvim_command("command! -bang -nargs=1 SearchSelection call v:lua.SearchSelection(<q-args>)")
 
-utils.map("", "<leader>G", "yiw:SearchSelection <C-r>0<cr>", nil)
-utils.map("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", nil)
+vim.api.nvim_set_keymap("", "<leader>G", "yiw:SearchSelection <C-r>0<cr>", { noremap = true })
+vim.api.nvim_set_keymap("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", { noremap = true })
 
 -- global replace
-vim.api.nvim_command([[
-  function! GlobalReplace(old, new)
-    exe "!rg -l '". a:old . "' . | xargs perl -pi -e 's/" . a:old . "/" . a:new . "/g'"
-    echo "All done."
-  endfunction
-]])
+function GlobalReplace(old, new)
+  vim.api.nvim_command("!rg -l '" .. old .. "' . | xargs perl -pi -e 's/" .. old .. "/" .. new .. "/g'")
+  vim.api.nvim_command("echo \"All done.\"")
+end
 
-vim.api.nvim_command("command! -bang -nargs=* GlobalReplace call GlobalReplace(<f-args>)")
+vim.api.nvim_command("command! -bang -nargs=* GlobalReplace call v:lua.GlobalReplace(<f-args>)")

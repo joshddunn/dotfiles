@@ -1,7 +1,8 @@
-local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
-
-if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.api.nvim_command('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+local fn = vim.fn
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  vim.cmd 'packadd packer.nvim'
 end
 
 vim.cmd 'packadd packer.nvim'
@@ -42,6 +43,7 @@ return require("packer").startup(
     use 'justinmk/vim-sneak'
     use 'sudar/vim-arduino-syntax'
     use 'vim-crystal/vim-crystal'
+    use 'tpope/vim-rails'
 
     -- colorscheme
     use 'chriskempson/base16-vim'
@@ -52,7 +54,6 @@ return require("packer").startup(
     use 'ruanyl/vim-gh-line'
 
     -- personal plugins
-    use 'tpope/vim-rails'
     use 'joshddunn/vim-glob'
 
     -- autocompletion

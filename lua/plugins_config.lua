@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 -- vim-glob
 vim.g.glob_ignore = {
   shared = {
@@ -28,8 +26,8 @@ vim.g.glob_ignore = {
 vim.g.nvim_tree_side = 'right'
 vim.g.nvim_tree_width = 50
 
-utils.map("", "<leader>nn", ":NvimTreeToggle<cr>", nil)
-utils.map("", "<leader>nf", ":NvimTreeFindFile<cr>", nil)
+vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
+vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
 
 -- colorscheme
 vim.api.nvim_command([[
@@ -48,9 +46,9 @@ vim.g.fzf_command_prefix = "Fzf"
 vim.g.fzf_tags_command = "ctags -R"
 vim.g.fzf_buffers_jump = 1
 
-utils.map("", "<leader>j", ":Files<cr>", nil) -- do i ever use this?
-utils.map("", "<c-f>", ":Files<cr>", nil)
-utils.map("", "<leader>b", ":FzfBuffers<cr>", nil) -- do i ever use this?
+vim.api.nvim_set_keymap("", "<leader>j", ":Files<cr>", { noremap = true }) -- do i ever use this?
+vim.api.nvim_set_keymap("", "<c-f>", ":Files<cr>", { noremap = true })
+vim.api.nvim_set_keymap("", "<leader>b", ":FzfBuffers<cr>", { noremap = true }) -- do i ever use this?
 
 vim.api.nvim_command("let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow ' . glob#ignore('files')")
 
@@ -66,14 +64,14 @@ vim.api.nvim_command([[
 ]])
 
 -- yankstack
-utils.map("n", "c-p", "<Plug>yankstack_substitute_older_paste", nil)
-utils.map("n", "c-P", "<Plug>yankstack_substitute_newer_paste", nil)
+vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { noremap = true })
+vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
 
 -- coc
 vim.g.OmniSharp_server_use_mono = 1
 
-utils.map("i", "<TAB>", [[ pumvisible() ? "\<C-n>" : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true })
-utils.map("i", "<S-TAB>", [[ pumvisible() ? "\<C-p>" : "\<C-h>" ]], { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<TAB>", [[ pumvisible() ? "\<C-n>" : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<S-TAB>", [[ pumvisible() ? "\<C-p>" : "\<C-h>" ]], { silent = true, expr = true })
 
 vim.api.nvim_command([[
   function! CheckBackSpace() abort
@@ -91,14 +89,14 @@ vim.api.nvim_command([[
   endif
 ]])
 
-utils.map("", "<leader>g", ":Ack -F -- \"\"<Left>", nil)
+vim.api.nvim_set_keymap("", "<leader>g", ":Ack -F -- \"\"<Left>", { noremap = true })
 
 -- youcompleteme
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
 -- abolish
-utils.map("i", "_", "<C-]>_", nil)
-utils.map("i", "-", "<C-]>-", nil)
+vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
+vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
 
 vim.api.nvim_command([[
   let g:abolish_save_file = expand('~/.config/nvim/after/plugin/abolish.vim')
@@ -128,10 +126,10 @@ vim.g.ale_linters = {
 }
 
 -- easy align
-utils.map("x", "ga", "<Plug>(EasyAlign)", nil)
-utils.map("x", "gax", "<Plug>(EasyAlign)<c-x>", nil)
-utils.map("n", "ga", "<Plug>(EasyAlign)", nil)
-utils.map("n", "gax", "<Plug>(EasyAlign)ip<c-x>", nil)
+vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", { noremap = true })
+vim.api.nvim_set_keymap("x", "gax", "<Plug>(EasyAlign)<c-x>", { noremap = true })
+vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", { noremap = true })
+vim.api.nvim_set_keymap("n", "gax", "<Plug>(EasyAlign)ip<c-x>", { noremap = true })
 
 -- tmux-airline
 vim.g.tmuxline_powerline_separators = 0
@@ -153,6 +151,6 @@ vim.g.gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
 vim.g.gh_use_canonical = 0
 
 -- vim-sneak
-utils.map("", "f", "<Plug>Sneak_s", nil)
-utils.map("", "F", "<Plug>Sneak_S", nil)
+vim.api.nvim_set_keymap("", "f", "<Plug>Sneak_s", { noremap = true })
+vim.api.nvim_set_keymap("", "F", "<Plug>Sneak_S", { noremap = true })
 vim.g["sneak#s_next"] = 1
