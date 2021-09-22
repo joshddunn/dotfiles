@@ -102,6 +102,7 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 " coc
+let g:coc_disable_startup_warning = 1
 let g:deoplete#enable_at_startup = 0
 autocmd InsertEnter * call deoplete#enable()
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
