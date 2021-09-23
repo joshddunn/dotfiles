@@ -98,9 +98,7 @@ vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
 vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
 
-vim.api.nvim_command([[
-  let g:abolish_save_file = expand('~/.config/nvim/after/plugin/abolish.vim')
-]])
+vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
 
 -- anyfold
 vim.api.nvim_command("autocmd Filetype * AnyFoldActivate")

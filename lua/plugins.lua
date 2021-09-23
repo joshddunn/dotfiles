@@ -21,16 +21,7 @@ return require("packer").startup(
     use 'kyazdani42/nvim-web-devicons'
     use 'kyazdani42/nvim-tree.lua'
 
-    use {
-      'tpope/vim-abolish',
-      cond = 'true',
-      config = function()
-        vim.cmd("Abolish assurred assured")
-        vim.cmd("Abolish safety_assurred safety_assured")
-        vim.cmd("Abolish retreive retrieve")
-      end
-    }
-
+    use 'tpope/vim-abolish'
     use 'tpope/vim-endwise'
     use 'tpope/vim-fugitive'
     use 'tpope/vim-repeat'
