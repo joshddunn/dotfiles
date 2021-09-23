@@ -1,3 +1,5 @@
+local lib = require("lib")
+
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 vim.g.base16colorspace = 256
@@ -33,6 +35,7 @@ vim.o.shellpipe = ">"
 vim.o.showmatch = true
 vim.o.smartcase = true
 vim.o.smarttab = true
+vim.o.smarttab = true
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.termguicolors = true
@@ -41,12 +44,17 @@ vim.o.undodir = os.getenv("HOME") .. "/.config/nvim/temp/undodir"
 vim.o.visualbell = false
 vim.o.writebackup = false
 
+vim.o.autoindent = true
 vim.bo.autoindent = true
+vim.o.expandtab = true
 vim.bo.expandtab = true
 vim.bo.modeline = false
+vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
+vim.o.smartindent = true
 vim.bo.smartindent = true
 vim.bo.swapfile = false
+vim.o.tabstop = 2
 vim.bo.tabstop = 2
 vim.bo.undofile = true
 
@@ -64,16 +72,24 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.html.inky   set syntax=html.e
 vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$//e")
 
 -- bufdelete
-function BufDelete(operator)
-  buffers = vim.api.nvim_eval("map(filter(copy(getbufinfo()), 'v:val.listed && v:val.bufnr " .. operator .. " ' . bufnr('%')), 'v:val.bufnr')")
-  for _, buffer in ipairs(buffers) do
-    vim.api.nvim_exec(buffer .. "bd", true)
-  end
+function deletable_buffer(operator, current, focus)
+  return (operator == 'only' and focus ~= current) or
+    (operator == 'after' and focus > current) or
+    (operator == 'before' and focus < current)
 end
 
-vim.api.nvim_command("command! BufOnly call v:lua.BufDelete('!=')")
-vim.api.nvim_command("command! BufAfter call v:lua.BufDelete('>')")
-vim.api.nvim_command("command! BufBefore call v:lua.BufDelete('<')")
+function BufDelete(operator)
+  local current = vim.api.nvim_get_current_buf()
+  lib.each(vim.api.nvim_list_bufs(), function(focus)
+    if deletable_buffer(operator, current, focus) then
+      vim.api.nvim_buf_delete(focus, {})
+    end
+  end)
+end
+
+vim.api.nvim_command("command! BufOnly call v:lua.BufDelete('only')")
+vim.api.nvim_command("command! BufAfter call v:lua.BufDelete('after')")
+vim.api.nvim_command("command! BufBefore call v:lua.BufDelete('before')")
 
 -- search selection
 function SearchSelection(args)
