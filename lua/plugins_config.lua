@@ -103,9 +103,6 @@ vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
 -- anyfold
 vim.api.nvim_command("autocmd Filetype * AnyFoldActivate")
 
--- jsx
-vim.g.jsx_ext_required = 0
-
 -- indent guides
 vim.g.indent_guides_enable_on_vim_startup = 1
 vim.g.indent_guides_start_level = 2

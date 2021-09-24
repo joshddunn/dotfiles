@@ -44,14 +44,12 @@ return require("packer").startup(
     use 'sudar/vim-arduino-syntax'
     use 'vim-crystal/vim-crystal'
     use 'tpope/vim-rails'
+    use 'pangloss/vim-javascript'
+    use 'maxmellon/vim-jsx-pretty'
+    use 'ruanyl/vim-gh-line'
 
     -- colorscheme
     use 'chriskempson/base16-vim'
-
-    -- must be in this order
-    use 'othree/yajs.vim'
-    use 'mxw/vim-jsx'
-    use 'ruanyl/vim-gh-line'
 
     -- personal plugins
     use 'joshddunn/vim-glob'
