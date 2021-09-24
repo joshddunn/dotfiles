@@ -46,21 +46,38 @@ vim.o.writebackup = false
 
 vim.o.autoindent = true
 vim.bo.autoindent = true
+
 vim.o.expandtab = true
 vim.bo.expandtab = true
+
+vim.o.modeline = false
 vim.bo.modeline = false
+
 vim.o.shiftwidth = 2
 vim.bo.shiftwidth = 2
+
 vim.o.smartindent = true
 vim.bo.smartindent = true
+
+vim.o.swapfile = false
 vim.bo.swapfile = false
+
 vim.o.tabstop = 2
 vim.bo.tabstop = 2
+
+vim.o.undofile = true
 vim.bo.undofile = true
 
+vim.o.foldlevel = 99
 vim.wo.foldlevel = 99
+
+vim.o.number = true
 vim.wo.number = true
+
+vim.o.relativenumber = true
 vim.wo.relativenumber = true
+
+vim.o.wrap = true
 vim.wo.wrap = true
 
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4")
