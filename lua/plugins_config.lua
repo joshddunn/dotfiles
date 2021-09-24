@@ -80,7 +80,7 @@ vim.api.nvim_command([[
   endfunction
 ]])
 
-vim.api.nvim_command("highlight Pmenu ctermbg=239 guibg=#504945")
+vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
 -- ack
 vim.api.nvim_command([[
@@ -90,9 +90,6 @@ vim.api.nvim_command([[
 ]])
 
 vim.api.nvim_set_keymap("", "<leader>g", ":Ack -F -- \"\"<Left>", { noremap = true })
-
--- youcompleteme
-vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
 -- abolish
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
