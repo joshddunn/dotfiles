@@ -23,7 +23,7 @@ vim.g.glob_ignore = {
 }
 
 -- nvim-tree
-vim.g.nvim_tree_side = 'right'
+vim.g.nvim_tree_side = "right"
 vim.g.nvim_tree_width = 50
 
 vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
@@ -50,7 +50,7 @@ vim.api.nvim_set_keymap("", "<leader>j", ":Files<cr>", { noremap = true }) -- do
 vim.api.nvim_set_keymap("", "<c-f>", ":Files<cr>", { noremap = true })
 vim.api.nvim_set_keymap("", "<leader>b", ":FzfBuffers<cr>", { noremap = true }) -- do i ever use this?
 
-vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. vim.api.nvim_eval("glob#ignore('files')")
+vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. vim.fn["glob#ignore"]("files")
 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
@@ -83,7 +83,7 @@ vim.api.nvim_command([[
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
 -- ack
-vim.g.ackprg = "rg --vimgrep --smart-case" .. vim.api.nvim_eval("glob#ignore('global')")
+vim.g.ackprg = "rg --vimgrep --smart-case" .. vim.fn["glob#ignore"]("global")
 
 vim.api.nvim_set_keymap("", "<leader>g", ":Ack -F -- \"\"<Left>", { noremap = true })
 
@@ -106,11 +106,11 @@ vim.g.gitgutter_enabled = 0
 
 -- ale
 vim.g.ale_fix_on_save = 1
-vim.g.ale_sign_error = '!'
-vim.g.ale_sign_warning = '?'
+vim.g.ale_sign_error = "!"
+vim.g.ale_sign_warning = "?"
 vim.g.ale_linters = {
   elixir = {},
-  cs = {'OmniSharp'},
+  cs = {"OmniSharp"},
 }
 
 -- easy align
@@ -122,11 +122,11 @@ vim.api.nvim_set_keymap("n", "gax", "<Plug>(EasyAlign)ip<c-x>", { noremap = true
 -- tmux-airline
 vim.g.tmuxline_powerline_separators = 0
 vim.g.tmuxline_separators = {
-  left =      '',
-  left_alt =  '❯',
-  right =     '',
-  right_alt = '❮',
-  space =     ' '
+  left =      "",
+  left_alt =  "❯",
+  right =     "",
+  right_alt = "❮",
+  space =     " "
 }
 
 -- search highlighting
@@ -135,7 +135,7 @@ vim.api.nvim_command("highlight Search ctermfg=NONE ctermbg=NONE cterm=underline
 -- github link use GH and GB
 vim.g.gh_line_map_default = 0
 vim.g.gh_line_blame_map_default = 0
-vim.g.gh_open_command = 'fn() { echo "$@" | pbcopy; }; fn '
+vim.g.gh_open_command = "fn() { echo \"$@\" | pbcopy; }; fn "
 vim.g.gh_use_canonical = 0
 
 -- vim-sneak

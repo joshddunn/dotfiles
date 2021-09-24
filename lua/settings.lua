@@ -90,9 +90,9 @@ vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$
 
 -- bufdelete
 function deletable_buffer(operator, current, focus)
-  return (operator == 'only' and focus ~= current) or
-    (operator == 'after' and focus > current) or
-    (operator == 'before' and focus < current)
+  return (operator == "only" and focus ~= current) or
+    (operator == "after" and focus > current) or
+    (operator == "before" and focus < current)
 end
 
 function BufDelete(operator)
@@ -110,7 +110,7 @@ vim.api.nvim_command("command! BufBefore call v:lua.BufDelete('before')")
 
 -- search selection
 function SearchSelection(args)
-  vim.api.nvim_command('Ack -F -- "' .. args .. '"')
+  vim.api.nvim_command("Ack -F -- \"" .. args .. "\"")
 end
 
 vim.api.nvim_command("command! -bang -nargs=1 SearchSelection call v:lua.SearchSelection(<q-args>)")
