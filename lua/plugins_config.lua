@@ -50,7 +50,7 @@ vim.api.nvim_set_keymap("", "<leader>j", ":Files<cr>", { noremap = true }) -- do
 vim.api.nvim_set_keymap("", "<c-f>", ":Files<cr>", { noremap = true })
 vim.api.nvim_set_keymap("", "<leader>b", ":FzfBuffers<cr>", { noremap = true }) -- do i ever use this?
 
-vim.api.nvim_command("let $FZF_DEFAULT_COMMAND = 'rg --files --no-ignore --hidden --follow ' . glob#ignore('files')")
+vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. vim.api.nvim_eval("glob#ignore('files')")
 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
@@ -83,11 +83,7 @@ vim.api.nvim_command([[
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
 -- ack
-vim.api.nvim_command([[
-  if executable('rg')
-    let g:ackprg = 'rg --vimgrep --smart-case ' . glob#ignore('global')
-  endif
-]])
+vim.g.ackprg = "rg --vimgrep --smart-case" .. vim.api.nvim_eval("glob#ignore('global')")
 
 vim.api.nvim_set_keymap("", "<leader>g", ":Ack -F -- \"\"<Left>", { noremap = true })
 
