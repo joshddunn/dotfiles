@@ -1,0 +1,11 @@
+name: dev
+root: ~/code
+
+windows:
+  - code:
+      layout: main-vertical
+      root: ~/code
+      panes:
+        -
+        -
+        -
