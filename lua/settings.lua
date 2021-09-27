@@ -125,3 +125,7 @@ function GlobalReplace(old, new)
 end
 
 vim.api.nvim_command("command! -bang -nargs=* GlobalReplace call v:lua.GlobalReplace(<f-args>)")
+
+-- newline
+vim.api.nvim_command("command! NoNewline exe 'set binary noeol'")
+vim.api.nvim_command("command! Newline exe 'set binary eol'")
