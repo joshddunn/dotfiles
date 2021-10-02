@@ -88,15 +88,15 @@ lib.class = function(name, parent)
 
   _G[name].init_func = function(self, name, callbacks, ...)
     local parent = _G[name]._parent
+    local varargs = ...
     if parent then
       lib.push(callbacks, _G[parent].init)
-      _G[parent].init_func(self, parent, callbacks, ...)
+      _G[parent].init_func(self, parent, callbacks, varargs)
     else
-      local varargs = ...
       lib.reverse_each(callbacks, function(callback)
         callback(self, varargs)
       end)
-      self:init(...)
+      self:init(varargs)
     end
   end
 
