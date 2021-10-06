@@ -1,43 +1,51 @@
 class Dotfiles
   def self.install
-    home = Dir.home
+    touch("~/dotfiles/nvim/lua/work.lua")
+    touch("~/dotfiles/zshrc.work")
 
-    touch("#{home}/dotfiles/nvim/lua/work.lua")
-    touch("#{home}/dotfiles/zshrc.work")
+    append("~/.zshrc", "source ~/dotfiles/zshrc")
+    append("~/.zshrc", "source ~/dotfiles/zshrc.work")
+    append("~/.tmux.conf", "source-file ~/dotfiles/tmux.conf")
 
-    append("#{home}/.zshrc", "source ~/dotfiles/zshrc")
-    append("#{home}/.zshrc", "source ~/dotfiles/zshrc.work")
-    append("#{home}/.tmux.conf", "source-file ~/dotfiles/tmux.conf")
-
-    mkdir("#{home}/.config/nvim")
+    mkdir("~/.config/nvim")
 
     {
-      "#{home}/dotfiles/sshrc" => "#{home}/.sshrc",
-      "#{home}/dotfiles/asdfrc" => "#{home}/.asdfrc",
-      "#{home}/dotfiles/tool-versions" => "#{home}/.tool-versions",
-      "#{home}/dotfiles/tmuxinator" => "#{home}/.config/tmuxinator",
-      "#{home}/dotfiles/nvim/init.lua" => "#{home}/.config/nvim/init.lua",
-      "#{home}/dotfiles/nvim/lua" => "#{home}/.config/nvim/lua",
-      "#{home}/dotfiles/sshrc.d" => "#{home}/.sshrc.d",
+      "~/dotfiles/asdfrc" => "~/.asdfrc",
+      "~/dotfiles/tool-versions" => "~/.tool-versions",
+      "~/dotfiles/tmuxinator" => "~/.config/tmuxinator",
+      "~/dotfiles/nvim/init.lua" => "~/.config/nvim/init.lua",
+      "~/dotfiles/nvim/lua" => "~/.config/nvim/lua"
     }.each { |source, destination| symlink(source, destination) }
   end
 
+  private
+
   def self.append(filename, string)
-    return if File.readlines(filename).grep(Regexp.new(string)
-    File.open(filename) do |file|
+    return if File.readlines(File.expand_path(filename)).grep(Regexp.new(string)).any?
+    File.open(File.expand_path(filename)) do |file|
       file.puts string
     end
   end
 
   def self.touch(filename)
-    File.write(filename, "")
+    File.write(File.expand_path(filename), "")
   end
 
-  def symlink(source, destination)
-    File.symlink(source, destination) unless dir_exists?(destination)
+  def self.symlink(source, destination)
+    File.symlink(File.expand_path(source), File.expand_path(destination)) unless exists?(destination)
   end
 
   def self.mkdir(directory)
-    Dir.mkdir(directory) unless dir_exists?(directory)
+    Dir.mkdir(File.expand_path(directory)) unless exists?(directory)
+  end
+
+  def self.exists?(dir)
+    path = File.expand_path(dir)
+    if File.exist?(path) || File.symlink?(path)
+      p "#{dir} already exists"
+      true
+    else
+      false
+    end
   end
 end

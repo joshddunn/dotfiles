@@ -1,14 +1,5 @@
 require "tty-prompt"
 
-def dir_exists?(dir)
-  if File.exist?(File.expand_path(dir))
-    p "#{dir} already exists"
-    true
-  else
-    false
-  end
-end
-
 fragments = %w[
   brew
   zsh
