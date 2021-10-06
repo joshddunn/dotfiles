@@ -6,6 +6,8 @@ class Dotfiles
     system("grep -q -F 'source ~/dotfiles/zshrc.work' ~/.zshrc || echo 'source ~/dotfiles/zshrc.work' >> ~/.zshrc")
     system("grep -q -F 'source-file ~/dotfiles/tmux.conf' ~/.tmux.conf || echo 'source-file ~/dotfiles/tmux.conf' >> ~/.tmux.conf")
 
+    system("mkdir ~/.config/nvim")
+
     files = {
       "~/dotfiles/sshrc" => "~/.sshrc",
       "~/dotfiles/asdfrc" => "~/.asdfrc",
