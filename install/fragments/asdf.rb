@@ -1,5 +1,7 @@
 class Asdf
   def self.install
+    system("brew bundle --file=~/dotfiles/brewfiles/Brewfile.asdf")
+
     list = `asdf plugin list`.split("\n")
 
     %w[
