@@ -12,8 +12,11 @@ Installing this configuration is relatively easy. First, clone this repository.
 
 If you are on Mac, install with
 
-    cd ~/dotfiles
-    ruby install.rb
+    cd ~/dotfiles/install
+    bundle install
+    bundle exec ruby install.rb
+
+Restart your system (required for installed fonts).
 
 Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 

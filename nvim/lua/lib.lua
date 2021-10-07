@@ -6,6 +6,13 @@ lib.each = function(arr, fn)
   end
 end
 
+lib.reverse_each = function(arr, fn)
+  local length = #arr
+  for i = 0, length do
+    fn(arr[length - i], length - i)
+  end
+end
+
 lib.each_with_index = function(arr, fn)
   for i, v in ipairs(arr) do
     fn(v, i)
@@ -81,14 +88,15 @@ lib.class = function(name, parent)
 
   _G[name].init_func = function(self, name, callbacks, ...)
     local parent = _G[name]._parent
+    local varargs = ...
     if parent then
-      lume.push(callbacks, _G[parent].init)
-      _G[parent].init_func(self, parent, callbacks, ...)
+      lib.push(callbacks, _G[parent].init)
+      _G[parent].init_func(self, parent, callbacks, varargs)
     else
-      for _, callback in lume.ripairs(callbacks) do
-        callback(self, ...)
-      end
-      self:init(...)
+      lib.reverse_each(callbacks, function(callback)
+        callback(self, varargs)
+      end)
+      self:init(varargs)
     end
   end
 

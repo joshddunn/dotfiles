@@ -8,7 +8,7 @@ tmuxinator/*
 !tmuxinator/template.yml
 Brewfile.lock.json
 
-lua/work.lua
+nvim/lua/work.lua
 zshrc.work
 
 !.keep

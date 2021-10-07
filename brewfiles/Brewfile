@@ -1,0 +1,17 @@
+brew "ctags"
+brew "ffmpeg"
+brew "flow"
+brew "fzf"
+brew "grip"
+brew "lua"
+brew "neovim"
+brew "ripgrep"
+brew "tmux"
+brew "zsh"
+
+cask "rectangle"
+cask "ngrok"
+
+# cask fonts
+tap "homebrew/cask-fonts"
+cask "font-meslo-lg-nerd-font"
