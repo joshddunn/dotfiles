@@ -15,10 +15,6 @@ return require("packer").startup(
     use "maxbrunsfeld/vim-yankstack"
     use "mileszs/ack.vim"
     use "moll/vim-node"
-    use "pseewald/vim-anyfold" -- slow
-
-    use "kyazdani42/nvim-web-devicons"
-    use "kyazdani42/nvim-tree.lua"
 
     use "tpope/vim-abolish"
     use "tpope/vim-endwise"
@@ -56,5 +52,16 @@ return require("packer").startup(
     -- autocompletion
     use { "neoclide/coc.nvim", branch = "release" }
     use "OmniSharp/omnisharp-vim"
+
+    use {
+      "kyazdani42/nvim-tree.lua",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function() require("nvim-tree").setup {
+        view = {
+          side = 'right',
+          width = 50
+        }
+      } end
+    }
   end
 )

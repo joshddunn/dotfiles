@@ -23,9 +23,6 @@ vim.g.glob_ignore = {
 }
 
 -- nvim-tree
-vim.g.nvim_tree_side = "right"
-vim.g.nvim_tree_width = 50
-
 vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
 vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
 
@@ -92,9 +89,6 @@ vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
 vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
 
 vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
-
--- anyfold
-vim.api.nvim_command("autocmd Filetype * AnyFoldActivate")
 
 -- indent guides
 vim.g.indent_guides_enable_on_vim_startup = 1
