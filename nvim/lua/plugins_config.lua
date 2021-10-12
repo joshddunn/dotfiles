@@ -22,6 +22,9 @@ vim.g.glob_ignore = {
   }
 }
 
+-- anyfold
+vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
+
 -- nvim-tree
 vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
 vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
