@@ -1,13 +1,13 @@
 class Utils
   def self.append(filename, string)
     return if File.readlines(File.expand_path(filename)).grep(Regexp.new(string)).any?
-    File.open(File.expand_path(filename), "a") do |file|
+    File.open(File.expand_path(filename), 'a') do |file|
       file.puts string
     end
   end
 
   def self.touch(filename)
-    File.write(File.expand_path(filename), "")
+    File.write(File.expand_path(filename), '')
   end
 
   def self.symlink(source, destination)
