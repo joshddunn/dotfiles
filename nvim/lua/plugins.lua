@@ -13,7 +13,6 @@ return require("packer").startup(
     use "jlanzarotta/bufexplorer"
     use "joom/vim-commentary"
     use "maxbrunsfeld/vim-yankstack"
-    use "mileszs/ack.vim"
     use "moll/vim-node"
 
     use "tpope/vim-abolish"

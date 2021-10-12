@@ -52,13 +52,17 @@ vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
 vim.api.nvim_command([[
-  command! -bang -nargs=* Rg
-    call fzf#vim#grep(
-      'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-      <bang>0 ? fzf#vim#with_preview('up:60%')
-              : fzf#vim#with_preview('right:50%:hidden', '?'),
-      <bang>0)
+  function! RipgrepFzf(query, fullscreen)
+    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
 ]])
+
+vim.api.nvim_command("command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)")
+vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
 
 -- yankstack
 vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { noremap = true })
@@ -78,11 +82,6 @@ vim.api.nvim_command([[
 ]])
 
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
-
--- ack
-vim.g.ackprg = "rg --vimgrep --smart-case" .. vim.fn["glob#ignore"]("global")
-
-vim.api.nvim_set_keymap("", "<leader>g", ":Ack -F -- \"\"<Left>", { noremap = true })
 
 -- abolish
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
