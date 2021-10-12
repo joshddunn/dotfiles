@@ -10,6 +10,7 @@ class Nvim
 
     system("gem install -u neovim")
     system("gem install -u tmuxinator")
+    system("gem install -u solargraph")
 
     system("npm install -g neovim")
   end
