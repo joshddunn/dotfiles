@@ -13,8 +13,7 @@ Installing this configuration is relatively easy. First, clone this repository.
 If you are on Mac, install with
 
     cd ~/dotfiles/install
-    bundle install
-    bundle exec ruby install.rb
+    make setup
 
 Restart your system (required for installed fonts).
 
