@@ -1,6 +1,6 @@
 class Zsh
   def self.install
-    unless exists?("~/.oh-my-zsh")
+    unless Utils.exists?("~/.oh-my-zsh")
       system("sh -c \"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)\" \" \" --unattended --keep-zshrc")
     end
 
@@ -12,18 +12,8 @@ class Zsh
     ]
 
     zsh_plugins.each do |name, source|
-      next if exists?("~/.oh-my-zsh/custom/plugins/#{name}")
+      next if Utils.exists?("~/.oh-my-zsh/custom/plugins/#{name}")
       system("git clone #{source} ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/#{name}")
-    end
-  end
-
-  def self.exists?(dir)
-    path = File.expand_path(dir)
-    if File.exist?(path) || File.symlink?(path)
-      p "#{dir} already exists"
-      true
-    else
-      false
     end
   end
 end

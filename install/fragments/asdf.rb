@@ -15,15 +15,8 @@ class Asdf
 
     `bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring`
 
-    append("~/.zshrc", `echo \"\n. $(brew --prefix asdf)/libexec/asdf.sh\"`)
+    Utils.append("~/.zshrc", `echo \"\n. $(brew --prefix asdf)/libexec/asdf.sh\"`)
 
     system("asdf install")
-  end
-
-  def self.append(filename, string)
-    return if File.readlines(File.expand_path(filename)).grep(Regexp.new(string)).any?
-    File.open(File.expand_path(filename), "a") do |file|
-      file.puts string
-    end
   end
 end

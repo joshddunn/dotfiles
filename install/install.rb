@@ -8,6 +8,8 @@ fragments = %w[
   asdf
 ]
 
+require_relative "utils"
+
 TTY::Prompt.new.multi_select("What do you want to install?", fragments).each do |fragment|
   require_relative "fragments/#{fragment}"
   puts "Installing #{fragment}"
