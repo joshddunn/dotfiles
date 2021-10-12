@@ -14,7 +14,10 @@ class Dotfiles
       "~/dotfiles/tool-versions" => "~/.tool-versions",
       "~/dotfiles/tmuxinator" => "~/.config/tmuxinator",
       "~/dotfiles/nvim/init.lua" => "~/.config/nvim/init.lua",
-      "~/dotfiles/nvim/lua" => "~/.config/nvim/lua"
+      "~/dotfiles/nvim/lua" => "~/.config/nvim/lua",
+      "~/dotfiles/default-gems" => "~/.default-gems",
+      "~/dotfiles/default-npm-packages" => "~/.default-npm-packages",
+      "~/dotfiles/default-python-packages" => "~/.default-python-packages"
     }.each { |source, destination| symlink(source, destination) }
   end
 

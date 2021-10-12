@@ -1,4 +1,4 @@
-class Nvim
+class Dependencies
   def self.install
     pip = `which pip2` ? "pip2" : "pip"
 
@@ -7,11 +7,5 @@ class Nvim
 
     system("#{pip} install --user pynvim")
     system("pip3 install --user pynvim")
-
-    system("gem install -u neovim")
-    system("gem install -u tmuxinator")
-    system("gem install -u solargraph")
-
-    system("npm install -g neovim")
   end
 end
