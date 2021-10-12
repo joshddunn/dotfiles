@@ -29,6 +29,7 @@ return require("packer").startup(
     use "moll/vim-node"
     use "nathanaelkane/vim-indent-guides"
     use "pangloss/vim-javascript"
+    use "pseewald/vim-anyfold"
     use "ruanyl/vim-gh-line"
     use "sudar/vim-arduino-syntax"
     use "tpope/vim-abolish"
