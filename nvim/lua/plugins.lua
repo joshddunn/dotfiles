@@ -9,47 +9,39 @@ vim.cmd "autocmd BufWritePost plugins.lua PackerCompile"
 
 return require("packer").startup(
   function()
+    use "airblade/vim-gitgutter"
     use "ap/vim-css-color"
+    use "arecarn/vim-fold-cycle"
+    use "chriskempson/base16-vim"
+    use "edkolev/tmuxline.vim"
+    use "elixir-editors/vim-elixir"
     use "jlanzarotta/bufexplorer"
     use "joom/vim-commentary"
+    use "joshddunn/vim-glob"
+    use "jparise/vim-graphql"
+    use "junegunn/fzf"
+    use "junegunn/fzf.vim"
+    use "junegunn/vim-easy-align"
+    use "justinmk/vim-sneak"
+    use "leafgarland/typescript-vim"
     use "maxbrunsfeld/vim-yankstack"
+    use "maxmellon/vim-jsx-pretty"
     use "moll/vim-node"
-
+    use "nathanaelkane/vim-indent-guides"
+    use "pangloss/vim-javascript"
+    use "ruanyl/vim-gh-line"
+    use "sudar/vim-arduino-syntax"
     use "tpope/vim-abolish"
     use "tpope/vim-endwise"
     use "tpope/vim-fugitive"
+    use "tpope/vim-rails"
     use "tpope/vim-repeat"
     use "tpope/vim-surround"
-    use "nathanaelkane/vim-indent-guides"
-    use "arecarn/vim-fold-cycle"
-    use "airblade/vim-gitgutter"
     use "vim-airline/vim-airline" -- slow
     use "vim-airline/vim-airline-themes"
-    use "edkolev/tmuxline.vim"
     use "w0rp/ale"
-    use "junegunn/fzf"
-    use "junegunn/fzf.vim"
-    use "jparise/vim-graphql"
-    use "elixir-editors/vim-elixir"
-    use "junegunn/vim-easy-align"
-    use "leafgarland/typescript-vim"
-    use "justinmk/vim-sneak"
-    use "sudar/vim-arduino-syntax"
-    use "vim-crystal/vim-crystal"
-    use "tpope/vim-rails"
-    use "pangloss/vim-javascript"
-    use "maxmellon/vim-jsx-pretty"
-    use "ruanyl/vim-gh-line"
 
-    -- colorscheme
-    use "chriskempson/base16-vim"
-
-    -- personal plugins
-    use "joshddunn/vim-glob"
-
-    -- autocompletion
     use { "neoclide/coc.nvim", branch = "release" }
-    use "OmniSharp/omnisharp-vim"
 
     use {
       "kyazdani42/nvim-tree.lua",
