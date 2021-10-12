@@ -6,12 +6,14 @@ class Asdf
 
     list = `asdf plugin list`.split("\n")
 
-    %w[
+    plugins = %w[
       ruby
       nodejs
       python
       lua
-    ].each do |plugin|
+    ]
+
+    TTY::Prompt.new.multi_select('What plugins do you want to install?', plugins).each do |plugin|
       system("asdf plugin add #{plugin}") unless list.include? plugin
       `bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring` if plugin == 'nodejs'
       system("asdf install #{plugin}")
