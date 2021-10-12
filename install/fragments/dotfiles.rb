@@ -10,14 +10,14 @@ class Dotfiles
     Utils.mkdir('~/.config/nvim')
 
     {
-      '~/dotfiles/asdfrc' => '~/.asdfrc',
-      '~/dotfiles/tool-versions' => '~/.tool-versions',
-      '~/dotfiles/tmuxinator' => '~/.config/tmuxinator',
+      '~/dotfiles/asdf/asdfrc' => '~/.asdfrc',
+      '~/dotfiles/asdf/default-gems' => '~/.default-gems',
+      '~/dotfiles/asdf/default-npm-packages' => '~/.default-npm-packages',
+      '~/dotfiles/asdf/default-python-packages' => '~/.default-python-packages',
+      '~/dotfiles/asdf/tool-versions' => '~/.tool-versions',
       '~/dotfiles/nvim/init.lua' => '~/.config/nvim/init.lua',
       '~/dotfiles/nvim/lua' => '~/.config/nvim/lua',
-      '~/dotfiles/default-gems' => '~/.default-gems',
-      '~/dotfiles/default-npm-packages' => '~/.default-npm-packages',
-      '~/dotfiles/default-python-packages' => '~/.default-python-packages'
+      '~/dotfiles/tmuxinator' => '~/.config/tmuxinator'
     }.each { |source, destination| Utils.symlink(source, destination) }
   end
 end

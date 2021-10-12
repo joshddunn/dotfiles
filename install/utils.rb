@@ -11,7 +11,8 @@ class Utils
   end
 
   def self.symlink(source, destination)
-    File.symlink(File.expand_path(source), File.expand_path(destination)) unless exists?(destination)
+    File.delete(File.expand_path(destination)) if exists?(destination)
+    File.symlink(File.expand_path(source), File.expand_path(destination))
   end
 
   def self.mkdir(directory)
@@ -20,11 +21,6 @@ class Utils
 
   def self.exists?(dir)
     path = File.expand_path(dir)
-    if File.exist?(path) || File.symlink?(path)
-      p "#{dir} already exists"
-      true
-    else
-      false
-    end
+    File.exist?(path) || File.symlink?(path)
   end
 end
