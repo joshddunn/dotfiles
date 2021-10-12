@@ -6,7 +6,6 @@ fragments = %w[
   git
   dotfiles
   asdf
-  dependencies
 ]
 
 TTY::Prompt.new.multi_select("What do you want to install?", fragments).each do |fragment|
