@@ -27,7 +27,6 @@ return require("packer").startup(
     use "vim-airline/vim-airline-themes"
     use "edkolev/tmuxline.vim"
     use "w0rp/ale"
-    use "kien/ctrlp.vim"
     use "junegunn/fzf"
     use "junegunn/fzf.vim"
     use "jparise/vim-graphql"
