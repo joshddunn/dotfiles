@@ -69,8 +69,6 @@ vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { 
 vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
 
 -- coc
-vim.g.OmniSharp_server_use_mono = 1
-
 vim.api.nvim_set_keymap("i", "<TAB>", [[ pumvisible() ? "\<C-n>" : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true })
 vim.api.nvim_set_keymap("i", "<S-TAB>", [[ pumvisible() ? "\<C-p>" : "\<C-h>" ]], { silent = true, expr = true })
 
@@ -103,7 +101,6 @@ vim.g.ale_sign_error = "!"
 vim.g.ale_sign_warning = "?"
 vim.g.ale_linters = {
   elixir = {},
-  cs = {"OmniSharp"},
 }
 
 -- easy align
