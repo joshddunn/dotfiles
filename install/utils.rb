@@ -23,4 +23,8 @@ class Utils
     path = File.expand_path(dir)
     File.exist?(path) || File.symlink?(path)
   end
+
+  def self.readlines(dir, chomp: true)
+    File.readlines(File.expand_path(dir), chomp: chomp)
+  end
 end
