@@ -4,6 +4,9 @@ Layout/EmptyLineAfterGuardClause:
 Layout/LineLength:
   Enabled: false
 
+Metrics/AbcSize:
+  Enabled: false
+
 Metrics/MethodLength:
   Enabled: false
 
