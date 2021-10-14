@@ -1,10 +1,8 @@
 class Dotfiles
   def self.install
     Utils.touch('~/dotfiles/nvim/lua/work.lua')
-    Utils.touch('~/dotfiles/zshrc.work')
 
     Utils.append('~/.zshrc', 'source ~/dotfiles/zshrc')
-    Utils.append('~/.zshrc', 'source ~/dotfiles/zshrc.work')
     Utils.append('~/.tmux.conf', 'source-file ~/dotfiles/tmux.conf')
 
     Utils.mkdir('~/.config/nvim')
