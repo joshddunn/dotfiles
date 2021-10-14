@@ -22,6 +22,9 @@ vim.g.glob_ignore = {
   }
 }
 
+-- anyfold
+vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
+
 -- nvim-tree
 vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
 vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
@@ -42,6 +45,7 @@ vim.g.airline_theme = "base16_tomorrow"
 vim.g.fzf_command_prefix = "Fzf"
 vim.g.fzf_tags_command = "ctags -R"
 vim.g.fzf_buffers_jump = 1
+vim.g.fzf_preview_window = { 'right:50%:hidden', 'ctrl-/' }
 
 vim.api.nvim_set_keymap("", "<leader>j", ":Files<cr>", { noremap = true }) -- do i ever use this?
 vim.api.nvim_set_keymap("", "<c-f>", ":Files<cr>", { noremap = true })
@@ -52,21 +56,23 @@ vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
 vim.api.nvim_command([[
-  command! -bang -nargs=* Rg
-    call fzf#vim#grep(
-      'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-      <bang>0 ? fzf#vim#with_preview('up:60%')
-              : fzf#vim#with_preview('right:50%:hidden', '?'),
-      <bang>0)
+  function! RipgrepFzf(query, fullscreen)
+    let command_fmt = 'rg --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
+    let initial_command = printf(command_fmt, shellescape(a:query))
+    let reload_command = printf(command_fmt, '{q}')
+    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+  endfunction
 ]])
+
+vim.api.nvim_command("command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)")
+vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
 
 -- yankstack
 vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { noremap = true })
 vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
 
 -- coc
-vim.g.OmniSharp_server_use_mono = 1
-
 vim.api.nvim_set_keymap("i", "<TAB>", [[ pumvisible() ? "\<C-n>" : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true })
 vim.api.nvim_set_keymap("i", "<S-TAB>", [[ pumvisible() ? "\<C-p>" : "\<C-h>" ]], { silent = true, expr = true })
 
@@ -78,11 +84,6 @@ vim.api.nvim_command([[
 ]])
 
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
-
--- ack
-vim.g.ackprg = "rg --vimgrep --smart-case" .. vim.fn["glob#ignore"]("global")
-
-vim.api.nvim_set_keymap("", "<leader>g", ":Ack -F -- \"\"<Left>", { noremap = true })
 
 -- abolish
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
@@ -104,7 +105,6 @@ vim.g.ale_sign_error = "!"
 vim.g.ale_sign_warning = "?"
 vim.g.ale_linters = {
   elixir = {},
-  cs = {"OmniSharp"},
 }
 
 -- easy align

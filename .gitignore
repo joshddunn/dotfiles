@@ -6,7 +6,7 @@ tags
 .netrwhist
 tmuxinator/*
 !tmuxinator/template.yml
-Brewfile.lock.json
+Brewfile*.lock.json
 
 nvim/lua/work.lua
 zshrc.work

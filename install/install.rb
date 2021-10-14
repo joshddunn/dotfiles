@@ -1,4 +1,6 @@
-require "tty-prompt"
+require 'tty-prompt'
+
+require_relative 'utils'
 
 fragments = %w[
   brew
@@ -6,14 +8,14 @@ fragments = %w[
   git
   dotfiles
   asdf
-  nvim
+  osx
 ]
 
-TTY::Prompt.new.multi_select("What do you want to install?", fragments).each do |fragment|
+TTY::Prompt.new.multi_select('What do you want to install?', fragments).each do |fragment|
   require_relative "fragments/#{fragment}"
   puts "Installing #{fragment}"
   Module.const_get(fragment.capitalize).install
   puts "Done installing #{fragment}"
 end
 
-puts "All done! Go ahead and restart your terminal."
+puts 'All done! Go ahead and restart your terminal.'

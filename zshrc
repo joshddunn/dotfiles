@@ -183,5 +183,3 @@ gif() {
 }
 
 export PATH="$HOME/dotfiles/scripts:$PATH"
-
-. /usr/local/opt/asdf/asdf.sh
