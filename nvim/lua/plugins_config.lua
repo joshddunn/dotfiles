@@ -57,7 +57,7 @@ vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#f
 
 vim.api.nvim_command([[
   function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
+    let command_fmt = 'rg --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
     let initial_command = printf(command_fmt, shellescape(a:query))
     let reload_command = printf(command_fmt, '{q}')
     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
