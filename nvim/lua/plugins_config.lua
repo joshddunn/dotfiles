@@ -45,6 +45,7 @@ vim.g.airline_theme = "base16_tomorrow"
 vim.g.fzf_command_prefix = "Fzf"
 vim.g.fzf_tags_command = "ctags -R"
 vim.g.fzf_buffers_jump = 1
+vim.g.fzf_preview_window = { 'right:50%:hidden', 'ctrl-/' }
 
 vim.api.nvim_set_keymap("", "<leader>j", ":Files<cr>", { noremap = true }) -- do i ever use this?
 vim.api.nvim_set_keymap("", "<c-f>", ":Files<cr>", { noremap = true })
