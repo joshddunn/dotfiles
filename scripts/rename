@@ -15,7 +15,7 @@ rescue LoadError
   puts 'installed.'
 end
 
-Daemons.run_proc('rename_proc.rb') do
+Daemons.run_proc('.rename', { dir: ENV['HOME'] }) do
   require 'listen'
 
   listen = Listen.to("#{ENV['HOME']}/Desktop") do |_modified, added, _removed|
