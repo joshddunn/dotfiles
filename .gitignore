@@ -11,4 +11,6 @@ Brewfile*.lock.json
 nvim/lua/work.lua
 zshrc.work
 
+*.pid
+
 !.keep
