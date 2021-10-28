@@ -8,8 +8,8 @@ end
 
 lib.reverse_each = function(arr, fn)
   local length = #arr
-  for i = 0, length do
-    fn(arr[length - i], length - i)
+  for i = 1, length do
+    fn(arr[length - i + 1], length - i + 1)
   end
 end
 
