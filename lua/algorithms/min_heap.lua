@@ -1,24 +1,24 @@
 lib = require("../lib")
 
-lib.class("PriorityQueue")
+lib.class("MinHeap")
 
-function PriorityQueue:init()
+function MinHeap:init()
   self.array = {}
 end
 
-function PriorityQueue:left_child_index(index)
+function MinHeap:left_child_index(index)
   return 2 * (index - 1) + 1
 end
 
-function PriorityQueue:right_child_index(index)
+function MinHeap:right_child_index(index)
   return 2 * (index - 1) + 1 + 1
 end
 
-function PriorityQueue:parent_index(index)
+function MinHeap:parent_index(index)
   return math.floor((index - 1) / 2) + 1
 end
 
-function PriorityQueue:append(priority, value)
+function MinHeap:append(priority, value)
   table.insert(self.array, { priority, value or priority })
 
   local index = #self.array
@@ -32,7 +32,7 @@ function PriorityQueue:append(priority, value)
   end
 end
 
-function PriorityQueue:remove()
+function MinHeap:remove()
   local value = table.remove(self.array, 1)
 
   if #self.array == 0 then
