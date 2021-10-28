@@ -1,4 +1,4 @@
-local lib = require("lib")
+local lib = require("../../lua/lib")
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
