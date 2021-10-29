@@ -32,6 +32,18 @@ lib.push = function(arr, v)
   table.insert(arr, v)
 end
 
+lib.pop = function(arr)
+  return table.remove(arr)
+end
+
+lib.unshift = function(arr, v)
+  table.insert(arr, 1, v)
+end
+
+lib.shift = function(arr)
+  return table.remove(arr, 1)
+end
+
 lib.map = function(arr, fn)
   local map = {}
   lib.each(arr, function(v, i)

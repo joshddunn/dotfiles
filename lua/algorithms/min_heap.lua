@@ -19,7 +19,7 @@ function MinHeap:parent_index(index)
 end
 
 function MinHeap:append(priority, value)
-  table.insert(self.array, { priority, value or priority })
+  lib.push(self.array, { priority, value or priority })
 
   local index = #self.array
   local parent_index = self:parent_index(index)
@@ -33,13 +33,13 @@ function MinHeap:append(priority, value)
 end
 
 function MinHeap:remove()
-  local value = table.remove(self.array, 1)
+  local value = lib.shift(self.array)
 
   if #self.array == 0 then
     return value
   end
 
-  table.insert(self.array, 1, table.remove(self.array, #self.array))
+  lib.unshift(self.array, lib.pop(self.array))
 
   local focus = 1
   local index, left_child_index, right_child_index
