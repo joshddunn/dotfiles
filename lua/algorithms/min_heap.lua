@@ -44,25 +44,24 @@ function MinHeap:remove()
   local continue = true
 
   local index = 1
-  local focus = nil
+  local focus = index
   local left_child_index = self:left_child_index(index)
   local right_child_index = self:right_child_index(index)
 
   while continue do
-    if self.array[left_child_index] and self.array[left_child_index][1] < self.array[index][1] then
+    if self.array[left_child_index] and self.array[left_child_index][1] < self.array[focus][1] then
       focus = left_child_index
     end
 
-    if self.array[right_child_index] and self.array[right_child_index][1] < ((self.array[focus] and self.array[focus][1]) or self.array[index][1]) then
+    if self.array[right_child_index] and self.array[right_child_index][1] < self.array[focus][1] then
       focus = right_child_index
     end
 
-    if not focus then
+    if focus == index then
       continue = false
     else
       self.array[focus], self.array[index] = self.array[index], self.array[focus]
       index = focus
-      focus = nil
       left_child_index = self:left_child_index(index)
       right_child_index = self:right_child_index(index)
     end
