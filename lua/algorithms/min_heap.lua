@@ -41,14 +41,14 @@ function MinHeap:remove()
 
   table.insert(self.array, 1, table.remove(self.array, #self.array))
 
-  local continue = true
+  local focus = 1
+  local index, left_child_index, right_child_index
 
-  local index = 1
-  local focus = index
-  local left_child_index = self:left_child_index(index)
-  local right_child_index = self:right_child_index(index)
+  while focus ~= index do
+    index = focus
+    left_child_index = self:left_child_index(index)
+    right_child_index = self:right_child_index(index)
 
-  while continue do
     if self.array[left_child_index] and self.array[left_child_index][1] < self.array[focus][1] then
       focus = left_child_index
     end
@@ -57,13 +57,8 @@ function MinHeap:remove()
       focus = right_child_index
     end
 
-    if focus == index then
-      continue = false
-    else
+    if focus ~= index then
       self.array[focus], self.array[index] = self.array[index], self.array[focus]
-      index = focus
-      left_child_index = self:left_child_index(index)
-      right_child_index = self:right_child_index(index)
     end
   end
 
