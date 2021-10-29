@@ -7,15 +7,15 @@ function MinHeap:init()
 end
 
 function MinHeap:left_child_index(index)
-  return 2 * (index - 1) + 1
+  return 2 * index
 end
 
 function MinHeap:right_child_index(index)
-  return 2 * (index - 1) + 1 + 1
+  return 2 * index + 1
 end
 
 function MinHeap:parent_index(index)
-  return math.floor((index - 1) / 2) + 1
+  return math.floor(index / 2)
 end
 
 function MinHeap:append(priority, value)
@@ -24,7 +24,7 @@ function MinHeap:append(priority, value)
   local index = #self.array
   local parent_index = self:parent_index(index)
 
-  while self.array[index][1] < self.array[parent_index][1] do
+  while parent_index ~= 0 and self.array[index][1] < self.array[parent_index][1] do
     self.array[parent_index], self.array[index] = self.array[index], self.array[parent_index]
 
     index = parent_index
@@ -33,13 +33,13 @@ function MinHeap:append(priority, value)
 end
 
 function MinHeap:remove()
-  local value = lib.shift(self.array)
+  self.array[#self.array], self.array[1] = self.array[1], self.array[#self.array]
+
+  local value = lib.pop(self.array)
 
   if #self.array == 0 then
     return value
   end
-
-  lib.unshift(self.array, lib.pop(self.array))
 
   local focus = 1
   local index, left_child_index, right_child_index
