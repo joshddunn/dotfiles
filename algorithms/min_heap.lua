@@ -1,4 +1,4 @@
-lib = require("../lib")
+lib = require("../nvim/lua/lib")
 
 lib.class("MinHeap")
 
