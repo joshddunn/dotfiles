@@ -1,4 +1,4 @@
-lib = require("../nvim/lua/lib")
+lib = require("../lib")
 
 lib.class("Stack")
 
