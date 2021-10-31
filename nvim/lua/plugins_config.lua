@@ -1,3 +1,5 @@
+lib = require("lib")
+
 -- vim-glob
 vim.g.glob_ignore = {
   shared = {
@@ -55,17 +57,25 @@ vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. 
 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
-vim.api.nvim_command([[
-  function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-  endfunction
-]])
+function exclude_types(types)
+  local exclude_types = ""
+  lib.each(lib.split(types, " "), function(t)
+    if t ~= "" then
+      exclude_types = exclude_types .. " --type-not \"" .. t .. "\""
+    end
+  end)
+  return exclude_types
+end
 
-vim.api.nvim_command("command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)")
+function RipgrepFzf(types, fullscreen)
+  local command = "rg --line-number --no-heading --color=always --smart-case " .. exclude_types(types) .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
+  local initial_command = string.gsub(command, "{q}", "''")
+  local spec = { options = {"--phony", "--bind", "change:reload:" .. command} }
+
+  vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
+end
+
+vim.api.nvim_command("command! -nargs=* -bang Rg call v:lua.RipgrepFzf(<q-args>, <bang>0)")
 vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
 
 -- yankstack

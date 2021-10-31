@@ -88,6 +88,14 @@ lib.tosnake = function(str)
   end):gsub("^_", "")
 end
 
+lib.split = function(string, delimiter)
+  local arr = {}
+  for match in (string..delimiter):gmatch("(.-)" .. delimiter) do
+    table.insert(arr, match)
+  end
+  return arr
+end
+
 lib.class = function(name, parent)
   if parent and not _G[parent] then
     require(table.concat({ "models", tostring(tosnake(parent)) }, "."))
