@@ -90,14 +90,20 @@ end
 
 lib.split = function(string, delimiter)
   local arr = {}
+
+  if string == "" then
+    return arr
+  end
+
   for match in (string..delimiter):gmatch("(.-)" .. delimiter) do
     table.insert(arr, match)
   end
+
   return arr
 end
 
-lib.join = function(table, delimiter)
-  return table.concat(table, delimiter)
+lib.join = function(t, delimiter)
+  return table.concat(t, delimiter)
 end
 
 lib.class = function(name, parent)

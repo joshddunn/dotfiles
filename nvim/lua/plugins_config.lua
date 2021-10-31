@@ -58,13 +58,9 @@ vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
 function exclude_types(types)
-  local exclude_types = ""
-  lib.each(lib.split(types, " "), function(t)
-    if t ~= "" then
-      exclude_types = exclude_types .. " --type-not \"" .. t .. "\""
-    end
-  end)
-  return exclude_types
+  return lib.join(lib.map(lib.split(types, " "), function(t)
+    return "--type-not \"" .. t .. "\""
+  end), " ")
 end
 
 function RipgrepFzf(types, fullscreen)
