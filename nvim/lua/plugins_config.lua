@@ -68,7 +68,7 @@ function exclude_types(types)
 end
 
 function RipgrepFzf(types, fullscreen)
-  local command = "rg --line-number --no-heading --color=always --smart-case " .. exclude_types(types) .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
+  local command = "rg --type-add 'feature:*.{feature}' --line-number --no-heading --color=always --smart-case " .. exclude_types(types) .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
   local initial_command = string.gsub(command, "{q}", "''")
   local spec = { options = {"--phony", "--bind", "change:reload:" .. command} }
 
