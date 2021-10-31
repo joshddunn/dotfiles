@@ -96,6 +96,10 @@ lib.split = function(string, delimiter)
   return arr
 end
 
+lib.join = function(table, delimiter)
+  return table.concat(table, delimiter)
+end
+
 lib.class = function(name, parent)
   if parent and not _G[parent] then
     require(table.concat({ "models", tostring(tosnake(parent)) }, "."))
