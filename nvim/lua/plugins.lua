@@ -12,7 +12,7 @@ return require("packer").startup(
     use "airblade/vim-gitgutter"
     use "ap/vim-css-color"
     use "arecarn/vim-fold-cycle"
-    use "chriskempson/base16-vim"
+    use "fnune/base16-vim"
     use "edkolev/tmuxline.vim"
     use "elixir-editors/vim-elixir"
     use "jlanzarotta/bufexplorer"
@@ -41,6 +41,7 @@ return require("packer").startup(
     use "vim-airline/vim-airline" -- slow
     use "vim-airline/vim-airline-themes"
     use "w0rp/ale"
+    use "ellisonleao/glow.nvim"
 
     use { "neoclide/coc.nvim", branch = "release" }
 
