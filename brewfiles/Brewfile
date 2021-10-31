@@ -8,6 +8,7 @@ brew "neovim"
 brew "ripgrep"
 brew "tmux"
 brew "zsh"
+brew "glow"
 
 cask "rectangle"
 cask "ngrok"
