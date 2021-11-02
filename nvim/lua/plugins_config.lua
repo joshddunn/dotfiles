@@ -145,7 +145,7 @@ vim.g["sneak#s_next"] = 1
 
 -- glow
 vim.g.glow_border = "rounded"
-vim.g.glow_winhl = "Normal:MyHighlight"
 vim.g.glow_width = 120
 
+vim.api.nvim_command("set winhl=Normal:MyHighlight")
 vim.api.nvim_command("autocmd VimEnter * highlight FloatBorder ctermfg=08 guifg=#969896")
