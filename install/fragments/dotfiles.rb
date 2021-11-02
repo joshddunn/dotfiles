@@ -15,7 +15,8 @@ class Dotfiles
       '~/dotfiles/asdf/tool-versions' => '~/.tool-versions',
       '~/dotfiles/nvim/init.lua' => '~/.config/nvim/init.lua',
       '~/dotfiles/nvim/lua' => '~/.config/nvim/lua',
-      '~/dotfiles/tmuxinator' => '~/.config/tmuxinator'
+      '~/dotfiles/tmuxinator' => '~/.config/tmuxinator',
+      '~/dotfiles/glow.yml' => '~/Library/Preferences/glow/glow.yml'
     }.each { |source, destination| Utils.symlink(source, destination) }
   end
 end
