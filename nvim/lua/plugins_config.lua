@@ -142,3 +142,10 @@ vim.g.gh_use_canonical = 0
 vim.api.nvim_set_keymap("", "f", "<Plug>Sneak_s", { noremap = true })
 vim.api.nvim_set_keymap("", "F", "<Plug>Sneak_S", { noremap = true })
 vim.g["sneak#s_next"] = 1
+
+-- glow
+vim.g.glow_border = "rounded"
+vim.g.glow_winhl = "Normal:MyHighlight"
+vim.g.glow_width = 120
+
+vim.api.nvim_command("autocmd VimEnter * highlight FloatBorder ctermfg=08 guifg=#969896")

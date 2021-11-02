@@ -41,7 +41,7 @@ return require("packer").startup(
     use "vim-airline/vim-airline" -- slow
     use "vim-airline/vim-airline-themes"
     use "w0rp/ale"
-    use "ellisonleao/glow.nvim"
+    use { "joshddunn/glow.nvim", branch = "config-changes" }
 
     use { "neoclide/coc.nvim", branch = "release" }
 
