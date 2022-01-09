@@ -71,6 +71,16 @@ function RipgrepFzf(types, fullscreen)
   vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
 end
 
+-- vim.api.nvim_command([[
+--   function! RipgrepFzf(query, fullscreen)
+--     let command_fmt = 'rg --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
+--     let initial_command = printf(command_fmt, shellescape(a:query))
+--     let reload_command = printf(command_fmt, '{q}')
+--     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+--     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+--   endfunction
+-- ]])
+
 vim.api.nvim_command("command! -nargs=* -bang Rg call v:lua.RipgrepFzf(<q-args>, <bang>0)")
 vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
 

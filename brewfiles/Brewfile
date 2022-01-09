@@ -9,6 +9,7 @@ brew "ripgrep"
 brew "tmux"
 brew "zsh"
 brew "glow"
+brew "just"
 
 cask "rectangle"
 cask "ngrok"

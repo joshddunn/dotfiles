@@ -42,6 +42,7 @@ return require("packer").startup(
     use "vim-airline/vim-airline-themes"
     use "w0rp/ale"
     use "ellisonleao/glow.nvim"
+    use "noahtheduke/vim-just"
 
     use { "neoclide/coc.nvim", branch = "release" }
 
