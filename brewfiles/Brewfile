@@ -13,6 +13,7 @@ brew "just"
 
 cask "rectangle"
 cask "ngrok"
+cask "caffeine"
 
 # cask fonts
 tap "homebrew/cask-fonts"
