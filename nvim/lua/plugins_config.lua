@@ -71,16 +71,32 @@ function RipgrepFzf(types, fullscreen)
   vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
 end
 
--- vim.api.nvim_command([[
---   function! RipgrepFzf(query, fullscreen)
---     let command_fmt = 'rg --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
---     let initial_command = printf(command_fmt, shellescape(a:query))
---     let reload_command = printf(command_fmt, '{q}')
---     let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
---     call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
---   endfunction
--- ]])
+-- might need to shellescape the query
+function RipgrepFzfQuery(query, fullscreen)
+  local command = "rg --line-number --no-heading --color=always --smart-case " .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
+  local initial_command = string.gsub(command, "{q}", "'" .. shellescape(query) .. "'")
+  local spec = { options = {"--phony", "--query", shellescape(query), "--bind", "change:reload:" .. command} }
 
+  vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
+end
+
+function shellescape(str)
+  str = string.gsub(str, "\\", "\\\\")
+  str = string.gsub(str, "%(", "\\(")
+  str = string.gsub(str, "%)", "\\)")
+  str = string.gsub(str, "%[", "\\[")
+  str = string.gsub(str, "%]", "\\]")
+
+  subs = { "*", "?", "{", "}" }
+
+  lib.each(subs, function(sub)
+    str = string.gsub(str, sub, "\\" .. sub)
+  end)
+
+  return str
+end
+
+vim.api.nvim_command("command! -nargs=* -bang RgQuery call v:lua.RipgrepFzfQuery(<q-args>, <bang>0)")
 vim.api.nvim_command("command! -nargs=* -bang Rg call v:lua.RipgrepFzf(<q-args>, <bang>0)")
 vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
 
