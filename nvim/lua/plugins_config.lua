@@ -1,3 +1,5 @@
+lib = require("lib")
+
 -- vim-glob
 vim.g.glob_ignore = {
   shared = {
@@ -55,17 +57,47 @@ vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. 
 
 vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
 
-vim.api.nvim_command([[
-  function! RipgrepFzf(query, fullscreen)
-    let command_fmt = 'rg --line-number --no-heading --color=always --smart-case -- %s || true ' . glob#ignore("global")
-    let initial_command = printf(command_fmt, shellescape(a:query))
-    let reload_command = printf(command_fmt, '{q}')
-    let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
-    call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
-  endfunction
-]])
+function exclude_types(types)
+  return lib.join(lib.map(lib.split(types, " "), function(t)
+    return "--type-not \"" .. t .. "\""
+  end), " ")
+end
 
-vim.api.nvim_command("command! -nargs=* -bang Rg call RipgrepFzf(<q-args>, <bang>0)")
+function RipgrepFzf(types, fullscreen)
+  local command = "rg --type-add 'feature:*.{feature}' --line-number --no-heading --color=always --smart-case " .. exclude_types(types) .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
+  local initial_command = string.gsub(command, "{q}", "''")
+  local spec = { options = {"--phony", "--bind", "change:reload:" .. command} }
+
+  vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
+end
+
+-- might need to shellescape the query
+function RipgrepFzfQuery(query, fullscreen)
+  local command = "rg --line-number --no-heading --color=always --smart-case " .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
+  local initial_command = string.gsub(command, "{q}", "'" .. shellescape(query) .. "'")
+  local spec = { options = {"--phony", "--query", shellescape(query), "--bind", "change:reload:" .. command} }
+
+  vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
+end
+
+function shellescape(str)
+  str = string.gsub(str, "\\", "\\\\")
+  str = string.gsub(str, "%(", "\\(")
+  str = string.gsub(str, "%)", "\\)")
+  str = string.gsub(str, "%[", "\\[")
+  str = string.gsub(str, "%]", "\\]")
+
+  subs = { "*", "?", "{", "}" }
+
+  lib.each(subs, function(sub)
+    str = string.gsub(str, sub, "\\" .. sub)
+  end)
+
+  return str
+end
+
+vim.api.nvim_command("command! -nargs=* -bang RgQuery call v:lua.RipgrepFzfQuery(<q-args>, <bang>0)")
+vim.api.nvim_command("command! -nargs=* -bang Rg call v:lua.RipgrepFzf(<q-args>, <bang>0)")
 vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
 
 -- yankstack
@@ -136,3 +168,10 @@ vim.g.gh_use_canonical = 0
 vim.api.nvim_set_keymap("", "f", "<Plug>Sneak_s", { noremap = true })
 vim.api.nvim_set_keymap("", "F", "<Plug>Sneak_S", { noremap = true })
 vim.g["sneak#s_next"] = 1
+
+-- glow
+vim.g.glow_border = "rounded"
+vim.g.glow_width = 120
+vim.api.nvim_set_keymap("", ",m", ":Glow<cr>", { noremap = true })
+vim.api.nvim_command("set winhl=Normal:MyHighlight")
+vim.api.nvim_command("autocmd VimEnter * highlight FloatBorder ctermfg=08 guifg=#969896")

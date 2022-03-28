@@ -110,7 +110,7 @@ vim.api.nvim_command("command! BufBefore call v:lua.BufDelete('before')")
 
 -- search selection
 function SearchSelection(args)
-  vim.api.nvim_command("Ack -F -- \"" .. args .. "\"")
+  vim.api.nvim_command("RgQuery " .. args)
 end
 
 vim.api.nvim_command("command! -bang -nargs=1 SearchSelection call v:lua.SearchSelection(<q-args>)")

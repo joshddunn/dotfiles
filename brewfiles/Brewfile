@@ -8,9 +8,12 @@ brew "neovim"
 brew "ripgrep"
 brew "tmux"
 brew "zsh"
+brew "glow"
+brew "just"
 
 cask "rectangle"
 cask "ngrok"
+cask "caffeine"
 
 # cask fonts
 tap "homebrew/cask-fonts"
