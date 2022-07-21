@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+
+mode = ARGV[0]
+project = ARGV[1]
+
+if File.file?(File.expand_path("~/.manage.yml"))
+  file = File.open(File.expand_path('~/.manage.yml'))
+  CONFIG = YAML.load(file)
+else
+  unless mode == 'config'
+    puts "No configuration file. Please run `manage config` first."
+    return
+  end
+end
+
+if project && !CONFIG[project]
+  puts "The project `#{project}` does not exist in manage.yml"
+  return
+end
+
+TEXT = {
+  "initialize" => "Initializing",
+  "migrate" => "Migrating",
+}
+
+def pull(project)
+  puts "Pulling #{project}...\n"
+
+  main = CONFIG[project]["branch"] || 'main'
+  dir = CONFIG[project]["dir"]
+  branch = `cd #{dir}; git branch --show-current`.chomp
+
+  system("cd #{dir}; git checkout #{main}; git pull")
+  system("cd #{dir}; git checkout #{branch}; git merge #{main}") unless branch == main
+
+  puts ""
+end
+
+def command(project, mode)
+  puts "#{TEXT[mode]} #{project}...\n"
+
+  if CONFIG[project][mode]
+    system("cd #{CONFIG[project]["dir"]}; #{CONFIG[project][mode]}")
+  else
+    puts "Skipping..."
+  end
+
+  puts ""
+end
+
+case mode
+when 'pull', 'repull'
+  project ? pull(project) : CONFIG.each { |project, _| pull(project) }
+when 'initialize', 'migrate'
+  project ? command(project, mode) : CONFIG.each { |project, _| command(project, mode) }
+when 'help'
+  puts "pull, repull - repull all configured directories and merge main branch to current branch"
+  puts "initialize   - runs initialize command for all configured projects if present"
+  puts "migrate      - runs migrate command for all configured projects if present"
+  puts "config       - open the configuration file with neovim or nano"
+  puts "edit         - open the manage file with neovim or nano"
+  puts ""
+  puts "Optional second argument to run commands for a specific project."
+when 'config'
+  system("touch ~/.manage.yml") unless File.file?(File.expand_path("~/.manage.yml"))
+  if `which nvim`.chomp
+    system("nvim ~/.manage.yml")
+  else
+    system("nano ~/.manage.yml")
+  end
+when 'edit'
+  path = `which manage`.chomp
+  if `which nvim`.chomp
+    system("nvim #{path}")
+  else
+    system("nano #{path}")
+  end
+else
+  puts "The command `manage #{mode}` does not exist. Use `manage help` to learn more."
+end
