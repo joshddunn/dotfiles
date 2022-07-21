@@ -73,7 +73,6 @@ plugins=(
   zsh-autosuggestions
   zsh-syntax-highlighting
   bundler
-  tmuxinator
   z.lua
 )
 
@@ -108,7 +107,7 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mux="tmuxinator"
+alias mux="jmux"
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias zc='z -c'      # restrict matches to subdirs of $PWD
 alias zz='z -i'      # cd with interactive selection
