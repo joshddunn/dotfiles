@@ -1,0 +1,13 @@
+dev:
+  dir: ~/code
+  zeroIndex: true
+  windows:
+    - name: recipes
+      dir: ~/Documents/recipes
+      panes:
+        - command: nvim
+    - name: code
+      panes:
+        - command: nvim
+        -
+        -
