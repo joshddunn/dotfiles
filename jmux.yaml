@@ -1,6 +1,7 @@
 dev:
   dir: ~/code
   zeroIndex: true
+  selectWindow: 1
   windows:
     - name: recipes
       dir: ~/Documents/recipes
