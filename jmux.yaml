@@ -9,6 +9,6 @@ dev:
         - command: nvim
     - name: code
       panes:
-        - command: nvim
+        -
         -
         -

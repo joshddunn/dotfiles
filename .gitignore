@@ -4,8 +4,6 @@ plugged
 temp
 tags
 .netrwhist
-tmuxinator/*
-!tmuxinator/template.yml
 Brewfile*.lock.json
 
 nvim/lua/work.lua
