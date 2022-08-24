@@ -31,6 +31,13 @@ vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
 vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
 vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
 
+require("nvim-tree").setup {
+  view = {
+    side = 'right',
+    width = 50
+  }
+}
+
 -- colorscheme
 vim.api.nvim_command([[
   try
@@ -105,8 +112,8 @@ vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { 
 vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
 
 -- coc
-vim.api.nvim_set_keymap("i", "<TAB>", [[ pumvisible() ? "\<C-n>" : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true })
-vim.api.nvim_set_keymap("i", "<S-TAB>", [[ pumvisible() ? "\<C-p>" : "\<C-h>" ]], { silent = true, expr = true })
+vim.api.nvim_set_keymap("i", "<TAB>", [[ coc#pum#visible() ? coc#pum#next(1) : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true, noremap = true })
+vim.api.nvim_set_keymap("i", "<S-TAB>", [[ coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>" ]], { silent = true, expr = true, noremap = true })
 
 vim.api.nvim_command([[
   function! CheckBackSpace() abort

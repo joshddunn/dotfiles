@@ -9,6 +9,10 @@ Brewfile*.lock.json
 nvim/lua/work.lua
 zshrc.work
 
+install/Gemfile.lock
+install/.bundle
+install/vendor
+
 *.pid
 
 !.keep
