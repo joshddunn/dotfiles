@@ -14,6 +14,7 @@ vim.g.glob_ignore = {
     "assets/node_modules/**",
     "priv/static/**",
     "modules/**",
+    "dist/**",
   },
   files = {
   },
@@ -112,14 +113,18 @@ vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { 
 vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
 
 -- coc
-vim.api.nvim_set_keymap("i", "<TAB>", [[ coc#pum#visible() ? coc#pum#next(1) : CheckBackSpace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true, noremap = true })
+vim.api.nvim_set_keymap("i", "<TAB>", [[ coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true, noremap = true })
 vim.api.nvim_set_keymap("i", "<S-TAB>", [[ coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>" ]], { silent = true, expr = true, noremap = true })
 
 vim.api.nvim_command([[
-  function! CheckBackSpace() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1] =~ '\s'
+  function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
   endfunction
+]])
+
+vim.api.nvim_command([[
+  command! -nargs=0 Prettier :CocCommand prettier.formatFile
 ]])
 
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
