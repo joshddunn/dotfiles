@@ -7,6 +7,8 @@ class Dotfiles
 
     Utils.mkdir('~/.config/nvim')
 
+    Utils.copy('~/dotfiles/jmux.yaml', '~/.jmux.yaml')
+
     {
       '~/dotfiles/asdf/asdfrc' => '~/.asdfrc',
       '~/dotfiles/asdf/default-gems' => '~/.default-gems',
@@ -16,7 +18,7 @@ class Dotfiles
       '~/dotfiles/nvim/init.lua' => '~/.config/nvim/init.lua',
       '~/dotfiles/nvim/lua' => '~/.config/nvim/lua',
       '~/dotfiles/glow.yml' => '~/Library/Preferences/glow/glow.yml',
-      '~/dotfiles/jmux.yaml' => '~/.jmux.yaml'
+      '~/dotfiles/coc-settings.json' => '~/.config/nvim/coc-settings.json'
     }.each { |source, destination| Utils.symlink(source, destination) }
   end
 end
