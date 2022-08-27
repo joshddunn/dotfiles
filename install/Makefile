@@ -4,5 +4,5 @@ install:
 	make reinstall
 
 reinstall:
-	bundle install
+	bundle install --path vendor/bundle
 	bundle exec ruby install.rb
