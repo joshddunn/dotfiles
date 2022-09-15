@@ -146,4 +146,19 @@ lib.class = function(name, parent)
   end
 end
 
+lib.read_file = function(path)
+  local file = io.open(path, "r")
+  if not file then
+    return nil
+  else
+    local body = file:read("*all")
+    file:close()
+    return body
+  end
+end
+
+lib.includes = function(str, pattern)
+  return not not string.find(str, pattern)
+end
+
 return lib

@@ -44,6 +44,7 @@ return require("packer").startup(
     use "ellisonleao/glow.nvim"
     use "noahtheduke/vim-just"
     use "sheerun/vim-polyglot"
+    use "puremourning/vimspector"
 
     use { "neoclide/coc.nvim", branch = "release" }
     use { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" }
