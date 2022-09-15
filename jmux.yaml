@@ -3,8 +3,8 @@ dev:
   zeroIndex: true
   selectWindow: 1
   windows:
-    - name: recipes
-      dir: ~/Documents/recipes
+    - name: notes
+      dir: ~/notes
       panes:
         - command: nvim
     - name: code

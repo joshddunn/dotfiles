@@ -1,0 +1,10 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "javascript",
+    "scss",
+    "typescript",
+    "typescriptreact"
+  ],
+  "suggest.noselect": true
+}

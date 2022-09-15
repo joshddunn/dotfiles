@@ -10,6 +10,11 @@ class Utils
     File.write(File.expand_path(filename), '')
   end
 
+  def self.copy(source, destination)
+    contents = File.open(File.expand_path(source)).read
+    File.write(File.expand_path(destination), contents)
+  end
+
   def self.symlink(source, destination)
     File.delete(File.expand_path(destination)) if exists?(destination)
     File.symlink(File.expand_path(source), File.expand_path(destination))
