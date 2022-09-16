@@ -15,6 +15,7 @@ vim.g.glob_ignore = {
     "priv/static/**",
     "modules/**",
     "dist/**",
+    "**/vendor/**",
   },
   files = {
   },
