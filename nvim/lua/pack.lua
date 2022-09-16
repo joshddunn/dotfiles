@@ -1,3 +1,5 @@
+local lib = require("lib")
+
 return function(plugins)
   local ensure_packer = function()
     local fn = vim.fn
@@ -16,7 +18,9 @@ return function(plugins)
     use "wbthomason/packer.nvim"
 
     -- defined in plugins.lua
-    plugins(use)
+    lib.each(plugins, function(plugin)
+      use(plugin)
+    end)
 
     if packer_bootstrap then
       require('packer').sync()

@@ -1,40 +1,39 @@
-require("pack")(function(use)
-  use "airblade/vim-gitgutter"
-  use "ap/vim-css-color"
-  use "arecarn/vim-fold-cycle"
-  use "fnune/base16-vim"
-  use "edkolev/tmuxline.vim"
-  use "elixir-editors/vim-elixir"
-  use "jlanzarotta/bufexplorer"
-  use "joom/vim-commentary"
-  use "joshddunn/vim-glob"
-  use "jparise/vim-graphql"
-  use "junegunn/fzf"
-  use "junegunn/fzf.vim"
-  use "junegunn/vim-easy-align"
-  use "justinmk/vim-sneak"
-  use "leafgarland/typescript-vim"
-  use "maxbrunsfeld/vim-yankstack"
-  use "maxmellon/vim-jsx-pretty"
-  use "moll/vim-node"
-  use "nathanaelkane/vim-indent-guides"
-  use "pangloss/vim-javascript"
-  use "pseewald/vim-anyfold"
-  use "ruanyl/vim-gh-line"
-  use "sudar/vim-arduino-syntax"
-  use "tpope/vim-abolish"
-  use "tpope/vim-endwise"
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rails"
-  use "tpope/vim-repeat"
-  use "tpope/vim-surround"
-  use "vim-airline/vim-airline" -- slow
-  use "vim-airline/vim-airline-themes"
-  use "w0rp/ale"
-  use "ellisonleao/glow.nvim"
-  use "noahtheduke/vim-just"
-  use "sheerun/vim-polyglot"
-
-  use { "neoclide/coc.nvim", branch = "release" }
-  use { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" }
-end)
+require("pack")({
+  "airblade/vim-gitgutter",
+  "ap/vim-css-color",
+  "arecarn/vim-fold-cycle",
+  "edkolev/tmuxline.vim",
+  "elixir-editors/vim-elixir",
+  "ellisonleao/glow.nvim",
+  "fnune/base16-vim",
+  "jlanzarotta/bufexplorer",
+  "joom/vim-commentary",
+  "joshddunn/vim-glob",
+  "jparise/vim-graphql",
+  "junegunn/fzf",
+  "junegunn/fzf.vim",
+  "junegunn/vim-easy-align",
+  "justinmk/vim-sneak",
+  "leafgarland/typescript-vim",
+  "maxbrunsfeld/vim-yankstack",
+  "maxmellon/vim-jsx-pretty",
+  "moll/vim-node",
+  "nathanaelkane/vim-indent-guides",
+  "noahtheduke/vim-just",
+  "pangloss/vim-javascript",
+  "pseewald/vim-anyfold",
+  "ruanyl/vim-gh-line",
+  "sheerun/vim-polyglot",
+  "sudar/vim-arduino-syntax",
+  "tpope/vim-abolish",
+  "tpope/vim-endwise",
+  "tpope/vim-fugitive",
+  "tpope/vim-rails",
+  "tpope/vim-repeat",
+  "tpope/vim-surround",
+  "vim-airline/vim-airline", -- slow
+  "vim-airline/vim-airline-themes",
+  "w0rp/ale",
+  { "neoclide/coc.nvim", branch = "release" },
+  { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" }
+})
