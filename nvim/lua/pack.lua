@@ -17,7 +17,6 @@ return function(plugins)
   return require("packer").startup(function(use)
     use "wbthomason/packer.nvim"
 
-    -- defined in plugins.lua
     lib.each(plugins, function(plugin)
       use(plugin)
     end)
