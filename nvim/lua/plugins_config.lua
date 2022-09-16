@@ -187,3 +187,39 @@ vim.g.glow_width = 120
 vim.api.nvim_set_keymap("", ",m", ":Glow<cr>", { noremap = true })
 vim.api.nvim_command("set winhl=Normal:MyHighlight")
 vim.api.nvim_command("autocmd VimEnter * highlight FloatBorder ctermfg=08 guifg=#969896")
+
+-- vimspector
+vim.api.nvim_set_keymap("n", ",dd", ":call vimspector#Launch()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", ",de", ":call vimspector#Reset()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", ",dr", ":call vimspector#Restart()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", ",dc", ":call vimspector#Continue()<cr>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", ",dt", ":call vimspector#ToggleBreakpoint()<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", ",dT", ":call vimspector#ClearBreakpoints()<cr>", { noremap = true })
+
+vim.api.nvim_set_keymap("n", ",dk", "<Plug>VimspectorRestart", {})
+vim.api.nvim_set_keymap("n", ",dh", "<Plug>VimspectorStepOut", {})
+vim.api.nvim_set_keymap("n", ",dl", "<Plug>VimspectorStepInto", {})
+vim.api.nvim_set_keymap("n", ",dj", "<Plug>VimspectorStepOver", {})
+
+vim.g.vimspector_base_dir = os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/start/vimspector"
+vim.g.vimspector_install_gadgets = { 'vscode-node-debug2' }
+vim.g.vimspector_configurations = {
+  Node = {
+    adapter = "vscode-node",
+    default = true,
+    breakpoints = {
+      exception = {
+        all = "N",
+        uncaught = "N"
+      }
+    },
+    configuration = {
+      name = "Attaching to node",
+      type = "node",
+      request = "attach",
+      restart = true, -- this should work but doesn't seem to
+      port = 9229,
+    }
+  }
+}

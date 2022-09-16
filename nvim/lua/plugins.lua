@@ -22,6 +22,7 @@ require("pack")({
   "noahtheduke/vim-just",
   "pangloss/vim-javascript",
   "pseewald/vim-anyfold",
+  "puremourning/vimspector",
   "ruanyl/vim-gh-line",
   "sheerun/vim-polyglot",
   "sudar/vim-arduino-syntax",
