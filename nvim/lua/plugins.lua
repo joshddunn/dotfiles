@@ -1,4 +1,4 @@
-require("pack")({
+require("use")({
   "airblade/vim-gitgutter",
   "ap/vim-css-color",
   "arecarn/vim-fold-cycle",
