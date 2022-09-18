@@ -130,6 +130,11 @@ vim.api.nvim_command([[
 
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
+vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definitions)", { silent = true })
+vim.api.nvim_set_keymap("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", { silent = true })
+
 -- abolish
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
 vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
