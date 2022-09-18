@@ -179,7 +179,7 @@ if vim.g.vim_express and isExpress() then
 
   function ExpressEditSuffix(suffix)
     return function (opts)
-      ExpressFileSearch(opts.args, suffix)
+      ExpressFileSearch("/" .. opts.args, suffix)
     end
   end
 
