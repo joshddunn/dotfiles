@@ -7,13 +7,7 @@ vim.g.base16colorspace = 256
 vim.g.python_host_prog = os.getenv("HOME") .. "/.asdf/shims/python2"
 vim.g.python3_host_prog = os.getenv("HOME") .. "/.asdf/shims/python3"
 
-vim.api.nvim_command("set whichwrap+=<,>,h,l,[,]")
-vim.api.nvim_command("set guioptions-=r")
-vim.api.nvim_command("set guioptions-=R")
-vim.api.nvim_command("set guioptions-=l")
-vim.api.nvim_command("set guioptions-=L")
-vim.api.nvim_command("set t_vb=")
-vim.api.nvim_command("set pumheight=20")
+vim.opt.whichwrap:append("<,>,h,l,[,]")
 
 vim.o.autoread = true
 vim.o.background = "dark"
@@ -30,6 +24,7 @@ vim.o.ignorecase = true
 vim.o.laststatus = 2
 vim.o.matchtime = 2
 vim.o.modelines = 0
+vim.o.pumheight = 20
 vim.o.ruler = true
 vim.o.scrolloff = 7
 vim.o.shellpipe = ">"
