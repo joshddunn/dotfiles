@@ -84,7 +84,6 @@ vim.wo.wrap = true
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4")
 vim.api.nvim_command("command! Ctags exe '!ctags -R .'")
 vim.api.nvim_command("command! Tab exe 'set tabstop=2 shiftwidth=2 | retab'")
-vim.api.nvim_command("autocmd BufNewFile,BufRead *.html.inky   set syntax=html.erb")
 
 -- trailing whitespace
 vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$//e")
@@ -97,39 +96,40 @@ function deletable_buffer(operator, current, focus)
 end
 
 function BufDelete(operator)
-  local current = vim.api.nvim_get_current_buf()
-  lib.each(vim.api.nvim_list_bufs(), function(focus)
-    if deletable_buffer(operator, current, focus) then
-      vim.api.nvim_buf_delete(focus, {})
-    end
-  end)
+  return function()
+    local current = vim.api.nvim_get_current_buf()
+    lib.each(vim.api.nvim_list_bufs(), function(focus)
+      if deletable_buffer(operator, current, focus) then
+        vim.api.nvim_buf_delete(focus, {})
+      end
+    end)
+  end
 end
 
-vim.api.nvim_command("command! BufOnly call v:lua.BufDelete('only')")
-vim.api.nvim_command("command! BufAfter call v:lua.BufDelete('after')")
-vim.api.nvim_command("command! BufBefore call v:lua.BufDelete('before')")
+vim.api.nvim_create_user_command("BufOnly", BufDelete("only"), { nargs = 0 })
+vim.api.nvim_create_user_command("BufAfter", BufDelete("after"), { nargs = 0 })
+vim.api.nvim_create_user_command("BufBefore", BufDelete("before"), { nargs = 0 })
 
 -- search selection
-function SearchSelection(args)
-  vim.api.nvim_command("RgQuery " .. args)
+function SearchSelection(opts)
+  vim.api.nvim_command("RgQuery " .. opts.args)
 end
 
-vim.api.nvim_command("command! -bang -nargs=1 SearchSelection call v:lua.SearchSelection(<q-args>)")
+vim.api.nvim_create_user_command("SearchSelection", SearchSelection, { nargs = 1 })
 
 vim.api.nvim_set_keymap("", "<leader>G", "yiw:SearchSelection <C-r>0<cr>", { noremap = true })
 vim.api.nvim_set_keymap("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", { noremap = true })
 
 -- global replace
-function GlobalReplace(old, new)
-  vim.api.nvim_command("!rg -l '" .. old .. "' . | xargs perl -pi -e 's/" .. old .. "/" .. new .. "/g'")
+function GlobalReplace(opts)
+  local old = opts.fargs[1]
+  local new = opts.fargs[2]
+  local filenames = vim.fn.system({ "rg", "-l", old })
+  vim.fn.system({ "xargs", "pearl", "-pi", "-e", "s/" .. old .. "/" .. new .. "/g" })
   vim.api.nvim_command("echo \"All done.\"")
 end
 
-vim.api.nvim_command("command! -bang -nargs=* GlobalReplace call v:lua.GlobalReplace(<f-args>)")
-
--- newline
-vim.api.nvim_command("command! NoNewline exe 'set binary noeol'")
-vim.api.nvim_command("command! Newline exe 'set binary eol'")
+vim.api.nvim_create_user_command("GlobalReplace", GlobalReplace, { nargs = "*" })
 
 -- vim-express
 -- vim.g.vim_express = {
