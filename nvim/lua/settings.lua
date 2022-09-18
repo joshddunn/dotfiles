@@ -161,22 +161,20 @@ if vim.g.vim_express and isExpress() then
     end
   end
 
-  function ExpressOpenLastFile(cmd)
-    local filenames = lib.split(vim.api.nvim_exec(cmd, true), "\n")
-    local filename = filenames[#filenames - 1]
-    if filename == "shell returned 1" then
-      vim.api.nvim_command("echo \"Could not find file\"")
-    else
-      vim.api.nvim_command("e " .. filename)
-    end
-  end
-
   function ExpressEditMostRecentMigrationFile()
-    ExpressOpenLastFile("!ls -d " .. vim.g.vim_express.migrations.dir .. "/*")
+    local filenames = vim.fn.split(vim.fn.glob("migrations/*"), "\n")
+    vim.api.nvim_command("edit " .. filenames[#filenames])
   end
 
   function ExpressFileSearch(search, suffix)
-    ExpressOpenLastFile("!rg --files | rg -S /" .. search .. suffix .. "." .. ExpressFileType())
+    local filenames = vim.fn.system({ "rg", "--files" })
+    local results = vim.fn.systemlist({ "rg", "-S", search .. suffix .. "." .. ExpressFileType() }, filenames)
+
+    if vim.fn.empty(results) == 1 then
+      vim.api.nvim_command("echo \"Could not find file\"")
+    else
+      vim.api.nvim_command("edit " .. results[#results])
+    end
   end
 
   function ExpressEditSuffix(suffix)
@@ -189,14 +187,15 @@ if vim.g.vim_express and isExpress() then
     local filename = vim.fn.expand('%')
     local alt_filename = nil
     local file_type = "." .. ExpressFileType()
-    local suffix = vim.g.vim_express.tests.suffix or "Test"
+    local suffix = vim.g.vim_express.tests.suffix
+
     if string.find(filename, suffix .. file_type) then
-      alt_filename = string.gsub(filename, suffix .. file_type, file_type)
+      alt_filename = string.gsub(filename, suffix .. file_type, '')
     else
-      alt_filename = string.gsub(filename, file_type, suffix .. file_type)
+      alt_filename = string.gsub(filename, file_type, suffix)
     end
 
-    ExpressOpenLastFile("!rg --files | rg -S " .. alt_filename)
+    ExpressFileSearch(alt_filename, "")
   end
 
   if vim.g.vim_express.migrations then
