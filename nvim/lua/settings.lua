@@ -125,7 +125,7 @@ function GlobalReplace(opts)
   local old = opts.fargs[1]
   local new = opts.fargs[2]
   local filenames = vim.fn.system({ "rg", "-l", old })
-  vim.fn.system({ "xargs", "pearl", "-pi", "-e", "s/" .. old .. "/" .. new .. "/g" })
+  vim.fn.system({ "xargs", "perl", "-pi", "-e", "s/" .. old .. "/" .. new .. "/g" }, filenames)
   vim.api.nvim_command("echo \"All done.\"")
 end
 
