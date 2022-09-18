@@ -82,8 +82,7 @@ vim.o.wrap = true
 vim.wo.wrap = true
 
 vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4")
-vim.api.nvim_command("command! Ctags exe '!ctags -R .'")
-vim.api.nvim_command("command! Tab exe 'set tabstop=2 shiftwidth=2 | retab'")
+vim.api.nvim_create_user_command("Ctags", "!ctags -R .", { nargs = 0 })
 
 -- trailing whitespace
 vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$//e")
