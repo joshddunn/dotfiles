@@ -135,6 +135,16 @@ vim.api.nvim_set_keymap("n", "gy", "<Plug>(coc-type-definition)", { silent = tru
 vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", { silent = true })
 vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", { silent = true })
 
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.tsx" },
+  command = "set filetype=typescript.tsx"
+})
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { "*.jsx" },
+  command = "set filetype=javascript.jsx"
+})
+
 -- abolish
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
 vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
