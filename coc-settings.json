@@ -6,5 +6,5 @@
     "typescript",
     "typescriptreact"
   ],
-  "suggest.noselect": true
+  "suggest.noselect": true,
 }

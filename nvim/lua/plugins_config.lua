@@ -16,6 +16,7 @@ vim.g.glob_ignore = {
     "modules/**",
     "dist/**",
     "**/vendor/**",
+    ".next/**",
   },
   files = {
   },
@@ -114,15 +115,15 @@ vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { 
 vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
 
 -- coc
-vim.api.nvim_set_keymap("i", "<TAB>", [[ coc#pum#visible() ? coc#pum#next(1) : CheckBackspace() ? "\<TAB>" : coc#refresh() ]], { silent = true, expr = true, noremap = true })
-vim.api.nvim_set_keymap("i", "<S-TAB>", [[ coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>" ]], { silent = true, expr = true, noremap = true })
+local opts = { silent = true, noremap = true, expr = true }
+vim.api.nvim_set_keymap("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+vim.api.nvim_set_keymap("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+vim.api.nvim_set_keymap("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
-vim.api.nvim_command([[
-  function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-  endfunction
-]])
+function _G.check_back_space()
+  local col = vim.fn.col('.') - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
 
 vim.api.nvim_command([[
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
