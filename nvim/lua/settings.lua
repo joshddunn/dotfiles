@@ -184,9 +184,9 @@ if vim.g.vim_express and isExpress() then
     local suffix = vim.g.vim_express.tests.suffix
 
     if string.find(filename, suffix .. file_type) then
-      alt_filename = string.gsub(filename, suffix .. file_type, '')
+      alt_filename = string.gsub(filename, suffix .. file_type .. '$', '')
     else
-      alt_filename = string.gsub(filename, file_type, suffix)
+      alt_filename = string.gsub(filename, file_type .. '$', suffix)
     end
 
     ExpressFileSearch(alt_filename, "")
