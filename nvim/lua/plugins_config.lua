@@ -240,3 +240,6 @@ vim.g.vimspector_configurations = {
     }
   }
 }
+
+vim.g.vimspector_sidebar_width = 100
+vim.g.vimspector_bottombar_height = 5
