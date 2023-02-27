@@ -191,7 +191,7 @@ vim.api.nvim_command("highlight Search ctermfg=NONE ctermbg=NONE cterm=underline
 vim.g.gh_line_map_default = 0
 vim.g.gh_line_blame_map_default = 0
 vim.g.gh_open_command = "fn() { echo \"$@\" | pbcopy; }; fn "
-vim.g.gh_use_canonical = 0
+vim.g.gh_use_canonical = 1
 
 -- vim-sneak
 vim.api.nvim_set_keymap("", "f", "<Plug>Sneak_s", { noremap = true })
