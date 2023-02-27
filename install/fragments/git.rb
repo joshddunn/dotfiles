@@ -6,7 +6,6 @@ class Git
     system('git config --global push.default current')
     system('git config --global pull.rebase true')
     system('git config --global diff.colorMoved zebra')
-
-    # system('git config --global fetch.prune true')
+    system('git config --global push.autoSetupRemote true')
   end
 end

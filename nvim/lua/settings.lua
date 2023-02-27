@@ -80,7 +80,15 @@ vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabst
 vim.api.nvim_create_user_command("Ctags", "!ctags -R .", { nargs = 0 })
 
 -- trailing whitespace
-vim.api.nvim_command("autocmd FileType * autocmd BufWritePre <buffer> %s/\\s\\+$//e")
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      pattern = "<buffer>",
+      command = "%s/\\s\\+$//e"
+    })
+  end
+})
 
 -- bufdelete
 function deletable_buffer(operator, current, focus)
