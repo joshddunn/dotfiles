@@ -225,16 +225,16 @@ if vim.g.vim_color_replace then
     if string.find(filename, variables_file) then
       -- do nothing
     else
-      local results = vim.fn.systemlist({ "grep", ": #", variables_file })
+      local results = vim.fn.systemlist({ 'grep', ': #', variables_file })
       lib.each(results, function(result)
-        local str = lib.split(result, ": ");
+        local str = lib.split(result, ': ');
         vim.api.nvim_command('%s/' .. string.gsub(str[2], ';', '') .. '/' .. str[1] .. '/e')
       end)
     end
   end
 
   vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern="*." .. vim.g.vim_color_replace.file_type,
+    pattern = "*." .. vim.g.vim_color_replace.file_type,
     callback = ReplaceColorsWithVariables
   })
 end
