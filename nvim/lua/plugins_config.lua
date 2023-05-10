@@ -129,6 +129,10 @@ vim.api.nvim_command([[
   command! -nargs=0 Prettier :CocCommand prettier.formatFile
 ]])
 
+vim.api.nvim_command([[
+  autocmd BufWritePre *.ts,*.js,*.py,*.rb,*.go silent! call CocAction('runCommand', 'editor.action.organizeImport')
+]])
+
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
 vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", { silent = true })
