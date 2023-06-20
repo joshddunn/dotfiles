@@ -17,6 +17,8 @@ vim.g.glob_ignore = {
     "dist/**",
     "**/vendor/**",
     ".next/**",
+    ".elixir_ls/**",
+    "dialyzer/**"
   },
   files = {
   },

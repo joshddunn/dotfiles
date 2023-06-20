@@ -1,4 +1,5 @@
 {
   "coc.preferences.formatOnSave": true,
   "suggest.noselect": true,
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
 }
