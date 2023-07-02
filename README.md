@@ -23,7 +23,7 @@ Then start using nvim (after `:CheckHealth` passes) and install nvim plugins wit
 
 After plugins are installed, run the following in nvim to install coc extensions.
 
-    CocInstall coc-tsserver coc-prettier coc-eslint coc-emmet coc-css
+    CocInstall coc-tsserver coc-prettier coc-eslint coc-emmet coc-css coc-json coc-elixir coc-yaml
 
 ### Raspberry Pi
 
