@@ -238,3 +238,50 @@ if vim.g.vim_color_replace then
     callback = ReplaceColorsWithVariables
   })
 end
+
+-- tmux test
+vim.g.tmux_test = {
+  filetypes = {
+    elixir = {
+      cmds = {
+        all = "mix test",
+        file = "mix test $filename",
+        line = "mix test $filename:$line"
+      }
+    }
+  }
+}
+
+function TmuxTestRunner(cmd)
+  vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", cmd, "Enter" })
+  vim.api.nvim_command("echo \"Running tests...\"")
+end
+
+function TmuxTest(type)
+  return function()
+    local filetype = vim.bo.filetype
+    local config = vim.g.tmux_test.filetypes[filetype]
+    if config then
+      local filename = vim.fn.expand('%')
+      local row, column = unpack(vim.api.nvim_win_get_cursor(0))
+
+      if (type == "all") then
+        TmuxTestRunner(config.cmds.all)
+      elseif (type == "file") then
+        TmuxTestRunner(config.cmds.file:gsub("$filename", filename))
+      elseif (type == "line") then
+        TmuxTestRunner(config.cmds.line:gsub("$filename", filename):gsub("$line", row))
+      end
+    else
+      vim.api.nvim_command("echo \"No config for filetype " .. filetype .. "\"")
+    end
+  end
+end
+
+vim.api.nvim_create_user_command("TmuxTestAll", TmuxTest("all"), { nargs = 0 })
+vim.api.nvim_create_user_command("TmuxTestFile", TmuxTest("file"), { nargs = 0 })
+vim.api.nvim_create_user_command("TmuxTestLine", TmuxTest("line"), { nargs = 0 })
+
+vim.api.nvim_set_keymap("n", "<leader>ta", ":TmuxTestAll<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tf", ":TmuxTestFile<cr>", { noremap = true })
+vim.api.nvim_set_keymap("n", "<leader>tl", ":TmuxTestLine<cr>", { noremap = true })
