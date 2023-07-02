@@ -258,7 +258,7 @@ vim.g.tmux_test = {
 
 function TmuxTestRunner(cmd)
   vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", cmd, "Enter" })
-  vim.api.nvim_command("echo \"Running tests...\"")
+  vim.api.nvim_command("echo \"Running tests in another pane...\"")
 end
 
 function TmuxTest(type)
