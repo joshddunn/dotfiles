@@ -266,7 +266,7 @@ function TmuxTest(type)
     local filetype = vim.bo.filetype
     local config = vim.g.tmux_test.filetypes[filetype]
     if config then
-      local filename = vim.fn.expand('%')
+      local filename = vim.api.nvim_buf_get_name(0):gsub(vim.loop.cwd() .. '/', '')
       local row, column = unpack(vim.api.nvim_win_get_cursor(0))
 
       if (type == "all") then
