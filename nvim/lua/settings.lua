@@ -240,6 +240,10 @@ if vim.g.vim_color_replace then
 end
 
 -- tmux test
+-- TODO
+-- display-message variable names https://man7.org/linux/man-pages/man1/tmux.1.html
+-- check to make sure there is a bottom-right pane
+-- tmux display-message -t 'bottom-right' -p '#{pane_index}'
 vim.g.tmux_test = {
   filetypes = {
     elixir = {
