@@ -247,7 +247,7 @@ end
 vim.g.tmux_test = {
   filetypes = {
     elixir = {
-      -- matcher = "test \"(.+)\" do",
+      -- matcher = "test [\"'](.+)[\"'] do",
       cmds = {
         all = "mix test",
         file = "mix test $filename",
