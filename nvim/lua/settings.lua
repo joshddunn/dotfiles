@@ -123,7 +123,7 @@ function GlobalReplace(opts)
   local new = opts.fargs[2]
   local filenames = vim.fn.system({ "rg", "-l", old })
   vim.fn.system({ "xargs", "perl", "-pi", "-e", "s/" .. old .. "/" .. new .. "/g" }, filenames)
-  vim.api.nvim_command("echo \"All done.\"")
+  vim.api.nvim_echo({{"All Done."}}, false, {})
 end
 
 vim.api.nvim_create_user_command("GlobalReplace", GlobalReplace, { nargs = "*" })
@@ -168,7 +168,7 @@ if vim.g.vim_express and isExpress() then
     local results = vim.fn.systemlist({ "rg", "-S", search .. suffix .. "." .. ExpressFileType() }, filenames)
 
     if vim.fn.empty(results) == 1 then
-      vim.api.nvim_command("echo \"Could not find file\"")
+      vim.api.nvim_echo({{"Could not find file"}}, false, {})
     else
       vim.api.nvim_command("edit " .. results[#results])
     end
@@ -260,7 +260,7 @@ vim.g.tmux_test = {
 
 function TmuxTestRunner(cmd)
   vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", cmd, "Enter" })
-  vim.api.nvim_command("echo \"Running tests in another pane...\"")
+  vim.api.nvim_echo({{"Running tests in another pane..."}}, false, {})
 end
 
 function TmuxTest(type)
@@ -290,14 +290,14 @@ function TmuxTest(type)
           if (test_name) then
             TmuxTestRunner(config.cmds.line:gsub("$filename", filename):gsub("$name", test_name))
           else
-            vim.api.nvim_command("echo \"No test found\"")
+            vim.api.nvim_echo({{"No test found"}}, false, {})
           end
         else
           TmuxTestRunner(config.cmds.line:gsub("$filename", filename):gsub("$line", row))
         end
       end
     else
-      vim.api.nvim_command("echo \"No config for filetype " .. filetype .. "\"")
+      vim.api.nvim_echo({{"No config for filetype " .. filetype}}, false, {})
     end
   end
 end
