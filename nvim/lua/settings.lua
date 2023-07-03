@@ -247,10 +247,12 @@ end
 vim.g.tmux_test = {
   filetypes = {
     elixir = {
+      -- matcher = "test \"(.+)\" do",
       cmds = {
         all = "mix test",
         file = "mix test $filename",
         line = "mix test $filename:$line"
+        -- line = "mix test $filename -t \"$name\""
       }
     }
   }
@@ -274,7 +276,25 @@ function TmuxTest(type)
       elseif (type == "file") then
         TmuxTestRunner(config.cmds.file:gsub("$filename", filename))
       elseif (type == "line") then
-        TmuxTestRunner(config.cmds.line:gsub("$filename", filename):gsub("$line", row))
+        if (config.matcher) then
+          local lines = vim.api.nvim_buf_get_lines(0, 0, row, true)
+          local test_name = nil
+
+          lib.each(lines, function(line)
+            local c1 = line:match(config.matcher)
+            if (c1) then
+              test_name = c1
+            end
+          end)
+
+          if (test_name) then
+            TmuxTestRunner(config.cmds.line:gsub("$filename", filename):gsub("$name", test_name))
+          else
+            vim.api.nvim_command("echo \"No test found\"")
+          end
+        else
+          TmuxTestRunner(config.cmds.line:gsub("$filename", filename):gsub("$line", row))
+        end
       end
     else
       vim.api.nvim_command("echo \"No config for filetype " .. filetype .. "\"")
