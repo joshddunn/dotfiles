@@ -127,8 +127,12 @@ function _G.check_back_space()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
+-- vim.api.nvim_command([[
+--   command! -nargs=0 Prettier :CocCommand prettier.formatFile
+-- ]])
+
 vim.api.nvim_command([[
-  command! -nargs=0 Prettier :CocCommand prettier.formatFile
+  autocmd BufWritePre *.ts,*.js,*.py,*.rb,*.go silent! call CocAction('runCommand', 'editor.action.organizeImport')
 ]])
 
 vim.api.nvim_command([[
@@ -249,3 +253,7 @@ vim.g.vimspector_configurations = {
 
 vim.g.vimspector_sidebar_width = 100
 vim.g.vimspector_bottombar_height = 5
+
+-- copilot
+vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { silent = true, expr = true, script = true })
+vim.g.copilot_no_tab_map = true

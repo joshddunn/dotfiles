@@ -1,5 +1,6 @@
 {
   "coc.preferences.formatOnSave": true,
   "suggest.noselect": true,
-  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh"
+  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
+  "prettier.onlyUseLocalVersion": true
 }
