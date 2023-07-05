@@ -1,6 +1,8 @@
 local lib = require("../lib")
 
 -- vim-navigation
+-- make a project a navigation project with
+--   git config vim-navigation.project phoenix
 vim.g.vim_navigation = {
   phoenix = {
     migrations = {
@@ -9,15 +11,18 @@ vim.g.vim_navigation = {
     alternate = {
       dir = "lib/",
       file_pattern = ".ex",
-      alt_dir = "test/",
-      alt_file_pattern = "_test.exs"
+      test_dir = "test/",
+      test_file_pattern = "_test.exs"
     }
   }
 }
 
-if vim.g.vim_navigation then
-  local framework = "phoenix"
-  local config = vim.g.vim_navigation[framework]
+function NavigationProject()
+  return lib.replace(vim.fn.system({ "git", "config", "vim-navigation.project" }), "\n", "")
+end
+
+if vim.g.vim_navigation and NavigationProject() then
+  local config = vim.g.vim_navigation[NavigationProject()]
 
   -- migrations
   function NavigationEditMostRecentMigrationFile()
@@ -40,13 +45,13 @@ if vim.g.vim_navigation then
 
     if (filename:match(alt_config.file_pattern .. '$')) then
       old_dir = alt_config.dir
-      new_dir = alt_config.alt_dir
+      new_dir = alt_config.test_dir
       old_pattern = alt_config.file_pattern
-      new_pattern = alt_config.alt_file_pattern
-    elseif (filename:match(alt_config.alt_file_pattern .. '$')) then
-      old_dir = alt_config.alt_dir
+      new_pattern = alt_config.test_file_pattern
+    elseif (filename:match(alt_config.test_file_pattern .. '$')) then
+      old_dir = alt_config.test_dir
       new_dir = alt_config.dir
-      old_pattern = alt_config.alt_file_pattern
+      old_pattern = alt_config.test_file_pattern
       new_pattern = alt_config.file_pattern
     else
       vim.api.nvim_echo({{"No alternate file defined"}}, false, {})
