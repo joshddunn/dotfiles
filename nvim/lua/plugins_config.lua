@@ -127,14 +127,6 @@ function _G.check_back_space()
   return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
 
--- vim.api.nvim_command([[
---   command! -nargs=0 Prettier :CocCommand prettier.formatFile
--- ]])
-
-vim.api.nvim_command([[
-  autocmd BufWritePre *.ts,*.js,*.py,*.rb,*.go silent! call CocAction('runCommand', 'editor.action.organizeImport')
-]])
-
 vim.api.nvim_command([[
   autocmd BufWritePre *.ts,*.js,*.py,*.rb,*.go silent! call CocAction('runCommand', 'editor.action.organizeImport')
 ]])
