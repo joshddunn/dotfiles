@@ -3,24 +3,23 @@ local lib = require("../lib")
 -- vim-navigation
 -- make a project a navigation project with
 --   git config vim-navigation.project phoenix
-vim.g.vim_navigation = {
-  phoenix = {
-    migrations = {
-      dir = "priv/repo/migrations/"
-    },
-    alternate = {
-      dir = "lib/",
-      file_pattern = ".ex",
-      test_dir = "test/",
-      test_file_pattern = "_test.exs"
-    },
-    shortcuts = {
-      { "router", "router.ex", 0 },
-      { "controller", "_controller.ex", 1 },
-      { "worker", "_worker.ex", 1 }
-    }
-  }
-}
+-- vim.g.vim_navigation = {
+--   phoenix = {
+--     migrations = {
+--       dir = "priv/repo/migrations/"
+--     },
+--     alternate = {
+--       dir = "lib/",
+--       file_pattern = ".ex",
+--       test_dir = "test/",
+--       test_file_pattern = "_test.exs"
+--     },
+--     shortcuts = {
+--       { "router", "router.ex", 0 },
+--       { "controller", "$arg_controller.ex", 1 },
+--     }
+--   }
+-- }
 
 function NavigationProject()
   return lib.replace(vim.fn.system({ "git", "config", "vim-navigation.project" }), "\n", "")
@@ -73,9 +72,10 @@ if vim.g.vim_navigation and NavigationProject() then
   end
 
   -- shortcuts
-  function NavigationFileSearch(search, suffix)
+  function NavigationFileSearch(search, pattern)
+    local file = lib.replace(pattern, "$arg", search)
     local filenames = vim.fn.system({ "rg", "--files" })
-    local results = vim.fn.systemlist({ "rg", "-S", search .. suffix }, filenames)
+    local results = vim.fn.systemlist({ "rg", "-S", file}, filenames)
 
     if vim.fn.empty(results) == 1 then
       vim.api.nvim_echo({{"Could not find file"}}, false, {})
@@ -84,16 +84,16 @@ if vim.g.vim_navigation and NavigationProject() then
     end
   end
 
-  function NavigationEditSuffix(suffix)
+  function NavigationEditPattern(pattern)
     return function (opts)
-      NavigationFileSearch("/" .. opts.args, suffix)
+      NavigationFileSearch(opts.args, pattern)
     end
   end
 
   lib.each(config.shortcuts, function(shortcut)
     vim.api.nvim_create_user_command(
       "E" .. shortcut[1],
-      NavigationEditSuffix(string.lower(shortcut[2])),
+      NavigationEditPattern(string.lower(shortcut[2])),
       { nargs = shortcut[3] }
     )
   end)
