@@ -90,11 +90,13 @@ if vim.g.vim_navigation and NavigationProject() then
     end
   end
 
-  lib.each(config.shortcuts, function(shortcut)
-    vim.api.nvim_create_user_command(
-      "E" .. shortcut[1],
-      NavigationEditPattern(string.lower(shortcut[2])),
-      { nargs = shortcut[3] }
-    )
-  end)
+  if config.shortcuts then
+    lib.each(config.shortcuts, function(shortcut)
+      vim.api.nvim_create_user_command(
+        "E" .. shortcut[1],
+        NavigationEditPattern(string.lower(shortcut[2])),
+        { nargs = shortcut[3] }
+      )
+    end)
+  end
 end
