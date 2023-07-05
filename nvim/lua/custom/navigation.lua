@@ -48,16 +48,16 @@ if vim.g.vim_navigation and NavigationProject() then
       local old_pattern = ''
       local new_pattern = ''
 
-      if (filename:match(alt_config.file_pattern .. '$')) then
-        old_dir = alt_config.dir
-        new_dir = alt_config.test_dir
-        old_pattern = alt_config.file_pattern
-        new_pattern = alt_config.test_file_pattern
-      elseif (filename:match(alt_config.test_file_pattern .. '$')) then
+      if (filename:match(alt_config.test_file_pattern .. '$')) then
         old_dir = alt_config.test_dir
         new_dir = alt_config.dir
         old_pattern = alt_config.test_file_pattern
         new_pattern = alt_config.file_pattern
+      elseif (filename:match(alt_config.file_pattern .. '$')) then
+        old_dir = alt_config.dir
+        new_dir = alt_config.test_dir
+        old_pattern = alt_config.file_pattern
+        new_pattern = alt_config.test_file_pattern
       else
         vim.api.nvim_echo({{"No alternate file defined"}}, false, {})
         return
