@@ -13,6 +13,11 @@ vim.g.vim_navigation = {
       file_pattern = ".ex",
       test_dir = "test/",
       test_file_pattern = "_test.exs"
+    },
+    shortcuts = {
+      { "router", "router.ex", 0 },
+      { "controller", "_controller.ex", 1 },
+      { "worker", "_worker.ex", 1 }
     }
   }
 }
@@ -66,4 +71,30 @@ if vim.g.vim_navigation and NavigationProject() then
   if config.alternate then
     vim.api.nvim_create_user_command("A", NavigationEditAlternateFile, { nargs = 0 })
   end
+
+  -- shortcuts
+  function NavigationFileSearch(search, suffix)
+    local filenames = vim.fn.system({ "rg", "--files" })
+    local results = vim.fn.systemlist({ "rg", "-S", search .. suffix }, filenames)
+
+    if vim.fn.empty(results) == 1 then
+      vim.api.nvim_echo({{"Could not find file"}}, false, {})
+    else
+      vim.api.nvim_command("edit " .. results[#results])
+    end
+  end
+
+  function NavigationEditSuffix(suffix)
+    return function (opts)
+      NavigationFileSearch("/" .. opts.args, suffix)
+    end
+  end
+
+  lib.each(config.shortcuts, function(shortcut)
+    vim.api.nvim_create_user_command(
+      "E" .. shortcut[1],
+      NavigationEditSuffix(string.lower(shortcut[2])),
+      { nargs = shortcut[3] }
+    )
+  end)
 end
