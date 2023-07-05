@@ -28,7 +28,6 @@ require("use")({
   "tpope/vim-surround",
   "vim-airline/vim-airline", -- slow
   "vim-airline/vim-airline-themes",
-  "w0rp/ale",
   "github/copilot.vim",
   { "neoclide/coc.nvim", branch = "release" },
   { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },

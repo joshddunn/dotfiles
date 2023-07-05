@@ -170,14 +170,6 @@ vim.g.indent_guides_guide_size = 1
 -- git gutter
 vim.g.gitgutter_enabled = 0
 
--- ale
-vim.g.ale_fix_on_save = 1
-vim.g.ale_sign_error = "!"
-vim.g.ale_sign_warning = "?"
-vim.g.ale_linters = {
-  elixir = {},
-}
-
 -- easy align
 vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", { noremap = true })
 vim.api.nvim_set_keymap("x", "gax", "<Plug>(EasyAlign)<c-x>", { noremap = true })
