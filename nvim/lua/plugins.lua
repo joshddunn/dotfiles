@@ -4,6 +4,7 @@ require("use")({
   "arecarn/vim-fold-cycle",
   "edkolev/tmuxline.vim",
   "fnune/base16-vim",
+  "github/copilot.vim",
   "joom/vim-commentary",
   "joshddunn/vim-glob",
   "junegunn/fzf",
@@ -23,7 +24,6 @@ require("use")({
   "tpope/vim-surround",
   "vim-airline/vim-airline", -- slow
   "vim-airline/vim-airline-themes",
-  "github/copilot.vim",
   { "neoclide/coc.nvim", branch = "release" },
   { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
 })
