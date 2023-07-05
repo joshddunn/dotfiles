@@ -161,8 +161,12 @@ lib.includes = function(str, pattern)
   return not not string.find(str, pattern)
 end
 
-lib.replace = function(str, pattern, replacement)
-  pattern = string.gsub(pattern, "[%(%)%[%]%.%+%-%*%?%^%$%%]", "%%%1")
+lib.replace = function(str, pattern, replacement, opts)
+  opts = opts or {}
+  prefix = opts.prefix or ''
+  suffix = opts.suffix or ''
+  pattern = string.gsub(pattern, "[%(%)%[%]%.%+%-%*%?%$%%]", "%%%1")
+  pattern = prefix .. pattern .. suffix
   replacement = string.gsub(replacement, "[%%]", "%%%%")
   return string.gsub(str, pattern, replacement)
 end

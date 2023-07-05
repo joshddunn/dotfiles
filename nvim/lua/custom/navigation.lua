@@ -53,8 +53,9 @@ if vim.g.vim_navigation then
       return
     end
 
-    local alternate_filename = lib.replace(filename, old_pattern, new_pattern)
-    vim.api.nvim_command("edit " .. lib.replace(alternate_filename, old_dir, new_dir))
+    local alternate_filename = lib.replace(filename, old_pattern, new_pattern, { suffix = "$" })
+    alternate_filename = lib.replace(alternate_filename, old_dir, new_dir, { prefix = "^" })
+    vim.api.nvim_command("edit " .. alternate_filename)
   end
 
   if config.alternate then
