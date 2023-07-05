@@ -4,7 +4,6 @@ require("use")({
   "arecarn/vim-fold-cycle",
   "edkolev/tmuxline.vim",
   "elixir-editors/vim-elixir",
-  "ellisonleao/glow.nvim",
   "fnune/base16-vim",
   "jlanzarotta/bufexplorer",
   "joom/vim-commentary",
@@ -37,5 +36,5 @@ require("use")({
   "w0rp/ale",
   "github/copilot.vim",
   { "neoclide/coc.nvim", branch = "release" },
-  { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" }
+  { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
 })

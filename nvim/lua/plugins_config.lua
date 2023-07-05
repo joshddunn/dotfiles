@@ -208,13 +208,6 @@ vim.api.nvim_set_keymap("", "f", "<Plug>Sneak_s", { noremap = true })
 vim.api.nvim_set_keymap("", "F", "<Plug>Sneak_S", { noremap = true })
 vim.g["sneak#s_next"] = 1
 
--- glow
-vim.g.glow_border = "rounded"
-vim.g.glow_width = 120
-vim.api.nvim_set_keymap("", ",m", ":Glow<cr>", { noremap = true })
-vim.wo.winhl = "Normal:MyHighlight"
-vim.api.nvim_command("autocmd VimEnter * highlight FloatBorder ctermfg=08 guifg=#969896")
-
 -- vimspector
 vim.api.nvim_set_keymap("n", ",dd", ":call vimspector#Launch()<cr>", { noremap = true })
 vim.api.nvim_set_keymap("n", ",de", ":call vimspector#Reset()<cr>", { noremap = true })
