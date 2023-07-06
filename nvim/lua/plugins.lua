@@ -23,7 +23,7 @@ require("use")({
   "tpope/vim-surround",
   "vim-airline/vim-airline", -- slow
   "vim-airline/vim-airline-themes",
+  { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
   { "neoclide/coc.nvim", branch = "release" },
   { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
-  { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
 })
