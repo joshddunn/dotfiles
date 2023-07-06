@@ -9,7 +9,6 @@ brew "just"
 brew "lua"
 brew "neovim"
 brew "ripgrep"
-brew "sponge"
 brew "tmux"
 brew "zsh"
 
