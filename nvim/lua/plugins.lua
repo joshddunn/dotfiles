@@ -16,7 +16,6 @@ require("use")({
   "pseewald/vim-anyfold",
   "puremourning/vimspector",
   "ruanyl/vim-gh-line",
-  "sheerun/vim-polyglot",
   "tpope/vim-abolish",
   "tpope/vim-endwise",
   "tpope/vim-fugitive",
@@ -25,5 +24,6 @@ require("use")({
   "vim-airline/vim-airline", -- slow
   "vim-airline/vim-airline-themes",
   { "neoclide/coc.nvim", branch = "release" },
+  { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
   { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
 })

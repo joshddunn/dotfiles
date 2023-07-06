@@ -234,3 +234,12 @@ vim.g.vimspector_bottombar_height = 5
 -- copilot
 vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { silent = true, expr = true, script = true })
 vim.g.copilot_no_tab_map = true
+
+-- treesitter
+require("nvim-treesitter.configs").setup {
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "typescript", "tsx", "elixir", "heex", "yaml" },
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  }
+}
