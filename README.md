@@ -13,7 +13,7 @@ Installing this configuration is relatively easy. First, clone this repository.
 If you are on Mac, install with
 
     cd ~/dotfiles/install
-    make install
+    sh install.sh
 
 Restart your system (required for installed fonts).
 
