@@ -44,12 +44,7 @@ require("nvim-tree").setup {
 }
 
 -- colorscheme
-vim.api.nvim_command([[
-  try
-    colorscheme base16-tomorrow-night
-  catch
-  endtry
-]])
+vim.cmd.colorscheme("base16-tomorrow-night")
 
 -- airline
 vim.g["airline#extensions#tabline#enabled"] = 1
