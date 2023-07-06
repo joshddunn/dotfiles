@@ -21,10 +21,6 @@ Import `~/dotfiles/iterm2/default.json` as an iTerm2 profile.
 
 Then start using nvim (after `:CheckHealth` passes) and install nvim plugins with `:PackerInstall`.
 
-After plugins are installed, run the following in nvim to install coc extensions.
-
-    CocInstall coc-tsserver coc-prettier coc-eslint coc-emmet coc-css coc-json coc-elixir coc-yaml
-
 ### Raspberry Pi
 
 If you are using a Raspberry Pi, install with

@@ -143,6 +143,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   command = "set filetype=javascript.jsx"
 })
 
+vim.g.coc_global_extensions = { "coc-tsserver", "coc-prettier", "coc-eslint", "coc-emmet", "coc-css", "coc-json", "coc-elixir", "coc-yaml" }
+
 -- abolish
 vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
 vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
