@@ -181,6 +181,12 @@ gif() {
   cd -
 }
 
+if [ "$(arch)" = "arm64" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+else
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
 export KERL_BUILD_DOCS="yes"
 
 export PATH="$HOME/dotfiles/scripts:$PATH"
