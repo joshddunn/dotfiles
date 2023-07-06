@@ -121,8 +121,11 @@ vim.api.nvim_set_keymap("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", { nore
 function GlobalReplace(opts)
   local old = opts.fargs[1]
   local new = opts.fargs[2]
-  local filenames = vim.fn.system({ "rg", "-l", old })
-  vim.fn.system({ "xargs", "perl", "-pi", "-e", "s/" .. old .. "/" .. new .. "/g" }, filenames)
+  local filenames = lib.split(vim.fn.system({ "rg", "-l", old }), "\n")
+  lib.each(filenames, function(filename)
+    local text = vim.fn.system({ "rg", "--passthru", old, "-r", new, filename })
+    vim.fn.system({ "sponge", filename }, text)
+  end)
   vim.api.nvim_echo({{"All Done."}}, false, {})
 end
 
