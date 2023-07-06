@@ -14,13 +14,13 @@
     "Blue Component" : 0.70588235294117652,
     "Green Component" : 0.71764705882352942
   },
-  "Ansi 1 Color" : {
-    "Red Component" : 0.80000000000000004,
+  "Ansi 0 Color" : {
+    "Red Component" : 0.11372549019607843,
     "Color Space" : "sRGB",
-    "Blue Component" : 0.40000000000000002,
-    "Green Component" : 0.40000000000000002
+    "Blue Component" : 0.12941176470588237,
+    "Green Component" : 0.12156862745098039
   },
-  "Normal Font" : "MesloLGLNerdFontComplete-Regular 12",
+  "Normal Font" : "MesloLGLNF-Regular 12",
   "Bold Color" : {
     "Red Component" : 0.77254901960784317,
     "Color Space" : "sRGB",
@@ -40,7 +40,7 @@
     "Green Component" : 0.63529411764705879
   },
   "Custom Directory" : "Yes",
-  "Rows" : 25,
+  "Rows" : 24,
   "Default Bookmark" : "No",
   "Cursor Guide Color" : {
     "Red Component" : 0.70213186740875244,
@@ -300,6 +300,7 @@
     }
   },
   "Window Type" : 0,
+  "Initial Text" : "",
   "Background Image Location" : "",
   "Blur" : false,
   "Badge Color" : {
@@ -322,6 +323,7 @@
     "Blue Component" : 0.35294117647058826,
     "Green Component" : 0.40784313725490196
   },
+  "ASCII Ligatures" : false,
   "Name" : "Default",
   "Cursor Text Color" : {
     "Red Component" : 0.11372549019607843,
@@ -338,13 +340,13 @@
     "Green Component" : 0.78431372549019607
   },
   "Transparency" : 0,
-  "Ansi 0 Color" : {
-    "Red Component" : 0.11372549019607843,
-    "Color Space" : "sRGB",
-    "Blue Component" : 0.12941176470588237,
-    "Green Component" : 0.12156862745098039
-  },
   "Guid" : "CD53D681-6EB5-4FBE-ACB4-B7CC0BD0F4EC",
+  "Ansi 1 Color" : {
+    "Red Component" : 0.80000000000000004,
+    "Color Space" : "sRGB",
+    "Blue Component" : 0.40000000000000002,
+    "Green Component" : 0.40000000000000002
+  },
   "Horizontal Spacing" : 1,
   "Link Color" : {
     "Red Component" : 0,
