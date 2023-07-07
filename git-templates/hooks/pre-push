@@ -1,9 +1,9 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env sh
 
-protected_branch = 'master'
-current_branch = `git rev-parse --abbrev-ref HEAD`.chomp
+protected_branch="main"
+current_branch=$(git rev-parse --abbrev-ref HEAD)
 
-if current_branch == protected_branch
-  puts "You should not push directly to master. If you want to bypass this check, run `git push --no-verify`"
-  exit(1)
-end
+if [[ protected_branch -eq current_branch ]]; then
+  echo "You should not push directly to main. If you want to bypass this check, run \`git push --no-verify\`"
+  exit 1
+fi
