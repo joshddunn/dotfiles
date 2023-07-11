@@ -17,8 +17,16 @@ local lib = require("../lib")
 --     shortcuts = {
 --       { "router", "router.ex", 0 },
 --       { "controller", "$arg_controller.ex", 1 },
---     }
---   }
+--     },
+--     tests = {
+--       -- matcher = "test [\"'](.+)[\"'] do",
+--       cmds = {
+--         all = "mix test",
+--         file = "mix test $filename",
+--         line = "mix test $filename:$line"
+--         -- line = "mix test $filename -t \"$name\""
+--       }
+--    }
 -- }
 
 function NavigationProject()
@@ -99,6 +107,77 @@ if vim.g.vim_navigation and NavigationProject() then
           { nargs = shortcut[3] }
         )
       end)
+    end
+
+    -- tests
+    function NavigationTestRunner(cmd)
+      vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", cmd, "Enter" })
+      vim.api.nvim_echo({{"Running tests in another pane..."}}, false, {})
+    end
+
+    function NavigationTestBuildCmd(cmd, filename, line, name)
+      local new_cmd = lib.replace(cmd, "$filename", filename)
+      new_cmd = lib.replace(new_cmd, "$line", line)
+      new_cmd = lib.replace(new_cmd, "$name", name)
+
+      return new_cmd
+    end
+
+    function NavigationTestGetTestFile(filename)
+      local alt_config = config.alternate
+
+      if not (filename:match(alt_config.test_file_pattern .. '$')) then
+        local alternate_filename = lib.replace(filename, alt_config.file_pattern, alt_config.test_file_pattern, { suffix = "$" })
+        alternate_filename = lib.replace(alternate_filename, alt_config.dir, alt_config.test_dir, { prefix = "^" })
+        return alternate_filename
+      else
+        return filename
+      end
+    end
+
+    function NavigationTest(type)
+      return function()
+        local test_config = config.tests
+        local filetype = vim.bo.filetype
+        local filename = lib.replace(vim.api.nvim_buf_get_name(0), vim.fn.getcwd() .. '/', '')
+        local row, column = unpack(vim.api.nvim_win_get_cursor(0))
+
+        if (type == "all") then
+          NavigationTestRunner(test_config.cmds.all)
+        elseif (type == "file") then
+          NavigationTestRunner(NavigationTestBuildCmd(test_config.cmds.file, NavigationTestGetTestFile(filename), "", ""))
+        elseif (type == "line") then
+          if (test_config.matcher) then
+            local lines = vim.api.nvim_buf_get_lines(0, 0, row, true)
+            local test_name = nil
+
+            lib.each(lines, function(line)
+              local c1 = line:match(test_config.matcher)
+              if (c1) then
+                test_name = c1
+              end
+            end)
+
+            if (test_name) then
+              NavigationTestRunner(NavigationTestBuildCmd(test_config.cmds.line, filename, row, test_name))
+            else
+              vim.api.nvim_echo({{"No test found"}}, false, {})
+            end
+          else
+            NavigationTestRunner(NavigationTestBuildCmd(test_config.cmds.line, filename, row, ""))
+          end
+        end
+      end
+    end
+
+    if config.tests then
+      vim.api.nvim_create_user_command("NavigationTestAll", NavigationTest("all"), { nargs = 0 })
+      vim.api.nvim_create_user_command("NavigationTestFile", NavigationTest("file"), { nargs = 0 })
+      vim.api.nvim_create_user_command("NavigationTestLine", NavigationTest("line"), { nargs = 0 })
+
+      vim.api.nvim_set_keymap("n", "<leader>ta", ":NavigationTestAll<cr>", { noremap = true })
+      vim.api.nvim_set_keymap("n", "<leader>tf", ":NavigationTestFile<cr>", { noremap = true })
+      vim.api.nvim_set_keymap("n", "<leader>tl", ":NavigationTestLine<cr>", { noremap = true })
     end
   end
 end
