@@ -188,5 +188,3 @@ else
 fi
 
 export KERL_BUILD_DOCS="yes"
-
-export PATH="$HOME/dotfiles/scripts:$PATH"

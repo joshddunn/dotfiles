@@ -19,7 +19,7 @@ fi
 install_plugin() {
   name=$1
   source=$2
-  dir = $home/.oh-my-zsh/custom/plugins/$name
+  dir=$home/.oh-my-zsh/custom/plugins/$name
   if [[ ! -d $dir ]]; then
     git clone $source $dir
   fi
