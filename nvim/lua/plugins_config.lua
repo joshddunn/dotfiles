@@ -83,7 +83,7 @@ function glob_pattern(type)
   return dirs
 end
 
-require("telescope").setup({
+require("telescope").setup {
   pickers = {
     find_files = {
       find_command = append_glob_pattern("files", { "rg", "--files", "--no-ignore", "--hidden", "--follow" })
@@ -92,7 +92,7 @@ require("telescope").setup({
       glob_pattern = glob_pattern("global")
     }
   }
-})
+}
 
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<c-f>", builtin.find_files, { noremap = true })
@@ -144,11 +144,6 @@ vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
 vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
 
 vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
-
--- indent guides
-vim.g.indent_guides_enable_on_vim_startup = 1
-vim.g.indent_guides_start_level = 2
-vim.g.indent_guides_guide_size = 1
 
 -- git gutter
 vim.g.gitgutter_enabled = 0
@@ -233,4 +228,14 @@ require("nvim-treesitter.configs").setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   }
+}
+
+-- indent-blankline
+vim.opt.termguicolors = true
+vim.cmd [[highlight IndentBlanklineIndent guifg=#474747 gui=nocombine]]
+
+require("indent_blankline").setup {
+  char_highlight_list = { "IndentBlanklineIndent" },
+  show_trailing_blankline_indent = false,
+  show_current_context = true,
 }
