@@ -1,30 +1,30 @@
 -- search / and backward search ?
-vim.api.nvim_set_keymap("", "<space>", "/", { noremap = true })
-vim.api.nvim_set_keymap("v", "<space>", "y/<C-r>0<cr><S-n>", { noremap = true })
-vim.api.nvim_set_keymap("", "<c-s>", "yiw/<C-r>0<cr><S-n>cgn", { noremap = true })
-vim.api.nvim_set_keymap("v", "<c-s>", "y/<C-r>0<cr><S-n>cgn", { noremap = true })
-vim.api.nvim_set_keymap("", "<c-space>", "?", { noremap = true })
+vim.keymap.set("", "<space>", "/")
+vim.keymap.set("v", "<space>", "y/<C-r>0<cr><S-n>")
+vim.keymap.set("", "<c-s>", "yiw/<C-r>0<cr><S-n>cgn")
+vim.keymap.set("v", "<c-s>", "y/<C-r>0<cr><S-n>cgn")
+vim.keymap.set("", "<c-space>", "?")
 
 -- remove search highlight
-vim.api.nvim_set_keymap("", "<leader><cr>", ":noh<cr>", { noremap = true, silent = true })
+vim.keymap.set("", "<leader><cr>", ":noh<cr>", { silent = true })
 
 -- windows
-vim.api.nvim_set_keymap("", "<C-l>", "<C-W>l", { noremap = true })
-vim.api.nvim_set_keymap("", "<C-j>", "<C-W>j", { noremap = true })
-vim.api.nvim_set_keymap("", "<C-k>", "<C-W>k", { noremap = true })
-vim.api.nvim_set_keymap("", "<C-h>", "<C-W>h", { noremap = true })
+vim.keymap.set("", "<C-l>", "<C-W>l")
+vim.keymap.set("", "<C-j>", "<C-W>j")
+vim.keymap.set("", "<C-k>", "<C-W>k")
+vim.keymap.set("", "<C-h>", "<C-W>h")
 
 -- copy to clipboard
-vim.api.nvim_set_keymap("v", "<leader>y", "\"+y", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>Y", "\"+yg_", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>y", "\"+y", { noremap = true })
+vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>Y", "\"+yg_")
+vim.keymap.set("n", "<leader>y", "\"+y")
 
 -- paste from clipboard
-vim.api.nvim_set_keymap("n", "<leader>p", "\"+p", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>P", "\"+p", { noremap = true })
-vim.api.nvim_set_keymap("v", "<leader>p", "\"+p", { noremap = true })
-vim.api.nvim_set_keymap("v", "<leader>P", "\"+p", { noremap = true })
+vim.keymap.set("n", "<leader>p", "\"+p")
+vim.keymap.set("n", "<leader>P", "\"+p")
+vim.keymap.set("v", "<leader>p", "\"+p")
+vim.keymap.set("v", "<leader>P", "\"+p")
 
 -- move between buffers
-vim.api.nvim_set_keymap("n", "<Tab>", ":NvimTreeClose<cr>:bn<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<S-Tab>", ":NvimTreeClose<cr>:bp<cr>", { noremap = true })
+vim.keymap.set("n", "<Tab>", ":NvimTreeClose<cr>:bn<cr>")
+vim.keymap.set("n", "<S-Tab>", ":NvimTreeClose<cr>:bp<cr>")

@@ -175,9 +175,9 @@ if vim.g.vim_navigation and NavigationProject() then
       vim.api.nvim_create_user_command("NavigationTestFile", NavigationTest("file"), { nargs = 0 })
       vim.api.nvim_create_user_command("NavigationTestLine", NavigationTest("line"), { nargs = 0 })
 
-      vim.api.nvim_set_keymap("n", "<leader>ta", ":NavigationTestAll<cr>", { noremap = true })
-      vim.api.nvim_set_keymap("n", "<leader>tf", ":NavigationTestFile<cr>", { noremap = true })
-      vim.api.nvim_set_keymap("n", "<leader>tl", ":NavigationTestLine<cr>", { noremap = true })
+      vim.keymap.set("n", "<leader>ta", ":NavigationTestAll<cr>")
+      vim.keymap.set("n", "<leader>tf", ":NavigationTestFile<cr>")
+      vim.keymap.set("n", "<leader>tl", ":NavigationTestLine<cr>")
     end
   end
 end

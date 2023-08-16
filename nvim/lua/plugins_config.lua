@@ -4,8 +4,8 @@ lib = require("lib")
 vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
 
 -- nvim-tree
-vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
-vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
+vim.keymap.set("", "<leader>nn", ":NvimTreeToggle<cr>")
+vim.keymap.set("", "<leader>nf", ":NvimTreeFindFile<cr>")
 
 require("nvim-tree").setup {
   view = {
@@ -96,21 +96,21 @@ require("telescope").setup {
 }
 
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<c-f>", builtin.find_files, { noremap = true })
-vim.keymap.set("n", "<leader>b", builtin.buffers, { noremap = true })
-vim.keymap.set("n", "<leader>g", builtin.live_grep, { noremap = true })
-vim.keymap.set("n", '<leader>G', builtin.grep_string, { noremap = true })
-vim.keymap.set("v", '<leader>G', builtin.grep_string, { noremap = true })
+vim.keymap.set("n", "<c-f>", builtin.find_files)
+vim.keymap.set("n", "<leader>b", builtin.buffers)
+vim.keymap.set("n", "<leader>g", builtin.live_grep)
+vim.keymap.set("n", '<leader>G', builtin.grep_string)
+vim.keymap.set("v", '<leader>G', builtin.grep_string)
 
 -- yankstack
-vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { noremap = true })
-vim.api.nvim_set_keymap("n", "c-P", "<Plug>yankstack_substitute_newer_paste", { noremap = true })
+vim.keymap.set("n", "c-p", "<Plug>yankstack_substitute_older_paste")
+vim.keymap.set("n", "c-P", "<Plug>yankstack_substitute_newer_paste")
 
 -- coc
-local opts = { silent = true, noremap = true, expr = true }
-vim.api.nvim_set_keymap("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-vim.api.nvim_set_keymap("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-vim.api.nvim_set_keymap("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+local opts = { silent = true, expr = true }
+vim.keymap.set("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+vim.keymap.set("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+vim.keymap.set("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 function _G.check_back_space()
   local col = vim.fn.col('.') - 1
@@ -123,10 +123,10 @@ vim.api.nvim_command([[
 
 vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
 
-vim.api.nvim_set_keymap("n", "gd", "<Plug>(coc-definition)", { silent = true })
-vim.api.nvim_set_keymap("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
-vim.api.nvim_set_keymap("n", "gi", "<Plug>(coc-implementation)", { silent = true })
-vim.api.nvim_set_keymap("n", "gr", "<Plug>(coc-references)", { silent = true })
+vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { silent = true })
+vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
+vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", { silent = true })
+vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
 
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "*.tsx" },
@@ -141,8 +141,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 vim.g.coc_global_extensions = { "coc-tsserver", "coc-prettier", "coc-eslint", "coc-emmet", "coc-css", "coc-json", "coc-elixir", "coc-yaml" }
 
 -- abolish
-vim.api.nvim_set_keymap("i", "_", "<C-]>_", { noremap = true })
-vim.api.nvim_set_keymap("i", "-", "<C-]>-", { noremap = true })
+vim.keymap.set("i", "_", "<C-]>_")
+vim.keymap.set("i", "-", "<C-]>-")
 
 vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
 
@@ -150,10 +150,10 @@ vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
 vim.g.gitgutter_enabled = 0
 
 -- easy align
-vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", { noremap = true })
-vim.api.nvim_set_keymap("x", "gax", "<Plug>(EasyAlign)<c-x>", { noremap = true })
-vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", { noremap = true })
-vim.api.nvim_set_keymap("n", "gax", "<Plug>(EasyAlign)ip<c-x>", { noremap = true })
+vim.keymap.set("x", "ga", "<Plug>(EasyAlign)")
+vim.keymap.set("x", "gax", "<Plug>(EasyAlign)<c-x>")
+vim.keymap.set("n", "ga", "<Plug>(EasyAlign)")
+vim.keymap.set("n", "gax", "<Plug>(EasyAlign)ip<c-x>")
 
 -- tmux-airline
 vim.g.tmuxline_powerline_separators = 0
@@ -175,23 +175,23 @@ vim.g.gh_open_command = "fn() { echo \"$@\" | pbcopy; }; fn "
 vim.g.gh_use_canonical = 1
 
 -- vim-sneak
-vim.api.nvim_set_keymap("", "f", "<Plug>Sneak_s", { noremap = true })
-vim.api.nvim_set_keymap("", "F", "<Plug>Sneak_S", { noremap = true })
+vim.keymap.set("", "f", "<Plug>Sneak_s")
+vim.keymap.set("", "F", "<Plug>Sneak_S")
 vim.g["sneak#s_next"] = 1
 
 -- vimspector
-vim.api.nvim_set_keymap("n", ",dd", ":call vimspector#Launch()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", ",de", ":call vimspector#Reset()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", ",dr", ":call vimspector#Restart()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", ",dc", ":call vimspector#Continue()<cr>", { noremap = true })
+vim.keymap.set("n", ",dd", ":call vimspector#Launch()<cr>")
+vim.keymap.set("n", ",de", ":call vimspector#Reset()<cr>")
+vim.keymap.set("n", ",dr", ":call vimspector#Restart()<cr>")
+vim.keymap.set("n", ",dc", ":call vimspector#Continue()<cr>")
 
-vim.api.nvim_set_keymap("n", ",dt", ":call vimspector#ToggleBreakpoint()<cr>", { noremap = true })
-vim.api.nvim_set_keymap("n", ",dT", ":call vimspector#ClearBreakpoints()<cr>", { noremap = true })
+vim.keymap.set("n", ",dt", ":call vimspector#ToggleBreakpoint()<cr>")
+vim.keymap.set("n", ",dT", ":call vimspector#ClearBreakpoints()<cr>")
 
-vim.api.nvim_set_keymap("n", ",dk", "<Plug>VimspectorRestart", {})
-vim.api.nvim_set_keymap("n", ",dh", "<Plug>VimspectorStepOut", {})
-vim.api.nvim_set_keymap("n", ",dl", "<Plug>VimspectorStepInto", {})
-vim.api.nvim_set_keymap("n", ",dj", "<Plug>VimspectorStepOver", {})
+vim.keymap.set("n", ",dk", "<Plug>VimspectorRestart")
+vim.keymap.set("n", ",dh", "<Plug>VimspectorStepOut")
+vim.keymap.set("n", ",dl", "<Plug>VimspectorStepInto")
+vim.keymap.set("n", ",dj", "<Plug>VimspectorStepOver")
 
 vim.g.vimspector_base_dir = os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/start/vimspector"
 vim.g.vimspector_install_gadgets = { 'vscode-node-debug2' }
@@ -219,7 +219,7 @@ vim.g.vimspector_sidebar_width = 100
 vim.g.vimspector_bottombar_height = 5
 
 -- copilot
-vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { silent = true, expr = true, script = true })
+vim.keymap.set("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { silent = true, expr = true, script = true })
 vim.g.copilot_no_tab_map = true
 
 -- treesitter
