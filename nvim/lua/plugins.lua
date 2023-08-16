@@ -6,9 +6,6 @@ require("use")({
   "fnune/base16-vim",
   "github/copilot.vim",
   "joom/vim-commentary",
-  "joshddunn/vim-glob",
-  "junegunn/fzf",
-  "junegunn/fzf.vim",
   "junegunn/vim-easy-align",
   "justinmk/vim-sneak",
   "maxbrunsfeld/vim-yankstack",
@@ -25,5 +22,6 @@ require("use")({
   "vim-airline/vim-airline-themes",
   { "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" },
   { "neoclide/coc.nvim", branch = "release" },
+  { "nvim-telescope/telescope.nvim", tag = '0.1.2', requires = "nvim-lua/plenary.nvim" },
   { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" },
 })

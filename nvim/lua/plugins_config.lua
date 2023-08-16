@@ -1,7 +1,28 @@
 lib = require("lib")
 
--- vim-glob
-vim.g.glob_ignore = {
+-- anyfold
+vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
+
+-- nvim-tree
+vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
+vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
+
+require("nvim-tree").setup {
+  view = {
+    side = 'right',
+    width = 50
+  }
+}
+
+-- colorscheme
+vim.cmd.colorscheme("base16-tomorrow-night")
+
+-- airline
+vim.g["airline#extensions#tabline#enabled"] = 1
+vim.g.airline_theme = "base16_tomorrow"
+
+-- telescope
+local glob_ignore = {
   shared = {
     "**/node_modules/**",
     ".git/**",
@@ -29,83 +50,56 @@ vim.g.glob_ignore = {
   }
 }
 
--- anyfold
-vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
+function append_glob_pattern(type, cmd)
+  local dirs = glob_pattern(type)
 
--- nvim-tree
-vim.api.nvim_set_keymap("", "<leader>nn", ":NvimTreeToggle<cr>", { noremap = true })
-vim.api.nvim_set_keymap("", "<leader>nf", ":NvimTreeFindFile<cr>", { noremap = true })
-
-require("nvim-tree").setup {
-  view = {
-    side = 'right',
-    width = 50
-  }
-}
-
--- colorscheme
-vim.cmd.colorscheme("base16-tomorrow-night")
-
--- airline
-vim.g["airline#extensions#tabline#enabled"] = 1
-vim.g.airline_theme = "base16_tomorrow"
-
--- fzf
-vim.g.fzf_command_prefix = "Fzf"
-vim.g.fzf_tags_command = "ctags -R"
-vim.g.fzf_buffers_jump = 1
-vim.g.fzf_preview_window = { 'right:50%:hidden', 'ctrl-/' }
-
-vim.api.nvim_set_keymap("", "<leader>j", ":Files<cr>", { noremap = true }) -- do i ever use this?
-vim.api.nvim_set_keymap("", "<c-f>", ":Files<cr>", { noremap = true })
-vim.api.nvim_set_keymap("", "<leader>b", ":FzfBuffers<cr>", { noremap = true }) -- do i ever use this?
-
-vim.env["FZF_DEFAULT_COMMAND"] = "rg --files --no-ignore --hidden --follow " .. vim.fn["glob#ignore"]("files")
-
-vim.api.nvim_command("command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)")
-
-function exclude_types(types)
-  return lib.join(lib.map(lib.split(types, " "), function(t)
-    return "--type-not \"" .. t .. "\""
-  end), " ")
-end
-
-function RipgrepFzf(types, fullscreen)
-  local command = "rg --type-add 'feature:*.{feature}' --line-number --no-heading --color=always --smart-case " .. exclude_types(types) .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
-  local initial_command = string.gsub(command, "{q}", "''")
-  local spec = { options = {"--phony", "--bind", "change:reload:" .. command} }
-
-  vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
-end
-
--- might need to shellescape the query
-function RipgrepFzfQuery(query, fullscreen)
-  local command = "rg --line-number --no-heading --color=always --smart-case " .. vim.fn["glob#ignore"]("global") .. " -- {q} || true"
-  local initial_command = string.gsub(command, "{q}", "'" .. shellescape(query) .. "'")
-  local spec = { options = {"--phony", "--query", shellescape(query), "--bind", "change:reload:" .. command} }
-
-  vim.fn["fzf#vim#grep"](initial_command, 1, vim.fn["fzf#vim#with_preview"](spec), fullscreen)
-end
-
-function shellescape(str)
-  str = string.gsub(str, "\\", "\\\\")
-  str = string.gsub(str, "%(", "\\(")
-  str = string.gsub(str, "%)", "\\)")
-  str = string.gsub(str, "%[", "\\[")
-  str = string.gsub(str, "%]", "\\]")
-
-  subs = { "*", "?", "{", "}" }
-
-  lib.each(subs, function(sub)
-    str = string.gsub(str, sub, "\\" .. sub)
+  lib.each(dirs, function(dir)
+    lib.push(cmd, "--glob")
+    lib.push(cmd, dir)
   end)
 
-  return str
+  return cmd
 end
 
-vim.api.nvim_command("command! -nargs=* -bang RgQuery call v:lua.RipgrepFzfQuery(<q-args>, <bang>0)")
-vim.api.nvim_command("command! -nargs=* -bang Rg call v:lua.RipgrepFzf(<q-args>, <bang>0)")
-vim.api.nvim_set_keymap("", "<leader>g", ":Rg<cr>", { noremap = true })
+function glob_pattern(type)
+  local dirs = {}
+
+  if (type == "global") then
+    lib.each(glob_ignore.global, function(dir)
+      lib.push(dirs, "!" .. dir)
+    end)
+  end
+
+  if (type == "files") then
+    lib.each(glob_ignore.files, function(dir)
+      lib.push(dirs, "!" .. dir)
+    end)
+  end
+
+  lib.each(glob_ignore.shared, function(dir)
+    lib.push(dirs, "!" .. dir)
+  end)
+
+  return dirs
+end
+
+require("telescope").setup({
+  pickers = {
+    find_files = {
+      find_command = append_glob_pattern("files", { "rg", "--files", "--no-ignore", "--hidden", "--follow" })
+    },
+    live_grep = {
+      glob_pattern = glob_pattern("global")
+    }
+  }
+})
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<c-f>", builtin.find_files, { noremap = true })
+vim.keymap.set("n", "<leader>b", builtin.buffers, { noremap = true })
+vim.keymap.set("n", "<leader>g", builtin.live_grep, { noremap = true })
+vim.keymap.set("n", '<leader>G', builtin.grep_string, { noremap = true })
+vim.keymap.set("v", '<leader>G', builtin.grep_string, { noremap = true })
 
 -- yankstack
 vim.api.nvim_set_keymap("n", "c-p", "<Plug>yankstack_substitute_older_paste", { noremap = true })

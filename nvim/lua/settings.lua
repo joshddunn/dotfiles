@@ -107,16 +107,6 @@ vim.api.nvim_create_user_command("BufOnly", BufDelete("only"), { nargs = 0 })
 vim.api.nvim_create_user_command("BufAfter", BufDelete("after"), { nargs = 0 })
 vim.api.nvim_create_user_command("BufBefore", BufDelete("before"), { nargs = 0 })
 
--- search selection
-function SearchSelection(opts)
-  vim.api.nvim_command("RgQuery " .. opts.args)
-end
-
-vim.api.nvim_create_user_command("SearchSelection", SearchSelection, { nargs = 1 })
-
-vim.api.nvim_set_keymap("", "<leader>G", "yiw:SearchSelection <C-r>0<cr>", { noremap = true })
-vim.api.nvim_set_keymap("v", "<leader>G", "y:SearchSelection <C-r>0<cr>", { noremap = true })
-
 -- global replace
 function GlobalReplace(opts)
   local tmpfile = "global-replace-tmp.txt"
