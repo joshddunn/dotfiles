@@ -86,7 +86,8 @@ end
 require("telescope").setup {
   pickers = {
     find_files = {
-      find_command = append_glob_pattern("files", { "rg", "--files", "--no-ignore", "--hidden", "--follow" })
+      find_command = append_glob_pattern("files", { "rg", "--files", "--no-ignore", "--hidden", "--follow" }),
+      follow = true
     },
     live_grep = {
       glob_pattern = glob_pattern("global")
