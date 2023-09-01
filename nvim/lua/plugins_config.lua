@@ -84,13 +84,18 @@ function glob_pattern(type)
 end
 
 require("telescope").setup {
+  defaults = {
+    path_display = { "smart" },
+    layout_strategy = "vertical"
+  },
   pickers = {
     find_files = {
       find_command = append_glob_pattern("files", { "rg", "--files", "--no-ignore", "--hidden", "--follow" }),
       follow = true
     },
     live_grep = {
-      glob_pattern = glob_pattern("global")
+      glob_pattern = glob_pattern("global"),
+      additional_args = { "--trim" }
     }
   }
 }
@@ -219,12 +224,13 @@ vim.g.vimspector_sidebar_width = 100
 vim.g.vimspector_bottombar_height = 5
 
 -- copilot
-vim.keymap.set("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { silent = true, expr = true, script = true })
+-- if i use other keymap api, it inserts weird characters
+vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { noremap = true, silent = true, expr = true, script = true })
 vim.g.copilot_no_tab_map = true
 
 -- treesitter
 require("nvim-treesitter.configs").setup {
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "typescript", "tsx", "elixir", "heex", "yaml" },
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "typescript", "tsx", "elixir", "heex", "yaml", "terraform" },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
