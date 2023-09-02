@@ -1,22 +1,5 @@
 lib = require("lib")
 
--- anyfold
-vim.api.nvim_command("autocmd BufRead * AnyFoldActivate")
-
--- nvim-tree
-vim.keymap.set("", "<leader>nn", ":NvimTreeToggle<cr>")
-vim.keymap.set("", "<leader>nf", ":NvimTreeFindFile<cr>")
-
-require("nvim-tree").setup {
-  view = {
-    side = 'right',
-    width = 50
-  }
-}
-
--- colorscheme
-vim.cmd.colorscheme("base16-tomorrow-night")
-
 -- telescope
 local glob_ignore = {
   shared = {
@@ -103,10 +86,6 @@ vim.keymap.set("n", "<leader>g", builtin.live_grep)
 vim.keymap.set("n", '<leader>G', builtin.grep_string)
 vim.keymap.set("v", '<leader>G', builtin.grep_string)
 
--- yankstack
-vim.keymap.set("n", "c-p", "<Plug>yankstack_substitute_older_paste")
-vim.keymap.set("n", "c-P", "<Plug>yankstack_substitute_newer_paste")
-
 -- coc
 local opts = { silent = true, expr = true }
 vim.keymap.set("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
@@ -141,21 +120,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 
 vim.g.coc_global_extensions = { "coc-tsserver", "coc-prettier", "coc-eslint", "coc-emmet", "coc-css", "coc-json", "coc-elixir", "coc-yaml" }
 
--- abolish
-vim.keymap.set("i", "_", "<C-]>_")
-vim.keymap.set("i", "-", "<C-]>-")
-
-vim.g.abolish_save_file = os.getenv("HOME") .. "/dotfiles/lua/after/abolish.vim"
-
--- git gutter
-vim.g.gitgutter_enabled = 0
-
--- easy align
-vim.keymap.set("x", "ga", "<Plug>(EasyAlign)")
-vim.keymap.set("x", "gax", "<Plug>(EasyAlign)<c-x>")
-vim.keymap.set("n", "ga", "<Plug>(EasyAlign)")
-vim.keymap.set("n", "gax", "<Plug>(EasyAlign)ip<c-x>")
-
 -- search highlighting
 vim.api.nvim_command("highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline")
 
@@ -164,11 +128,6 @@ vim.g.gh_line_map_default = 0
 vim.g.gh_line_blame_map_default = 0
 vim.g.gh_open_command = "fn() { echo \"$@\" | pbcopy; }; fn "
 vim.g.gh_use_canonical = 1
-
--- vim-sneak
-vim.keymap.set("", "f", "<Plug>Sneak_s")
-vim.keymap.set("", "F", "<Plug>Sneak_S")
-vim.g["sneak#s_next"] = 1
 
 -- vimspector
 vim.keymap.set("n", ",dd", ":call vimspector#Launch()<cr>")
@@ -208,27 +167,3 @@ vim.g.vimspector_configurations = {
 
 vim.g.vimspector_sidebar_width = 100
 vim.g.vimspector_bottombar_height = 5
-
--- copilot
--- if i use other keymap api, it inserts weird characters
-vim.api.nvim_set_keymap("i", "<C-j>", "copilot#Accept(\"\\<CR>\")", { noremap = true, silent = true, expr = true, script = true })
-vim.g.copilot_no_tab_map = true
-
--- treesitter
-require("nvim-treesitter.configs").setup {
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "typescript", "tsx", "elixir", "heex", "yaml", "terraform" },
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  }
-}
-
--- indent-blankline
-vim.opt.termguicolors = true
-vim.cmd [[highlight IndentBlanklineIndent guifg=#474747 gui=nocombine]]
-
-require("indent_blankline").setup {
-  char_highlight_list = { "IndentBlanklineIndent" },
-  show_trailing_blankline_indent = false,
-  show_current_context = true,
-}
