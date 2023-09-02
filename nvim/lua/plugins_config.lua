@@ -17,10 +17,6 @@ require("nvim-tree").setup {
 -- colorscheme
 vim.cmd.colorscheme("base16-tomorrow-night")
 
--- airline
-vim.g["airline#extensions#tabline#enabled"] = 1
-vim.g.airline_theme = "base16_tomorrow"
-
 -- telescope
 local glob_ignore = {
   shared = {
@@ -159,16 +155,6 @@ vim.keymap.set("x", "ga", "<Plug>(EasyAlign)")
 vim.keymap.set("x", "gax", "<Plug>(EasyAlign)<c-x>")
 vim.keymap.set("n", "ga", "<Plug>(EasyAlign)")
 vim.keymap.set("n", "gax", "<Plug>(EasyAlign)ip<c-x>")
-
--- tmux-airline
-vim.g.tmuxline_powerline_separators = 0
-vim.g.tmuxline_separators = {
-  left =      "",
-  left_alt =  "❯",
-  right =     "",
-  right_alt = "❮",
-  space =     " "
-}
 
 -- search highlighting
 vim.api.nvim_command("highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline")
