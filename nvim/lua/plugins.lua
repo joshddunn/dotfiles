@@ -14,7 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = lib.map(
-  vim.fn.readdir(vim.fn.stdpath('config') .. "/lua/plugins"),
+  vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/plugins"),
   function(file)
     return require("plugins/" .. lib.replace(file, ".lua", "", { suffix = "$" }))
   end
