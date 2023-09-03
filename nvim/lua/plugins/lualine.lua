@@ -51,6 +51,15 @@ return {
         theme = tomorrow_night,
         component_separators = { left = '>', right = '<'},
         section_separators = { left = '', right = ''},
+      },
+      sections = {
+        -- can do something like this
+        -- local function x()
+        --   return 'some information here'
+        -- end
+        --
+        -- lualine_x = { x }
+        lualine_x = {}
       }
     })
   end
