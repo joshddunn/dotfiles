@@ -21,3 +21,11 @@ local plugins = lib.map(
 )
 
 require("lazy").setup(plugins)
+
+-- custom plugins
+lib.each(
+  vim.fn.readdir(vim.fn.stdpath("config") .. "/lua/custom"),
+  function(file)
+    require("custom/" .. lib.replace(file, ".lua", "", { suffix = "$" }))
+  end
+)
