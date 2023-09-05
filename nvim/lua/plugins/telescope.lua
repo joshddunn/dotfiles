@@ -2,7 +2,7 @@ lib = require("lib")
 
 return {
   "nvim-telescope/telescope.nvim",
-  tag = '0.1.2',
+  tag = "0.1.2",
   dependencies = "nvim-lua/plenary.nvim",
   config = function()
     local glob_ignore = {

@@ -1,3 +1,5 @@
+local colors = require("colors")
+
 return {
   "neoclide/coc.nvim",
   branch = "release",
@@ -16,7 +18,7 @@ return {
       autocmd BufWritePre *.ts,*.js,*.py,*.rb,*.go silent! call CocAction('runCommand', 'editor.action.organizeImport')
     ]])
 
-    vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=#ffffff guibg=#444444")
+    vim.api.nvim_command("highlight Pmenu ctermfg=15 ctermbg=0 guifg=" .. colors.white .. " guibg=" .. colors.gray4)
 
     vim.keymap.set("n", "gd", "<Plug>(coc-definition)", { silent = true })
     vim.keymap.set("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
