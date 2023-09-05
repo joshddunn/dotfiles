@@ -122,6 +122,3 @@ function GlobalReplace(opts)
 end
 
 vim.api.nvim_create_user_command("GlobalReplace", GlobalReplace, { nargs = "*" })
-
--- search highlighting
-vim.api.nvim_command("highlight Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline")
