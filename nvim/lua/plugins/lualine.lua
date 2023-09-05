@@ -4,7 +4,7 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
-    local b = { bg = colors.gray5, fg = colors.white }
+    local b = { bg = colors.gray5, fg = colors.gray1 }
     local c = { bg = colors.gray6, fg = colors.orange }
 
     local tomorrow_night = {
