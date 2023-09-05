@@ -3,7 +3,10 @@ local colors = require("colors")
 return {
   "lukas-reineke/indent-blankline.nvim",
   config = function()
-    vim.cmd("highlight IndentBlanklineIndent guifg=" .. colors.gray5 .. " gui=nocombine")
+    vim.api.nvim_set_hl(0, "IndentBlanklineIndent", {
+      fg = colors.gray5,
+      nocombine = true
+    })
 
     require("indent_blankline").setup {
       char_highlight_list = { "IndentBlanklineIndent" },
