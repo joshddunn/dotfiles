@@ -163,8 +163,8 @@ end
 
 lib.replace = function(str, pattern, replacement, opts)
   opts = opts or {}
-  prefix = opts.prefix or ''
-  suffix = opts.suffix or ''
+  prefix = opts.prefix or ""
+  suffix = opts.suffix or ""
   pattern = string.gsub(pattern, "[%(%)%[%]%.%+%-%*%?%$%%]", "%%%1")
   pattern = prefix .. pattern .. suffix
   replacement = string.gsub(replacement, "[%%]", "%%%%")

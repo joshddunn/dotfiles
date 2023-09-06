@@ -50,18 +50,18 @@ if vim.g.vim_navigation and NavigationProject() then
     -- alternate
     function NavigationEditAlternateFile()
       local alt_config = config.alternate
-      local filename = lib.replace(vim.api.nvim_buf_get_name(0), vim.fn.getcwd() .. '/', '')
-      local old_dir = ''
-      local new_dir = ''
-      local old_pattern = ''
-      local new_pattern = ''
+      local filename = lib.replace(vim.api.nvim_buf_get_name(0), vim.fn.getcwd() .. "/", "")
+      local old_dir = ""
+      local new_dir = ""
+      local old_pattern = ""
+      local new_pattern = ""
 
-      if (filename:match(alt_config.test_file_pattern .. '$')) then
+      if (filename:match(alt_config.test_file_pattern .. "$")) then
         old_dir = alt_config.test_dir
         new_dir = alt_config.dir
         old_pattern = alt_config.test_file_pattern
         new_pattern = alt_config.file_pattern
-      elseif (filename:match(alt_config.file_pattern .. '$')) then
+      elseif (filename:match(alt_config.file_pattern .. "$")) then
         old_dir = alt_config.dir
         new_dir = alt_config.test_dir
         old_pattern = alt_config.file_pattern
@@ -139,7 +139,7 @@ if vim.g.vim_navigation and NavigationProject() then
       return function()
         local test_config = config.tests
         local filetype = vim.bo.filetype
-        local filename = lib.replace(vim.api.nvim_buf_get_name(0), vim.fn.getcwd() .. '/', '')
+        local filename = lib.replace(vim.api.nvim_buf_get_name(0), vim.fn.getcwd() .. "/", "")
         local row, column = unpack(vim.api.nvim_win_get_cursor(0))
 
         if (type == "all") then

@@ -15,7 +15,7 @@ return {
     vim.keymap.set("n", ",dj", "<Plug>VimspectorStepOver")
 
     vim.g.vimspector_base_dir = os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/start/vimspector"
-    vim.g.vimspector_install_gadgets = { 'vscode-node-debug2' }
+    vim.g.vimspector_install_gadgets = { "vscode-node-debug2" }
     vim.g.vimspector_configurations = {
       Node = {
         adapter = "vscode-node",

@@ -76,8 +76,13 @@ vim.wo.relativenumber = true
 vim.o.wrap = true
 vim.wo.wrap = true
 
-vim.api.nvim_command("autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4")
 vim.api.nvim_create_user_command("Ctags", "!ctags -R .", { nargs = 0 })
+
+-- display tabs for golang
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.go",
+  command = "setlocal noexpandtab tabstop=2 shiftwidth=2 sts=4"
+})
 
 -- trailing whitespace
 vim.api.nvim_create_autocmd("BufWritePre", {
