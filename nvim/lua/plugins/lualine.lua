@@ -1,4 +1,5 @@
 local colors = require("colors")
+local lib = require("lib")
 
 return {
   "nvim-lualine/lualine.nvim",
@@ -10,44 +11,48 @@ return {
     local tomorrow_night = {
       normal = {
         a = { bg = colors.green, fg = colors.black, gui = "bold" },
-        b = b, c = c, x = b
+        b = b, c = c
       },
       insert = {
         a = { bg = colors.blue, fg = colors.black, gui = "bold" },
-        b = b, c = c, x = b
+        b = b, c = c
       },
       visual = {
         a = { bg = colors.magenta, fg = colors.black, gui = "bold" },
-        b = b, c = c, x = b
+        b = b, c = c
       },
       replace = {
         a = { bg = colors.red, fg = colors.black, gui = "bold" },
-        b = b, c = c, x = b
+        b = b, c = c
       },
       command = {
         a = { bg = colors.cyan, fg = colors.black, gui = "bold" },
-        b = b, c = c, x = b
+        b = b, c = c
       },
       inactive = {
         a = { bg = colors.yellow, fg = colors.black, gui = "bold" },
-        b = b, c = c, x = b
+        b = b, c = c
       }
     }
 
-    require("lualine").setup({
+    local lualine = require("lualine")
+
+    lualine.setup({
       options = {
         theme = tomorrow_night,
         component_separators = { left = "❯", right = "❮"},
         section_separators = { left = "", right = ""},
       },
       sections = {
-        -- can do something like this
-        -- local function x()
-        --   return "some information here"
-        -- end
-        --
-        -- lualine_x = { x }
-        lualine_x = {}
+        lualine_x = { function()
+          local status = vim.api.nvim_eval("coc#status()")
+          if lib.includes(status, "Initializing") then
+            vim.fn.timer_start(100, function()
+              lualine.refresh({ place = { "statusline" } })
+            end)
+          end
+          return status
+        end }
       }
     })
   end
