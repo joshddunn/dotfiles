@@ -1,1 +1,0 @@
-return "joom/vim-commentary"
