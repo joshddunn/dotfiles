@@ -44,6 +44,19 @@ return {
         },
         indicator_visible = {
           bg = colors.gray6
+        },
+        duplicate_selected = {
+          bg = colors.gray5,
+          fg = colors.gray1,
+          bold = false
+        },
+        duplicate_visible = {
+          bg = colors.gray6,
+          fg = colors.orange
+        },
+        duplicate = {
+          bg = colors.gray6,
+          fg = colors.orange
         }
       }
     })
