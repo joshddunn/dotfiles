@@ -44,6 +44,7 @@ return {
         section_separators = { left = "", right = ""},
       },
       sections = {
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = { function()
           local status = vim.api.nvim_eval("coc#status()")
           if lib.includes(status, "Initializing") then
