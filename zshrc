@@ -64,7 +64,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-BUNDLED_COMMANDS=(rails)
 ZSH_AUTOSUGGEST_USE_ASYNC="true"
 
 plugins=(
@@ -72,7 +71,6 @@ plugins=(
   zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
-  bundler
   z.lua
 )
 
@@ -108,7 +106,6 @@ export EDITOR='nvim'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias mux="jmux"
-alias love="/Applications/love.app/Contents/MacOS/love"
 alias zc='z -c'      # restrict matches to subdirs of $PWD
 alias zz='z -i'      # cd with interactive selection
 alias zf='z -I'      # use fzf to select in multiple matches
