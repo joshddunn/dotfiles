@@ -24,6 +24,6 @@ return {
     vim.keymap.set("n", "gi", "<Plug>(coc-implementation)", { silent = true })
     vim.keymap.set("n", "gr", "<Plug>(coc-references)", { silent = true })
 
-    vim.g.coc_global_extensions = { "coc-tsserver", "coc-prettier", "coc-eslint", "coc-css", "coc-json", "coc-elixir", "coc-yaml" }
+    vim.g.coc_global_extensions = { "coc-tsserver", "coc-prettier", "coc-eslint", "coc-css", "coc-json", "coc-elixir", "coc-yaml", "@yaegassy/coc-astro" }
   end
 }
