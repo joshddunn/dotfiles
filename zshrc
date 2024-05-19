@@ -105,7 +105,6 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias mux="jmux"
 alias zc='z -c'      # restrict matches to subdirs of $PWD
 alias zz='z -i'      # cd with interactive selection
 alias zf='z -I'      # use fzf to select in multiple matches
@@ -183,5 +182,9 @@ if [ "$(arch)" = "arm64" ]; then
 else
   eval "$(/usr/local/bin/brew shellenv)"
 fi
+
+mux() {
+  eval $(jmux $@)
+}
 
 export KERL_BUILD_DOCS="yes"
