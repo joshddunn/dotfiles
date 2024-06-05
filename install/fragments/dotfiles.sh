@@ -33,7 +33,6 @@ ln -si ~/dotfiles/asdf/default-python-packages ~/.default-python-packages
 ln -si ~/dotfiles/asdf/tool-versions ~/.tool-versions
 ln -si ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -si ~/dotfiles/nvim/lua ~/.config/nvim/
-ln -si ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 ##########
 

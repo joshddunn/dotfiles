@@ -46,7 +46,7 @@ return {
       sections = {
         lualine_c = { { "filename", path = 1 } },
         lualine_x = { function()
-          local status = vim.api.nvim_eval("coc#status()")
+          local status = vim.lsp.status()
           if lib.includes(status, "Initializing") then
             vim.fn.timer_start(100, function()
               lualine.refresh({ place = { "statusline" } })
