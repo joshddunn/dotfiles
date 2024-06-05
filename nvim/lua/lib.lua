@@ -19,6 +19,14 @@ lib.each_with_index = function(arr, fn)
   end
 end
 
+lib.keys = function(arr)
+  local keys = {}
+  for key, v in pairs(arr) do
+    lib.push(keys, key)
+  end
+  return keys
+end
+
 lib.any = function(arr, fn)
   for i, v in ipairs(arr) do
     if fn(v, i) then
