@@ -22,7 +22,8 @@ return {
         "**/vendor/**",
         ".next/**",
         ".elixir_ls/**",
-        "dialyzer/**"
+        "dialyzer/**",
+        "**/*.min.js"
       },
       files = {
       },
