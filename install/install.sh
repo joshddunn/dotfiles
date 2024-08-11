@@ -1,4 +1,4 @@
-for fragment in brew dotfiles asdf git zsh; do
+for fragment in brew dotfiles asdf zsh; do
   sh fragments/$fragment.sh
   echo ""
 done

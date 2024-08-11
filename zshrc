@@ -71,7 +71,6 @@ plugins=(
   zsh-completions
   zsh-autosuggestions
   zsh-syntax-highlighting
-  z.lua
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -105,10 +104,6 @@ export EDITOR='nvim'
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias zc='z -c'      # restrict matches to subdirs of $PWD
-alias zz='z -i'      # cd with interactive selection
-alias zf='z -I'      # use fzf to select in multiple matches
-alias zb='z -b'      # quickly cd to the parent directory
 
 # vi mode
 bindkey -v

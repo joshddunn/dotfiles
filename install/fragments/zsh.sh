@@ -28,7 +28,6 @@ install_plugin() {
 install_plugin zsh-autosuggestions https://github.com/zsh-users/zsh-autosuggestions
 install_plugin zsh-syntax-highlighting https://github.com/zsh-users/zsh-syntax-highlighting.git
 install_plugin zsh-completions https://github.com/zsh-users/zsh-completions
-install_plugin z.lua https://github.com/skywind3000/z.lua.git
 
 ##########
 

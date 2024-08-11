@@ -23,6 +23,7 @@ if [[ -z $(rg "$cmd" ~/.tmux.conf) ]]; then
 fi
 
 cp -i ~/dotfiles/jmux.yaml ~/.jmux.yaml
+cp -i ~/dotfiles/gitconfig ~/.gitconfig
 
 mkdir ~/.config/nvim
 

@@ -1,0 +1,13 @@
+[init]
+	templatedir = ~/dotfiles/git-templates
+[alias]
+	unadd = reset HEAD
+[pager]
+	diff = false
+[push]
+	default = current
+	autoSetupRemote = true
+[pull]
+	rebase = true
+[diff]
+	colorMoved = zebra

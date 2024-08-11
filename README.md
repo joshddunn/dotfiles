@@ -1,17 +1,12 @@
 # My dotfiles
 
-This configuration is made to be used on mac.
+These dotfiles are built for Mac.
 
 ## Installation
 
-Installing this configuration is relatively easy. First, clone this repository.
+Run the following commands:
 
     git clone https://github.com/joshddunn/dotfiles ~/dotfiles
-
-### Mac
-
-If you are on Mac, install with
-
     cd ~/dotfiles/install
     sh install.sh
 
