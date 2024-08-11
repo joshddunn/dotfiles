@@ -1,4 +1,3 @@
-brew "ffmpeg"
 brew "fzf"
 brew "gh"
 brew "neovim"

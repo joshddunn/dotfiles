@@ -152,34 +152,8 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-gif() {
-  cd ~/Desktop
-
-  if [[ $1 == "last" ]]
-  then
-    local file=$(ls ~/Desktop | grep "screen_recording" | tail -1)
-  else
-    local file=$1
-  fi
-  local gif_path=${file:s/.mov/.gif}
-
-  local palette='/tmp/palette.png'
-  local filters='fps=25,scale=1080:-1:flags=lanczos'
-
-  ffmpeg -v warning -i $file -vf "$filters,palettegen" -y $palette
-  ffmpeg -v warning -i $file -i $palette -lavfi "$filters [x]; [x][1:v] paletteuse" -y $gif_path
-
-  cd -
-}
-
-if [ "$(arch)" = "arm64" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-else
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
-
 mux() {
   eval $(jmux $@)
 }
 
-export KERL_BUILD_DOCS="yes"
+eval "$(/opt/homebrew/bin/brew shellenv)"
