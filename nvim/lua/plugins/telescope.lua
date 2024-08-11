@@ -7,30 +7,14 @@ return {
   config = function()
     local glob_ignore = {
       shared = {
-        "**/node_modules/**",
         ".git/**",
-        ".bundle/**",
-        "__*/**",
-        "tmp/**",
-        "**/*.class",
-        "_build/**",
-        "deps/**",
-        "assets/node_modules/**",
-        "priv/static/**",
-        "modules/**",
-        "dist/**",
-        "**/vendor/**",
-        ".next/**",
-        ".elixir_ls/**",
-        "dialyzer/**",
-        "**/*.min.js"
+        ".keep",
       },
       files = {
       },
       global = {
-        "package-lock.json",
-        "Gemfile.lock",
-        "tags",
+        "*-lock.*",
+        "*.lock"
       }
     }
 
@@ -74,7 +58,7 @@ return {
       },
       pickers = {
         find_files = {
-          find_command = append_glob_pattern("files", { "rg", "--files", "--no-ignore", "--hidden", "--follow" }),
+          find_command = append_glob_pattern("files", { "rg", "--files", "--hidden", "--follow" }),
           follow = true
         },
         live_grep = {
