@@ -2,7 +2,7 @@
 
 Brewfile*.lock.json
 
-nvim/lua/work.lua
-zshrc.work
+work.*
+*.work
 
 !.keep

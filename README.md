@@ -12,6 +12,6 @@ Run the following commands:
 
 Restart your system (required for installed fonts).
 
-Import `~/dotfiles/iterm2.json` as an iTerm2 profile.
+Import `~/dotfiles/templates/iterm2.json` as an iTerm2 profile.
 
 Then start using nvim (after `:CheckHealth` passes) and install nvim plugins with `:Lazy`.
