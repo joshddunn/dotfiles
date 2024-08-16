@@ -53,4 +53,8 @@ lib.replace = function(str, pattern, replacement, opts)
   return string.gsub(str, pattern, replacement)
 end
 
+lib.path = function(path)
+  return os.getenv("HOME") .. path
+end
+
 return lib

@@ -1,3 +1,5 @@
+local lib = require("lib")
+
 return {
   "puremourning/vimspector",
   init = function()
@@ -14,7 +16,7 @@ return {
     vim.keymap.set("n", ",dl", "<Plug>VimspectorStepInto")
     vim.keymap.set("n", ",dj", "<Plug>VimspectorStepOver")
 
-    vim.g.vimspector_base_dir = os.getenv("HOME") .. "/.local/share/nvim/site/pack/packer/start/vimspector"
+    vim.g.vimspector_base_dir = lib.path("/.local/share/nvim/site/pack/packer/start/vimspector")
     vim.g.vimspector_install_gadgets = { "vscode-node-debug2" }
     vim.g.vimspector_configurations = {
       Node = {
