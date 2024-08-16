@@ -1,3 +1,4 @@
+brew "asdf"
 brew "fzf"
 brew "gh"
 brew "neovim"
@@ -5,8 +6,9 @@ brew "ripgrep"
 brew "tmux"
 brew "zsh"
 
-cask "rectangle"
 cask "dbeaver-community"
+cask "iterm2"
+cask "rectangle"
 
 # cask fonts
 tap "homebrew/cask-fonts"

@@ -1,16 +1,14 @@
-echo "Do you want to install asdf? (y/n)"
+echo "Do you want to setup asdf? (y/n)"
 read install
 
 if [[ $install != "y" ]]; then
-  echo "Skipping asdf install."
+  echo "Skipping asdf setup."
   exit
 fi
 
-echo "Installing asdf..."
+echo "Setting up asdf..."
 
 ##########
-
-brew bundle --file=~/dotfiles/brewfiles/Brewfile.asdf
 
 cmd=". $(brew --prefix asdf)/libexec/asdf.sh"
 if [[ -z $(rg "$cmd" ~/.zshrc) ]]; then
@@ -27,4 +25,4 @@ asdf install
 
 ##########
 
-echo "Done installing asdf."
+echo "Done setting up asdf."

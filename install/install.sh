@@ -1,5 +1,5 @@
 for fragment in brew dotfiles asdf zsh; do
-  sh fragments/$fragment.sh
+  sh $fragment.sh
   echo ""
 done
 

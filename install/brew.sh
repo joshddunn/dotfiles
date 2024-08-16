@@ -16,7 +16,9 @@ else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
-brew bundle --file=~/dotfiles/brewfiles/Brewfile
+brew bundle --file=./Brewfile
+
+rm ./Brewfile.lock.json
 
 ##########
 
