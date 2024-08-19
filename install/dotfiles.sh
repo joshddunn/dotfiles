@@ -25,9 +25,9 @@ fi
 cp -i ~/dotfiles/templates/jmux.yaml ~/.jmux.yaml
 cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
 
-cp -i ~/dotfiles/asdf/tool-versions ~/.tool-versions
-cp -i ~/dotfiles/asdf/asdfrc ~/.asdfrc
-cp -i ~/dotfiles/asdf/default-npm-packages ~/.default-npm-packages
+cp -i ~/dotfiles/templates/asdf/tool-versions ~/.tool-versions
+cp -i ~/dotfiles/templates/asdf/asdfrc ~/.asdfrc
+cp -i ~/dotfiles/templates/asdf/default-npm-packages ~/.default-npm-packages
 
 mkdir -p ~/.config/nvim
 
