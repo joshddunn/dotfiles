@@ -25,11 +25,11 @@ fi
 cp -i ~/dotfiles/templates/jmux.yaml ~/.jmux.yaml
 cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
 
-mkdir -p ~/.config/nvim
+cp -i ~/dotfiles/asdf/tool-versions ~/.tool-versions
+cp -i ~/dotfiles/asdf/asdfrc ~/.asdfrc
+cp -i ~/dotfiles/asdf/default-npm-packages ~/.default-npm-packages
 
-ln -si ~/dotfiles/asdf/asdfrc ~/.asdfrc
-ln -si ~/dotfiles/asdf/default-npm-packages ~/.default-npm-packages
-ln -si ~/dotfiles/asdf/tool-versions ~/.tool-versions
+mkdir -p ~/.config/nvim
 
 ln -si ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -si ~/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
