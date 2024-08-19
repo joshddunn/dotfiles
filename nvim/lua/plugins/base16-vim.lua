@@ -1,3 +1,5 @@
+local colors = require("colors")
+
 return {
   "fnune/base16-vim",
   init = function()

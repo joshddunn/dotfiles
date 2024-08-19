@@ -1,5 +1,3 @@
-local colors = require("colors")
-
 return {
   "pseewald/vim-anyfold",
   init = function()

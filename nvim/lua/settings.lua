@@ -5,7 +5,6 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.cmdheight = 2
 vim.opt.expandtab = true
-vim.opt.fileformats = { "unix", "dos", "mac" }
 vim.opt.foldlevel = 99
 vim.opt.ignorecase = true
 vim.opt.matchtime = 2
