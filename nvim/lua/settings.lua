@@ -3,9 +3,6 @@ local lib = require("lib")
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 
-vim.g.python_host_prog = lib.path("/.asdf/shims/python2")
-vim.g.python3_host_prog = lib.path("/.asdf/shims/python3")
-
 vim.opt.cmdheight = 2
 vim.opt.expandtab = true
 vim.opt.fileformats = { "unix", "dos", "mac" }

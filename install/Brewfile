@@ -1,4 +1,5 @@
 brew "asdf"
+brew "fd"
 brew "fzf"
 brew "gh"
 brew "neovim"
