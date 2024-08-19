@@ -9,6 +9,8 @@ brew "zsh"
 
 cask "dbeaver-community"
 cask "iterm2"
+cask "obsidian"
+cask "postman"
 cask "rectangle"
 
 # cask fonts
