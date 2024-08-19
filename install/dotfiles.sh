@@ -25,7 +25,7 @@ fi
 cp -i ~/dotfiles/templates/jmux.yaml ~/.jmux.yaml
 cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
 
-mkdir ~/.config/nvim
+mkdir -p ~/.config/nvim
 
 ln -si ~/dotfiles/asdf/asdfrc ~/.asdfrc
 ln -si ~/dotfiles/asdf/default-npm-packages ~/.default-npm-packages
