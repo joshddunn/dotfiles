@@ -28,9 +28,7 @@ cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
 mkdir ~/.config/nvim
 
 ln -si ~/dotfiles/asdf/asdfrc ~/.asdfrc
-ln -si ~/dotfiles/asdf/default-gems ~/.default-gems
 ln -si ~/dotfiles/asdf/default-npm-packages ~/.default-npm-packages
-ln -si ~/dotfiles/asdf/default-python-packages ~/.default-python-packages
 ln -si ~/dotfiles/asdf/tool-versions ~/.tool-versions
 
 ln -si ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
