@@ -1,15 +1,3 @@
-echo "Do you want to setup dotfiles? (y/n)"
-read configure
-
-if [[ $configure != "y" ]]; then
-  echo "Skipping dotfiles setup."
-  exit
-fi
-
-echo "Setting up dotfiles..."
-
-##########
-
 touch ~/dotfiles/nvim/lua/work.lua
 
 cmd="source ~/dotfiles/configs/zshrc"
@@ -34,7 +22,3 @@ mkdir -p ~/.config/nvim
 ln -si ~/dotfiles/nvim/init.lua ~/.config/nvim/init.lua
 ln -si ~/dotfiles/nvim/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -si ~/dotfiles/nvim/lua ~/.config/nvim/
-
-##########
-
-echo "Done setting up dotfiles."

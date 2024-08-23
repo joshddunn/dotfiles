@@ -1,15 +1,3 @@
-echo "Do you want to install brew? (y/n)"
-read install
-
-if [[ $install != "y" ]]; then
-  echo "Skipping brew install."
-  exit
-fi
-
-echo "Installing brew..."
-
-##########
-
 if [[ -e $(which brew) ]]; then
   echo "brew already installed"
 else
@@ -19,7 +7,3 @@ fi
 brew bundle --file=./Brewfile
 
 rm ./Brewfile.lock.json
-
-##########
-
-echo "Done installing brew."
