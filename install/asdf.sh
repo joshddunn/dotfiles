@@ -15,7 +15,7 @@ if [[ -z $(rg "$cmd" ~/.zshrc) ]]; then
   echo $cmd >> ~/.zshrc
 fi
 
-for language in $(cat ~/dotfiles/asdf/tool-versions); do
+for language in $(cat ~/dotfiles/templates/asdf/tool-versions); do
   if [[ $language =~ ^[a-z]+$ ]]; then
     asdf plugin add $language
   fi
