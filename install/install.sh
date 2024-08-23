@@ -1,5 +1,5 @@
-for fragment in brew dotfiles asdf zsh; do
-  sh $fragment.sh
+for fragment in $(ls | grep '[0-9]_'); do
+  sh $fragment
   echo ""
 done
 
