@@ -1,4 +1,9 @@
-local lib = require("../lib")
+local lib = require('../lib')
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  command = "%s/\\s\\+$//e"
+})
 
 -- vim-color-replace
 -- vim.g.vim_color_replace = {

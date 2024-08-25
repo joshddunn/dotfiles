@@ -14,6 +14,7 @@ function BufDelete(operator)
         vim.api.nvim_buf_delete(focus, {})
       end
     end)
+    vim.api.nvim_input("<cr>")
   end
 end
 
