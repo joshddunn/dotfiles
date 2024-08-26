@@ -28,6 +28,7 @@ return {
       "coc-css",
       "coc-elixir",
       "coc-eslint",
+      "coc-go",
       "coc-json",
       "coc-prettier",
       "coc-sh",

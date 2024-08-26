@@ -8,6 +8,7 @@ return {
         "c",
         "css",
         "elixir",
+        "go",
         "heex",
         "javascript",
         "lua",
