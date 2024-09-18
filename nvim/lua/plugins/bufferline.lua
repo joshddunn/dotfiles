@@ -60,5 +60,9 @@ return {
         }
       }
     })
+
+    vim.api.nvim_create_user_command("BufOnly", ":BufferLineCloseOthers", { nargs = 0 })
+    vim.api.nvim_create_user_command("BufAfter", ":BufferLineCloseRight", { nargs = 0 })
+    vim.api.nvim_create_user_command("BufBefore", ":BufferLineCloseLeft", { nargs = 0 })
   end
 }
