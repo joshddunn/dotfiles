@@ -111,6 +111,10 @@ if vim.g.vim_navigation and NavigationProject() then
 
     -- tests
     function NavigationTestRunner(cmd)
+      local copy_mode = lib.replace(vim.fn.system({ "tmux", "display-message", "-t", "bottom-right", "-p", "-F", '#{pane_in_mode}' }), "\n", "")
+      if (copy_mode == "1") then
+        vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", "q" })
+      end
       vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", cmd, "Enter" })
       vim.api.nvim_echo({{"Running tests in another pane..."}}, false, {})
     end
