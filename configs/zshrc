@@ -65,7 +65,7 @@ fbr() {
 }
 
 mux() {
-  eval $(jmux $@)
+  eval $(jmux $@ -e)
 }
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
