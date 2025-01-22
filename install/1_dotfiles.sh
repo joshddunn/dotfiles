@@ -10,6 +10,13 @@ if [[ -z $(rg "$cmd" ~/.tmux.conf) ]]; then
   echo $cmd >> ~/.tmux.conf
 fi
 
+mkdir -p ~/.config/ghostty
+touch ~/.config/ghostty/config
+cmd="config-file = ../../dotfiles/configs/ghostty"
+if [[ -z $(rg "$cmd" ~/.config/ghostty/config) ]]; then
+  echo $cmd >> ~/.config/ghostty/config
+fi
+
 cp -i ~/dotfiles/templates/jmux.yaml ~/.jmux.yaml
 cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
 

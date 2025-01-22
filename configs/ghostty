@@ -1,0 +1,36 @@
+confirm-close-surface = false
+
+title = " "
+macos-titlebar-proxy-icon = hidden
+
+keybind = command+k=text:\x0c
+
+font-family = MesloLGL Nerd Font Mono
+font-size = 12
+
+bold-is-bright = true
+
+background = 1d1f21
+foreground = c5c8c6
+
+selection-background = #373b41
+selection-foreground = #c5c8c6
+
+cursor-color = #c5c8c6
+
+palette = 0=#1d1f21
+palette = 1=#cc6666
+palette = 2=#b5bd68
+palette = 3=#f0c674
+palette = 4=#81a2be
+palette = 5=#b294bb
+palette = 6=#8abeb7
+palette = 7=#c5c8c6
+palette = 8=#969896
+palette = 9=#de935f
+palette = 10=#282a2e
+palette = 11=#373b41
+palette = 12=#b4b7b4
+palette = 13=#e0e0e0
+palette = 14=#a3685a
+palette = 15=#ffffff

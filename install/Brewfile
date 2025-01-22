@@ -8,7 +8,7 @@ brew "tmux"
 brew "zsh"
 
 cask "dbeaver-community"
-cask "iterm2"
+cask "ghostty"
 cask "obsidian"
 cask "postman"
 cask "rectangle"
