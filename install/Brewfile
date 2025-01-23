@@ -8,11 +8,8 @@ brew "tmux"
 brew "zsh"
 
 cask "dbeaver-community"
+cask "font-meslo-lg-nerd-font"
 cask "ghostty"
 cask "obsidian"
 cask "postman"
 cask "rectangle"
-
-# cask fonts
-tap "homebrew/cask-fonts"
-cask "font-meslo-lg-nerd-font"
