@@ -10,8 +10,8 @@ font-size = 12
 
 bold-is-bright = true
 
-background = 1d1f21
-foreground = c5c8c6
+background = #1d1f21
+foreground = #c5c8c6
 
 selection-background = #373b41
 selection-foreground = #c5c8c6
