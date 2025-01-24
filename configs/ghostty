@@ -1,4 +1,9 @@
+macos-icon = custom-style
+macos-icon-screen-color = #373b41
+macos-icon-ghost-color = #c5c8c6
+
 confirm-close-surface = false
+resize-overlay = never
 
 title = " "
 macos-titlebar-proxy-icon = hidden
