@@ -8,7 +8,6 @@ brew "tmux"
 brew "zsh"
 
 cask "dbeaver-community"
-cask "font-meslo-lg-nerd-font"
 cask "ghostty"
 cask "obsidian"
 cask "postman"

@@ -10,8 +10,8 @@ macos-titlebar-proxy-icon = hidden
 
 keybind = command+k=text:\x0c
 
-font-family = MesloLGL Nerd Font Mono
-font-size = 12
+font-family = Menlo
+font-size = 13
 
 bold-is-bright = true
 
