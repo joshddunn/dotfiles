@@ -12,17 +12,14 @@ fi
 
 mkdir -p ~/.config/ghostty
 touch ~/.config/ghostty/config
+
 cmd="config-file = ../../dotfiles/configs/ghostty"
 if [[ -z $(rg "$cmd" ~/.config/ghostty/config) ]]; then
   echo $cmd >> ~/.config/ghostty/config
 fi
 
 cp -i ~/dotfiles/templates/mux.json ~/.mux.json
-cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
-
-cp -i ~/dotfiles/templates/asdf/tool-versions ~/.tool-versions
-cp -i ~/dotfiles/templates/asdf/asdfrc ~/.asdfrc
-cp -i ~/dotfiles/templates/asdf/default-npm-packages ~/.default-npm-packages
+cp -i ~/dotfiles/git/gitconfig ~/.gitconfig
 
 mkdir -p ~/.config/nvim
 

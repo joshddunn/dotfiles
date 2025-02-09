@@ -1,5 +1,5 @@
 [init]
-	templatedir = ~/dotfiles/templates/git
+	templatedir = ~/dotfiles/git/templates
 [alias]
 	unadd = reset HEAD
 [pager]

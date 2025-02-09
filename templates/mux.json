@@ -9,11 +9,10 @@
         {
           "name": "notes",
           "dir": "~/notes",
-          "layout": "default",
           "panes": [{ "command": "nvim" }]
-        }, {
+        },
+        {
           "name": "code",
-          "layout": "default",
           "panes": [{}, {}, {}]
         }
       ]
