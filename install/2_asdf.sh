@@ -1,4 +1,4 @@
-cmd=". $(brew --prefix asdf)/libexec/asdf.sh"
+cmd="source ~/dotfiles/templates/asdf/zshrc"
 if [[ -z $(rg "$cmd" ~/.zshrc) ]]; then
   echo $cmd >> ~/.zshrc
 fi
