@@ -12,3 +12,6 @@ cask "ghostty"
 cask "obsidian"
 cask "postman"
 cask "rectangle"
+
+tap "joshddunn/tap"
+brew "joshddunn/tap/mux"

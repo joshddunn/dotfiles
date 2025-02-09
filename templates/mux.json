@@ -1,0 +1,22 @@
+{
+  "sessions": [
+    {
+      "name": "dev",
+      "dir": "~/code",
+      "zeroIndex": true,
+      "selectWindow": 1,
+      "windows": [
+        {
+          "name": "notes",
+          "dir": "~/notes",
+          "layout": "default",
+          "panes": [{ "command": "nvim" }]
+        }, {
+          "name": "code",
+          "layout": "default",
+          "panes": [{}, {}, {}]
+        }
+      ]
+    }
+  ]
+}

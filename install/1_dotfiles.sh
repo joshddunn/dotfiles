@@ -17,7 +17,7 @@ if [[ -z $(rg "$cmd" ~/.config/ghostty/config) ]]; then
   echo $cmd >> ~/.config/ghostty/config
 fi
 
-cp -i ~/dotfiles/templates/jmux.yaml ~/.jmux.yaml
+cp -i ~/dotfiles/templates/mux.json ~/.mux.json
 cp -i ~/dotfiles/templates/gitconfig ~/.gitconfig
 
 cp -i ~/dotfiles/templates/asdf/tool-versions ~/.tool-versions

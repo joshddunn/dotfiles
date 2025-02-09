@@ -64,8 +64,4 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-mux() {
-  eval $(jmux $@ -e)
-}
-
 eval "$(/opt/homebrew/bin/brew shellenv)"
