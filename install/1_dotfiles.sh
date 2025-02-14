@@ -1,3 +1,4 @@
+touch ~/.hushlogin
 touch ~/dotfiles/nvim/lua/work.lua
 
 cmd="source ~/dotfiles/configs/zshrc"
