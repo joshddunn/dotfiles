@@ -20,7 +20,7 @@
   },
   "json.schemas": [
     {
-      "url": "https://raw.githubusercontent.com/joshddunn/mux/refs/heads/main/mux.schema.json",
+      "url": "https://raw.githubusercontent.com/joshddunn/mux/refs/heads/main/embed/config.schema.json",
       "fileMatch": [".mux.json"]
     }
   ]
