@@ -1,5 +1,5 @@
 touch ~/.hushlogin
-touch ~/dotfiles/nvim/lua/work.lua
+touch ~/dotfiles/nvim/lua/secret.lua
 
 cmd="source ~/dotfiles/configs/zshrc"
 if [[ -z $(rg "$cmd" ~/.zshrc) ]]; then
