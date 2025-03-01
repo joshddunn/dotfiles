@@ -2,7 +2,6 @@
   "diagnostic.virtualText": true,
   "coc.preferences.formatOnSave": true,
   "suggest.noselect": true,
-  "elixir.pathToElixirLS": "~/.elixir-ls/release/language_server.sh",
   "languageserver": {
     "golangci-lint-languageserver": {
       "command": "golangci-lint-langserver",

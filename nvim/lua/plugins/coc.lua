@@ -26,7 +26,6 @@ return {
 
     vim.g.coc_global_extensions = {
       "coc-css",
-      "coc-elixir",
       "coc-eslint",
       "coc-go",
       "coc-json",
