@@ -10,6 +10,4 @@ Run the following commands:
     cd ~/dotfiles/install
     sh install.sh
 
-Import Rectangle settings using `~/dotfiles/templates/rectangle.json`.
-
 Then start using nvim (after `:checkhealth` passes) and install nvim plugins with `:Lazy`.

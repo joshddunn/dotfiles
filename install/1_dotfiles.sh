@@ -19,6 +19,8 @@ if [[ -z $(rg "$cmd" ~/.config/ghostty/config) ]]; then
   echo $cmd >> ~/.config/ghostty/config
 fi
 
+mkdir -p ~/Library/Application\ Support/Rectangle
+cp -i ~/dotfiles/templates/rectangle.json ~/Library/Application\ Support/Rectangle/RectangleConfig.json
 cp -i ~/dotfiles/templates/mux.json ~/.mux.json
 cp -i ~/dotfiles/git/gitconfig ~/.gitconfig
 
