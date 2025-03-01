@@ -2,7 +2,7 @@
 
 These dotfiles are for macOS.
 
-## Installation
+## Install
 
     git clone https://github.com/joshddunn/dotfiles ~/dotfiles
     cd ~/dotfiles/install
