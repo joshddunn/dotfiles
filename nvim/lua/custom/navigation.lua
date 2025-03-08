@@ -1,5 +1,3 @@
-local lib = require("../lib")
-
 -- vim-navigation
 -- make a project a navigation project with
 --   git config vim-navigation.project phoenix
@@ -67,7 +65,7 @@ if vim.g.vim_navigation and NavigationProject() then
         old_pattern = alt_config.file_pattern
         new_pattern = alt_config.test_file_pattern
       else
-        vim.api.nvim_echo({{"No alternate file defined"}}, false, {})
+        vim.api.nvim_echo({ { "No alternate file defined" } }, false, {})
         return
       end
 
@@ -84,17 +82,17 @@ if vim.g.vim_navigation and NavigationProject() then
     function NavigationFileSearch(search, pattern)
       local file = lib.replace(pattern, "$arg", search)
       local filenames = vim.fn.system({ "rg", "--files" })
-      local results = vim.fn.systemlist({ "rg", "-S", file}, filenames)
+      local results = vim.fn.systemlist({ "rg", "-S", file }, filenames)
 
       if vim.fn.empty(results) == 1 then
-        vim.api.nvim_echo({{"Could not find file"}}, false, {})
+        vim.api.nvim_echo({ { "Could not find file" } }, false, {})
       else
         vim.api.nvim_command("edit " .. results[#results])
       end
     end
 
     function NavigationEditPattern(pattern)
-      return function (opts)
+      return function(opts)
         NavigationFileSearch(opts.args, pattern)
       end
     end
@@ -111,12 +109,13 @@ if vim.g.vim_navigation and NavigationProject() then
 
     -- tests
     function NavigationTestRunner(cmd)
-      local pane_in_mode = lib.replace(vim.fn.system({ "tmux", "display-message", "-t", "bottom-right", "-p", "-F", '#{pane_in_mode}' }), "\n", "")
+      local pane_in_mode = lib.replace(
+      vim.fn.system({ "tmux", "display-message", "-t", "bottom-right", "-p", "-F", '#{pane_in_mode}' }), "\n", "")
       if (pane_in_mode == "1") then
         vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", "q" })
       end
       vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", cmd, "Enter" })
-      vim.api.nvim_echo({{"Running tests in another pane..."}}, false, {})
+      vim.api.nvim_echo({ { "Running tests in another pane..." } }, false, {})
     end
 
     function NavigationTestBuildCmd(cmd, filename, line, name)
@@ -131,7 +130,8 @@ if vim.g.vim_navigation and NavigationProject() then
       local alt_config = config.alternate
 
       if not (filename:match(alt_config.test_file_pattern .. '$')) then
-        local alternate_filename = lib.replace(filename, alt_config.file_pattern, alt_config.test_file_pattern, { suffix = "$" })
+        local alternate_filename = lib.replace(filename, alt_config.file_pattern, alt_config.test_file_pattern,
+          { suffix = "$" })
         alternate_filename = lib.replace(alternate_filename, alt_config.dir, alt_config.test_dir, { prefix = "^" })
         return alternate_filename
       else
@@ -165,7 +165,7 @@ if vim.g.vim_navigation and NavigationProject() then
             if (test_name) then
               NavigationTestRunner(NavigationTestBuildCmd(test_config.cmds.line, filename, row, test_name))
             else
-              vim.api.nvim_echo({{"No test found"}}, false, {})
+              vim.api.nvim_echo({ { "No test found" } }, false, {})
             end
           else
             NavigationTestRunner(NavigationTestBuildCmd(test_config.cmds.line, filename, row, ""))

@@ -1,5 +1,3 @@
-local lib = require('../lib')
-
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   command = "%s/\\s\\+$//e"

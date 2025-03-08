@@ -1,5 +1,3 @@
-local colors = require("colors")
-
 return {
   "lukas-reineke/indent-blankline.nvim",
   main = "ibl",

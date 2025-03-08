@@ -1,5 +1,3 @@
-local lib = require("lib")
-
 return {
   "tpope/vim-abolish",
   init = function()

@@ -1,5 +1,3 @@
-local lib = require("lib")
-
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 
