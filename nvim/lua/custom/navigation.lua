@@ -110,7 +110,7 @@ if vim.g.vim_navigation and NavigationProject() then
     -- tests
     function NavigationTestRunner(cmd)
       local pane_in_mode = lib.replace(
-      vim.fn.system({ "tmux", "display-message", "-t", "bottom-right", "-p", "-F", '#{pane_in_mode}' }), "\n", "")
+        vim.fn.system({ "tmux", "display-message", "-t", "bottom-right", "-p", "-F", '#{pane_in_mode}' }), "\n", "")
       if (pane_in_mode == "1") then
         vim.fn.system({ "tmux", "send-keys", "-t", "bottom-right", "q" })
       end
@@ -142,9 +142,8 @@ if vim.g.vim_navigation and NavigationProject() then
     function NavigationTest(type)
       return function()
         local test_config = config.tests
-        local filetype = vim.bo.filetype
         local filename = lib.replace(vim.api.nvim_buf_get_name(0), vim.fn.getcwd() .. "/", "")
-        local row, column = unpack(vim.api.nvim_win_get_cursor(0))
+        local row = vim.api.nvim_win_get_cursor(0)[1]
 
         if (type == "all") then
           NavigationTestRunner(test_config.cmds.all)
