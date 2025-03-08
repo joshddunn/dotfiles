@@ -32,7 +32,7 @@ lib.split = function(string, delimiter)
     return arr
   end
 
-  for match in (string..delimiter):gmatch("(.-)" .. delimiter) do
+  for match in (string .. delimiter):gmatch("(.-)" .. delimiter) do
     table.insert(arr, match)
   end
 
@@ -45,8 +45,8 @@ end
 
 lib.replace = function(str, pattern, replacement, opts)
   opts = opts or {}
-  prefix = opts.prefix or ""
-  suffix = opts.suffix or ""
+  local prefix = opts.prefix or ""
+  local suffix = opts.suffix or ""
   pattern = string.gsub(pattern, "[%(%)%[%]%.%+%-%*%?%$%%]", "%%%1")
   pattern = prefix .. pattern .. suffix
   replacement = string.gsub(replacement, "[%%]", "%%%%")

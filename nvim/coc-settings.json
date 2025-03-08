@@ -22,5 +22,6 @@
       "url": "https://raw.githubusercontent.com/joshddunn/mux/refs/heads/main/embed/config.schema.json",
       "fileMatch": [".mux.json"]
     }
-  ]
+  ],
+  "Lua.diagnostics.globals": ["vim"]
 }

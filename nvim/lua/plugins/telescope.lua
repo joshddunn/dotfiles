@@ -1,4 +1,4 @@
-lib = require("lib")
+local lib = require("lib")
 
 return {
   "nvim-telescope/telescope.nvim",
@@ -18,18 +18,7 @@ return {
       }
     }
 
-    function append_glob_pattern(type, cmd)
-      local dirs = glob_pattern(type)
-
-      lib.each(dirs, function(dir)
-        lib.push(cmd, "--glob")
-        lib.push(cmd, dir)
-      end)
-
-      return cmd
-    end
-
-    function glob_pattern(type)
+    local function glob_pattern(type)
       local dirs = {}
 
       if (type == "global") then
@@ -50,6 +39,18 @@ return {
 
       return dirs
     end
+
+    local function append_glob_pattern(type, cmd)
+      local dirs = glob_pattern(type)
+
+      lib.each(dirs, function(dir)
+        lib.push(cmd, "--glob")
+        lib.push(cmd, dir)
+      end)
+
+      return cmd
+    end
+
 
     require("telescope").setup {
       defaults = {
