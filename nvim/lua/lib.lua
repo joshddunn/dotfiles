@@ -6,13 +6,6 @@ lib.each = function(arr, fn)
   end
 end
 
-lib.reverse_each = function(arr, fn)
-  local length = #arr
-  for i = 1, length do
-    fn(arr[length - i + 1], length - i + 1)
-  end
-end
-
 lib.push = function(arr, v)
   table.insert(arr, v)
 end
