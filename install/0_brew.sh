@@ -6,4 +6,5 @@ fi
 
 brew bundle --file=./Brewfile
 
+touch Brewfile.lock.json
 rm ./Brewfile.lock.json
